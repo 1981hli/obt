@@ -1,0 +1,9 @@
+Gravity model order (<=20)   :   10
+Integration step size [s]    :   60
+Measurement sigma [m]        :  100
+A priori sigma position [m]  : 1000
+A priori sigma velocity [m/s]:   10
+State noise position [m]     :    0.0
+State noise velocity [m/s]   :    0.0000
+Edit level (sigma)           :    3.0
+

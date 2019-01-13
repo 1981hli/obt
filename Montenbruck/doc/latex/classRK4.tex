@@ -1,0 +1,148 @@
+\hypertarget{classRK4}{\section{R\-K4 Class Reference}
+\label{classRK4}\index{R\-K4@{R\-K4}}
+}
+
+
+{\ttfamily \#include $<$S\-A\-T\-\_\-\-D\-E.\-h$>$}
+
+
+
+Collaboration diagram for R\-K4\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=124pt]{classRK4__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRK4_ac9c9485e3509428bc57a335f4489fc3f}{R\-K4} (\hyperlink{SAT__DE_8h_ad4e61e8764fd6a7d9f144dec4a8b17cf}{R\-K4funct} f\-\_\-, int n\-\_\-eqn\-\_\-, void $\ast$p\-Aux\-\_\-)
+\item 
+void \hyperlink{classRK4_aa520ec0bb1bb2ccdd13ab48418303706}{Step} (double \&t, \hyperlink{classVector}{Vector} \&y, double h)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SAT__DE_8h_ad4e61e8764fd6a7d9f144dec4a8b17cf}{R\-K4funct} \hyperlink{classRK4_a7a10cccc14acdf734ccce4b32bd53100}{f}
+\item 
+int \hyperlink{classRK4_a4bc99fd596f8867c42e55762633e56f7}{n\-\_\-eqn}
+\item 
+void $\ast$ \hyperlink{classRK4_aa74081faeb8dbdc9f2a48895e12d2986}{p\-Aux}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classRK4_aa3d2325410885022b4dc0caa24c924e1}{k\-\_\-1}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classRK4_af6bc3c10af06bb72e70e733bf8c3d70b}{k\-\_\-2}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classRK4_ac3c630bd4db23608b13bc39f1e2c2c74}{k\-\_\-3}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classRK4_af1f64db1e590871b631da2323a63d5b7}{k\-\_\-4}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 63 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRK4_ac9c9485e3509428bc57a335f4489fc3f}{\index{R\-K4@{R\-K4}!R\-K4@{R\-K4}}
+\index{R\-K4@{R\-K4}!RK4@{R\-K4}}
+\subsubsection[{R\-K4}]{\setlength{\rightskip}{0pt plus 5cm}R\-K4\-::\-R\-K4 (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-K4funct}}]{f\-\_\-, }
+\item[{int}]{n\-\_\-eqn\-\_\-, }
+\item[{void $\ast$}]{p\-Aux\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classRK4_ac9c9485e3509428bc57a335f4489fc3f}
+
+
+Definition at line 68 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRK4_aa520ec0bb1bb2ccdd13ab48418303706}{\index{R\-K4@{R\-K4}!Step@{Step}}
+\index{Step@{Step}!RK4@{R\-K4}}
+\subsubsection[{Step}]{\setlength{\rightskip}{0pt plus 5cm}void R\-K4\-::\-Step (
+\begin{DoxyParamCaption}
+\item[{double \&}]{t, }
+\item[{{\bf Vector} \&}]{y, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)}}\label{classRK4_aa520ec0bb1bb2ccdd13ab48418303706}
+
+
+Definition at line 90 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classRK4_aa520ec0bb1bb2ccdd13ab48418303706_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classRK4_a7a10cccc14acdf734ccce4b32bd53100}{\index{R\-K4@{R\-K4}!f@{f}}
+\index{f@{f}!RK4@{R\-K4}}
+\subsubsection[{f}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\-K4funct} R\-K4\-::f\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_a7a10cccc14acdf734ccce4b32bd53100}
+
+
+Definition at line 86 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classRK4_aa3d2325410885022b4dc0caa24c924e1}{\index{R\-K4@{R\-K4}!k\-\_\-1@{k\-\_\-1}}
+\index{k\-\_\-1@{k\-\_\-1}!RK4@{R\-K4}}
+\subsubsection[{k\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} R\-K4\-::k\-\_\-1\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_aa3d2325410885022b4dc0caa24c924e1}
+
+
+Definition at line 89 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classRK4_af6bc3c10af06bb72e70e733bf8c3d70b}{\index{R\-K4@{R\-K4}!k\-\_\-2@{k\-\_\-2}}
+\index{k\-\_\-2@{k\-\_\-2}!RK4@{R\-K4}}
+\subsubsection[{k\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} R\-K4\-::k\-\_\-2\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_af6bc3c10af06bb72e70e733bf8c3d70b}
+
+
+Definition at line 89 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classRK4_ac3c630bd4db23608b13bc39f1e2c2c74}{\index{R\-K4@{R\-K4}!k\-\_\-3@{k\-\_\-3}}
+\index{k\-\_\-3@{k\-\_\-3}!RK4@{R\-K4}}
+\subsubsection[{k\-\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} R\-K4\-::k\-\_\-3\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_ac3c630bd4db23608b13bc39f1e2c2c74}
+
+
+Definition at line 89 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classRK4_af1f64db1e590871b631da2323a63d5b7}{\index{R\-K4@{R\-K4}!k\-\_\-4@{k\-\_\-4}}
+\index{k\-\_\-4@{k\-\_\-4}!RK4@{R\-K4}}
+\subsubsection[{k\-\_\-4}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} R\-K4\-::k\-\_\-4\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_af1f64db1e590871b631da2323a63d5b7}
+
+
+Definition at line 89 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classRK4_a4bc99fd596f8867c42e55762633e56f7}{\index{R\-K4@{R\-K4}!n\-\_\-eqn@{n\-\_\-eqn}}
+\index{n\-\_\-eqn@{n\-\_\-eqn}!RK4@{R\-K4}}
+\subsubsection[{n\-\_\-eqn}]{\setlength{\rightskip}{0pt plus 5cm}int R\-K4\-::n\-\_\-eqn\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_a4bc99fd596f8867c42e55762633e56f7}
+
+
+Definition at line 87 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classRK4_aa74081faeb8dbdc9f2a48895e12d2986}{\index{R\-K4@{R\-K4}!p\-Aux@{p\-Aux}}
+\index{p\-Aux@{p\-Aux}!RK4@{R\-K4}}
+\subsubsection[{p\-Aux}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ R\-K4\-::p\-Aux\hspace{0.3cm}{\ttfamily [private]}}}\label{classRK4_aa74081faeb8dbdc9f2a48895e12d2986}
+
+
+Definition at line 88 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SAT__DE_8h}{S\-A\-T\-\_\-\-D\-E.\-h}\item 
+\hyperlink{SAT__DE_8cpp}{S\-A\-T\-\_\-\-D\-E.\-cpp}\end{DoxyCompactItemize}

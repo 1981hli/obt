@@ -1,0 +1,89 @@
+\hypertarget{SAT__DE_8h}{\section{S\-A\-T\-\_\-\-D\-E.\-h File Reference}
+\label{SAT__DE_8h}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}
+}
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Vec\-Mat.\-h\char`\"{}}\\*
+Include dependency graph for S\-A\-T\-\_\-\-D\-E.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{SAT__DE_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{SAT__DE_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classRK4}{R\-K4}
+\item 
+class \hyperlink{classDE}{D\-E}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{SAT__DE_8h_ad4e61e8764fd6a7d9f144dec4a8b17cf}{R\-K4funct} )(double x, const \hyperlink{classVector}{Vector} \&y, \hyperlink{classVector}{Vector} \&yp, void $\ast$p\-Aux)
+\item 
+typedef void($\ast$ \hyperlink{SAT__DE_8h_a37c3f0fc3c33a5b858a3f1c90353da48}{D\-Efunct} )(double x, const \hyperlink{classVector}{Vector} \&y, \hyperlink{classVector}{Vector} \&yp, void $\ast$p\-Aux)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920d}{D\-E\-\_\-\-S\-T\-A\-T\-E} \{ \\*
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da3c01d2acef9b7ae16377dd4a89872b16}{D\-E\-\_\-\-I\-N\-I\-T} = 1, 
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da31f81d288fd9c6fb3f8e947e7699d806}{D\-E\-\_\-\-D\-O\-N\-E} = 2, 
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920dafafa131ad62fcc511db83ecbb9d5c0e8}{D\-E\-\_\-\-B\-A\-D\-A\-C\-C} = 3, 
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da1c9d6876d411fcd5bb3a9e923a78d421}{D\-E\-\_\-\-N\-U\-M\-S\-T\-E\-P\-S} = 4, 
+\\*
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da41e565dd69a14c5f0c7c231565f97507}{D\-E\-\_\-\-S\-T\-I\-F\-F} = 5, 
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da27ed8ab4bed68d6a9e7bf91d7268e495}{D\-E\-\_\-\-I\-N\-V\-P\-A\-R\-A\-M} = 6
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{SAT__DE_8h_a37c3f0fc3c33a5b858a3f1c90353da48}{\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-Efunct@{D\-Efunct}}
+\index{D\-Efunct@{D\-Efunct}!SAT_DE.h@{S\-A\-T\-\_\-\-D\-E.\-h}}
+\subsubsection[{D\-Efunct}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ D\-Efunct)(double x,const {\bf Vector} \&y,{\bf Vector} \&yp,void $\ast$p\-Aux)}}\label{SAT__DE_8h_a37c3f0fc3c33a5b858a3f1c90353da48}
+
+
+Definition at line 103 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{SAT__DE_8h_ad4e61e8764fd6a7d9f144dec4a8b17cf}{\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!R\-K4funct@{R\-K4funct}}
+\index{R\-K4funct@{R\-K4funct}!SAT_DE.h@{S\-A\-T\-\_\-\-D\-E.\-h}}
+\subsubsection[{R\-K4funct}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ R\-K4funct)(double x,const {\bf Vector} \&y,{\bf Vector} \&yp,void $\ast$p\-Aux)}}\label{SAT__DE_8h_ad4e61e8764fd6a7d9f144dec4a8b17cf}
+
+
+Definition at line 53 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920d}{\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-S\-T\-A\-T\-E@{D\-E\-\_\-\-S\-T\-A\-T\-E}}
+\index{D\-E\-\_\-\-S\-T\-A\-T\-E@{D\-E\-\_\-\-S\-T\-A\-T\-E}!SAT_DE.h@{S\-A\-T\-\_\-\-D\-E.\-h}}
+\subsubsection[{D\-E\-\_\-\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf D\-E\-\_\-\-S\-T\-A\-T\-E}}}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920d}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{D\-E\-\_\-\-I\-N\-I\-T@{D\-E\-\_\-\-I\-N\-I\-T}!S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-I\-N\-I\-T@{D\-E\-\_\-\-I\-N\-I\-T}}\item[{\em 
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da3c01d2acef9b7ae16377dd4a89872b16}{D\-E\-\_\-\-I\-N\-I\-T}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da3c01d2acef9b7ae16377dd4a89872b16}
+}]\index{D\-E\-\_\-\-D\-O\-N\-E@{D\-E\-\_\-\-D\-O\-N\-E}!S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-D\-O\-N\-E@{D\-E\-\_\-\-D\-O\-N\-E}}\item[{\em 
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da31f81d288fd9c6fb3f8e947e7699d806}{D\-E\-\_\-\-D\-O\-N\-E}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da31f81d288fd9c6fb3f8e947e7699d806}
+}]\index{D\-E\-\_\-\-B\-A\-D\-A\-C\-C@{D\-E\-\_\-\-B\-A\-D\-A\-C\-C}!S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-B\-A\-D\-A\-C\-C@{D\-E\-\_\-\-B\-A\-D\-A\-C\-C}}\item[{\em 
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920dafafa131ad62fcc511db83ecbb9d5c0e8}{D\-E\-\_\-\-B\-A\-D\-A\-C\-C}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920dafafa131ad62fcc511db83ecbb9d5c0e8}
+}]\index{D\-E\-\_\-\-N\-U\-M\-S\-T\-E\-P\-S@{D\-E\-\_\-\-N\-U\-M\-S\-T\-E\-P\-S}!S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-N\-U\-M\-S\-T\-E\-P\-S@{D\-E\-\_\-\-N\-U\-M\-S\-T\-E\-P\-S}}\item[{\em 
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da1c9d6876d411fcd5bb3a9e923a78d421}{D\-E\-\_\-\-N\-U\-M\-S\-T\-E\-P\-S}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da1c9d6876d411fcd5bb3a9e923a78d421}
+}]\index{D\-E\-\_\-\-S\-T\-I\-F\-F@{D\-E\-\_\-\-S\-T\-I\-F\-F}!S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-S\-T\-I\-F\-F@{D\-E\-\_\-\-S\-T\-I\-F\-F}}\item[{\em 
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da41e565dd69a14c5f0c7c231565f97507}{D\-E\-\_\-\-S\-T\-I\-F\-F}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da41e565dd69a14c5f0c7c231565f97507}
+}]\index{D\-E\-\_\-\-I\-N\-V\-P\-A\-R\-A\-M@{D\-E\-\_\-\-I\-N\-V\-P\-A\-R\-A\-M}!S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}}\index{S\-A\-T\-\_\-\-D\-E.\-h@{S\-A\-T\-\_\-\-D\-E.\-h}!D\-E\-\_\-\-I\-N\-V\-P\-A\-R\-A\-M@{D\-E\-\_\-\-I\-N\-V\-P\-A\-R\-A\-M}}\item[{\em 
+\hypertarget{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da27ed8ab4bed68d6a9e7bf91d7268e495}{D\-E\-\_\-\-I\-N\-V\-P\-A\-R\-A\-M}\label{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920da27ed8ab4bed68d6a9e7bf91d7268e495}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 113 of file S\-A\-T\-\_\-\-D\-E.\-h.
+

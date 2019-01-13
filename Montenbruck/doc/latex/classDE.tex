@@ -1,0 +1,565 @@
+\hypertarget{classDE}{\section{D\-E Class Reference}
+\label{classDE}\index{D\-E@{D\-E}}
+}
+
+
+{\ttfamily \#include $<$S\-A\-T\-\_\-\-D\-E.\-h$>$}
+
+
+
+Collaboration diagram for D\-E\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classDE__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDE_a37d9ef0ccffda10dda67b29538416d0c}{D\-E} ()
+\item 
+\hyperlink{classDE_a6b0641c47ad6a3d42f04d08583e6839d}{D\-E} (\hyperlink{SAT__DE_8h_a37c3f0fc3c33a5b858a3f1c90353da48}{D\-Efunct} f\-\_\-, int n\-\_\-eqn\-\_\-, void $\ast$p\-Aux\-\_\-)
+\item 
+void \hyperlink{classDE_a1eebc6bc641f0f375e6077f0404fc1e0}{Define} (\hyperlink{SAT__DE_8h_a37c3f0fc3c33a5b858a3f1c90353da48}{D\-Efunct} f\-\_\-, int n\-\_\-eqn\-\_\-, void $\ast$p\-Aux\-\_\-)
+\item 
+void \hyperlink{classDE_a2cedbf51ef4121e63b3c4578df6b3905}{Init} (double t0, double rel, double abs)
+\item 
+void \hyperlink{classDE_a6a008818dc6d8ad8defd822091207093}{Integ} (double tout, \hyperlink{classVector}{Vector} \&y)
+\item 
+void \hyperlink{classDE_ada59157cf555a77f65242c04ad1c9e19}{Intrp} (double tout, \hyperlink{classVector}{Vector} \&y)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classDE_a877edbd8bd4ba297b5602786b552059f}{relerr}
+\item 
+double \hyperlink{classDE_a9337b177c5adfeda779ceecd6b56b370}{abserr}
+\item 
+\hyperlink{SAT__DE_8h_a57a5a4efb7b7add9bd828d85d9bb920d}{D\-E\-\_\-\-S\-T\-A\-T\-E} \hyperlink{classDE_a1d99a54650b09e8192bf89537f66bed2}{State}
+\item 
+bool \hyperlink{classDE_ab4adac8a112f4c5b5600986b418e5129}{Permit\-T\-O\-U\-T}
+\item 
+double \hyperlink{classDE_a56ee5af65170db9321a5508c207cd173}{t}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classDE_ac45486f7c7bf422c6bd024aba501a2a2}{Step} (double \&\hyperlink{classDE_a53686f8f7ab89225ba80835e910168fa}{x}, \hyperlink{classVector}{Vector} \&y, double \&eps, bool \&crash)
+\item 
+void \hyperlink{classDE_a6437bef70b2bb04c1b041e6ea86665ad}{Intrp} (double xout, \hyperlink{classVector}{Vector} \&yout, \hyperlink{classVector}{Vector} \&\hyperlink{classDE_a985edfb71c582371040affbd4230a36a}{ypout})
+\item 
+void \hyperlink{classDE_ac5af669df33d23002a4744f0217e33dc}{Integ\-\_\-} (double \&\hyperlink{classDE_a56ee5af65170db9321a5508c207cd173}{t}, double tout, \hyperlink{classVector}{Vector} \&y)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SAT__DE_8h_a37c3f0fc3c33a5b858a3f1c90353da48}{D\-Efunct} \hyperlink{classDE_afa7fefa0ba10ee635a618b3a4a5a39dc}{f}
+\item 
+int \hyperlink{classDE_ae74a30c7f5448d96d8460b4fde65f849}{n\-\_\-eqn}
+\item 
+void $\ast$ \hyperlink{classDE_ab8fad10a55cec3f9755444ae5ee38903}{p\-Aux}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classDE_ab501e078b2408ca63ee44c1c4d59de86}{yy}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classDE_adc470cb3c810cd47c8603003f10d4cac}{wt}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classDE_af16ce45fb590ddb2ae5225b5cfc95f87}{p}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classDE_acff3aaf84faff7827daf981587ef5b03}{yp}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classDE_a985edfb71c582371040affbd4230a36a}{ypout}
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classDE_a79eb189fb7f3320d735b90ca3332311e}{phi}
+\item 
+double \hyperlink{classDE_ad0bf62cec063071d0773fde29d976c0e}{alpha} \mbox{[}13\mbox{]}
+\item 
+double \hyperlink{classDE_a6db4afe37f9ebf0dce0532415c40de32}{beta} \mbox{[}13\mbox{]}
+\item 
+double \hyperlink{classDE_af4b92bb3bf10322b581dbbcf778ef5d5}{v} \mbox{[}13\mbox{]}
+\item 
+double \hyperlink{classDE_a4cd9f3da02faec86f2926ce373a4e7c9}{w} \mbox{[}13\mbox{]}
+\item 
+double \hyperlink{classDE_a7ef55ab5c646e5f540adcfa6ed392b56}{psi} \mbox{[}13\mbox{]}
+\item 
+double \hyperlink{classDE_a2ec1db657ea1d2ba57e0221ca0cb3eef}{sig} \mbox{[}14\mbox{]}
+\item 
+double \hyperlink{classDE_aa5b66f7465475382f7f2d757fd9cf979}{g} \mbox{[}14\mbox{]}
+\item 
+double \hyperlink{classDE_a53686f8f7ab89225ba80835e910168fa}{x}
+\item 
+double \hyperlink{classDE_adcd1d27f91dc1de8c4e2e8572878f92f}{h}
+\item 
+double \hyperlink{classDE_a8aba1f4cf3cb574060e0772052b6772e}{hold}
+\item 
+double \hyperlink{classDE_a710c5e85925a2ce84f8d789c1b4cb99b}{told}
+\item 
+double \hyperlink{classDE_a5fe0648747453fc746c8bee223d58633}{delsgn}
+\item 
+int \hyperlink{classDE_a4d82322b4499d5f8e27f2e19675fcfa6}{ns}
+\item 
+int \hyperlink{classDE_a583b51553ddbe1eb995e76d42b2e13ec}{k}
+\item 
+int \hyperlink{classDE_aaa4409f0e1999d15aa33da045dcf464d}{kold}
+\item 
+bool \hyperlink{classDE_a210930a504af06e95856cb71411b2a6b}{Old\-Permit}
+\item 
+bool \hyperlink{classDE_ab9a2adeb8253f3901c1cb39387e35fba}{phase1}
+\item 
+bool \hyperlink{classDE_a3c9b03623043eee0c38ecefecf301320}{start}
+\item 
+bool \hyperlink{classDE_ab7d114c0f93009e0deddea4375764e52}{nornd}
+\item 
+bool \hyperlink{classDE_a992636687bf14328677c450008855770}{init}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 126 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDE_a37d9ef0ccffda10dda67b29538416d0c}{\index{D\-E@{D\-E}!D\-E@{D\-E}}
+\index{D\-E@{D\-E}!DE@{D\-E}}
+\subsubsection[{D\-E}]{\setlength{\rightskip}{0pt plus 5cm}D\-E\-::\-D\-E (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDE_a37d9ef0ccffda10dda67b29538416d0c}
+
+
+Definition at line 119 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+\hypertarget{classDE_a6b0641c47ad6a3d42f04d08583e6839d}{\index{D\-E@{D\-E}!D\-E@{D\-E}}
+\index{D\-E@{D\-E}!DE@{D\-E}}
+\subsubsection[{D\-E}]{\setlength{\rightskip}{0pt plus 5cm}D\-E\-::\-D\-E (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-Efunct}}]{f\-\_\-, }
+\item[{int}]{n\-\_\-eqn\-\_\-, }
+\item[{void $\ast$}]{p\-Aux\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classDE_a6b0641c47ad6a3d42f04d08583e6839d}
+
+
+Definition at line 136 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classDE_a1eebc6bc641f0f375e6077f0404fc1e0}{\index{D\-E@{D\-E}!Define@{Define}}
+\index{Define@{Define}!DE@{D\-E}}
+\subsubsection[{Define}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Define (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-Efunct}}]{f\-\_\-, }
+\item[{int}]{n\-\_\-eqn\-\_\-, }
+\item[{void $\ast$}]{p\-Aux\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classDE_a1eebc6bc641f0f375e6077f0404fc1e0}
+
+
+Definition at line 163 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+\hypertarget{classDE_a2cedbf51ef4121e63b3c4578df6b3905}{\index{D\-E@{D\-E}!Init@{Init}}
+\index{Init@{Init}!DE@{D\-E}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Init (
+\begin{DoxyParamCaption}
+\item[{double}]{t0, }
+\item[{double}]{rel, }
+\item[{double}]{abs}
+\end{DoxyParamCaption}
+)}}\label{classDE_a2cedbf51ef4121e63b3c4578df6b3905}
+
+
+Definition at line 823 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+\hypertarget{classDE_a6a008818dc6d8ad8defd822091207093}{\index{D\-E@{D\-E}!Integ@{Integ}}
+\index{Integ@{Integ}!DE@{D\-E}}
+\subsubsection[{Integ}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Integ (
+\begin{DoxyParamCaption}
+\item[{double}]{tout, }
+\item[{{\bf Vector} \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{classDE_a6a008818dc6d8ad8defd822091207093}
+
+
+Definition at line 841 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDE_a6a008818dc6d8ad8defd822091207093_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classDE_ac5af669df33d23002a4744f0217e33dc}{\index{D\-E@{D\-E}!Integ\-\_\-@{Integ\-\_\-}}
+\index{Integ\-\_\-@{Integ\-\_\-}!DE@{D\-E}}
+\subsubsection[{Integ\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Integ\-\_\- (
+\begin{DoxyParamCaption}
+\item[{double \&}]{t, }
+\item[{double}]{tout, }
+\item[{{\bf Vector} \&}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ac5af669df33d23002a4744f0217e33dc}
+
+
+Definition at line 686 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDE_ac5af669df33d23002a4744f0217e33dc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classDE_ac5af669df33d23002a4744f0217e33dc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classDE_ada59157cf555a77f65242c04ad1c9e19}{\index{D\-E@{D\-E}!Intrp@{Intrp}}
+\index{Intrp@{Intrp}!DE@{D\-E}}
+\subsubsection[{Intrp}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Intrp (
+\begin{DoxyParamCaption}
+\item[{double}]{tout, }
+\item[{{\bf Vector} \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{classDE_ada59157cf555a77f65242c04ad1c9e19}
+
+
+Definition at line 869 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classDE_ada59157cf555a77f65242c04ad1c9e19_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classDE_a6437bef70b2bb04c1b041e6ea86665ad}{\index{D\-E@{D\-E}!Intrp@{Intrp}}
+\index{Intrp@{Intrp}!DE@{D\-E}}
+\subsubsection[{Intrp}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Intrp (
+\begin{DoxyParamCaption}
+\item[{double}]{xout, }
+\item[{{\bf Vector} \&}]{yout, }
+\item[{{\bf Vector} \&}]{ypout}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a6437bef70b2bb04c1b041e6ea86665ad}
+
+
+Definition at line 632 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classDE_a6437bef70b2bb04c1b041e6ea86665ad_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classDE_ac45486f7c7bf422c6bd024aba501a2a2}{\index{D\-E@{D\-E}!Step@{Step}}
+\index{Step@{Step}!DE@{D\-E}}
+\subsubsection[{Step}]{\setlength{\rightskip}{0pt plus 5cm}void D\-E\-::\-Step (
+\begin{DoxyParamCaption}
+\item[{double \&}]{x, }
+\item[{{\bf Vector} \&}]{y, }
+\item[{double \&}]{eps, }
+\item[{bool \&}]{crash}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ac45486f7c7bf422c6bd024aba501a2a2}
+
+
+Definition at line 190 of file S\-A\-T\-\_\-\-D\-E.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classDE_ac45486f7c7bf422c6bd024aba501a2a2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classDE_ac45486f7c7bf422c6bd024aba501a2a2_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classDE_a9337b177c5adfeda779ceecd6b56b370}{\index{D\-E@{D\-E}!abserr@{abserr}}
+\index{abserr@{abserr}!DE@{D\-E}}
+\subsubsection[{abserr}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::abserr}}\label{classDE_a9337b177c5adfeda779ceecd6b56b370}
+
+
+Definition at line 133 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ad0bf62cec063071d0773fde29d976c0e}{\index{D\-E@{D\-E}!alpha@{alpha}}
+\index{alpha@{alpha}!DE@{D\-E}}
+\subsubsection[{alpha}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::alpha\mbox{[}13\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ad0bf62cec063071d0773fde29d976c0e}
+
+
+Definition at line 181 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a6db4afe37f9ebf0dce0532415c40de32}{\index{D\-E@{D\-E}!beta@{beta}}
+\index{beta@{beta}!DE@{D\-E}}
+\subsubsection[{beta}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::beta\mbox{[}13\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a6db4afe37f9ebf0dce0532415c40de32}
+
+
+Definition at line 181 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a5fe0648747453fc746c8bee223d58633}{\index{D\-E@{D\-E}!delsgn@{delsgn}}
+\index{delsgn@{delsgn}!DE@{D\-E}}
+\subsubsection[{delsgn}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::delsgn\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a5fe0648747453fc746c8bee223d58633}
+
+
+Definition at line 183 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_afa7fefa0ba10ee635a618b3a4a5a39dc}{\index{D\-E@{D\-E}!f@{f}}
+\index{f@{f}!DE@{D\-E}}
+\subsubsection[{f}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-Efunct} D\-E\-::f\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_afa7fefa0ba10ee635a618b3a4a5a39dc}
+
+
+Definition at line 176 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_aa5b66f7465475382f7f2d757fd9cf979}{\index{D\-E@{D\-E}!g@{g}}
+\index{g@{g}!DE@{D\-E}}
+\subsubsection[{g}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::g\mbox{[}14\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_aa5b66f7465475382f7f2d757fd9cf979}
+
+
+Definition at line 182 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_adcd1d27f91dc1de8c4e2e8572878f92f}{\index{D\-E@{D\-E}!h@{h}}
+\index{h@{h}!DE@{D\-E}}
+\subsubsection[{h}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::h\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_adcd1d27f91dc1de8c4e2e8572878f92f}
+
+
+Definition at line 183 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a8aba1f4cf3cb574060e0772052b6772e}{\index{D\-E@{D\-E}!hold@{hold}}
+\index{hold@{hold}!DE@{D\-E}}
+\subsubsection[{hold}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::hold\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a8aba1f4cf3cb574060e0772052b6772e}
+
+
+Definition at line 183 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a992636687bf14328677c450008855770}{\index{D\-E@{D\-E}!init@{init}}
+\index{init@{init}!DE@{D\-E}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}bool D\-E\-::init\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a992636687bf14328677c450008855770}
+
+
+Definition at line 186 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a583b51553ddbe1eb995e76d42b2e13ec}{\index{D\-E@{D\-E}!k@{k}}
+\index{k@{k}!DE@{D\-E}}
+\subsubsection[{k}]{\setlength{\rightskip}{0pt plus 5cm}int D\-E\-::k\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a583b51553ddbe1eb995e76d42b2e13ec}
+
+
+Definition at line 184 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_aaa4409f0e1999d15aa33da045dcf464d}{\index{D\-E@{D\-E}!kold@{kold}}
+\index{kold@{kold}!DE@{D\-E}}
+\subsubsection[{kold}]{\setlength{\rightskip}{0pt plus 5cm}int D\-E\-::kold\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_aaa4409f0e1999d15aa33da045dcf464d}
+
+
+Definition at line 184 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ae74a30c7f5448d96d8460b4fde65f849}{\index{D\-E@{D\-E}!n\-\_\-eqn@{n\-\_\-eqn}}
+\index{n\-\_\-eqn@{n\-\_\-eqn}!DE@{D\-E}}
+\subsubsection[{n\-\_\-eqn}]{\setlength{\rightskip}{0pt plus 5cm}int D\-E\-::n\-\_\-eqn\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ae74a30c7f5448d96d8460b4fde65f849}
+
+
+Definition at line 177 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ab7d114c0f93009e0deddea4375764e52}{\index{D\-E@{D\-E}!nornd@{nornd}}
+\index{nornd@{nornd}!DE@{D\-E}}
+\subsubsection[{nornd}]{\setlength{\rightskip}{0pt plus 5cm}bool D\-E\-::nornd\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ab7d114c0f93009e0deddea4375764e52}
+
+
+Definition at line 185 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a4d82322b4499d5f8e27f2e19675fcfa6}{\index{D\-E@{D\-E}!ns@{ns}}
+\index{ns@{ns}!DE@{D\-E}}
+\subsubsection[{ns}]{\setlength{\rightskip}{0pt plus 5cm}int D\-E\-::ns\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a4d82322b4499d5f8e27f2e19675fcfa6}
+
+
+Definition at line 184 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a210930a504af06e95856cb71411b2a6b}{\index{D\-E@{D\-E}!Old\-Permit@{Old\-Permit}}
+\index{Old\-Permit@{Old\-Permit}!DE@{D\-E}}
+\subsubsection[{Old\-Permit}]{\setlength{\rightskip}{0pt plus 5cm}bool D\-E\-::\-Old\-Permit\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a210930a504af06e95856cb71411b2a6b}
+
+
+Definition at line 185 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_af16ce45fb590ddb2ae5225b5cfc95f87}{\index{D\-E@{D\-E}!p@{p}}
+\index{p@{p}!DE@{D\-E}}
+\subsubsection[{p}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} D\-E\-::p\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_af16ce45fb590ddb2ae5225b5cfc95f87}
+
+
+Definition at line 179 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ab8fad10a55cec3f9755444ae5ee38903}{\index{D\-E@{D\-E}!p\-Aux@{p\-Aux}}
+\index{p\-Aux@{p\-Aux}!DE@{D\-E}}
+\subsubsection[{p\-Aux}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ D\-E\-::p\-Aux\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ab8fad10a55cec3f9755444ae5ee38903}
+
+
+Definition at line 178 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ab4adac8a112f4c5b5600986b418e5129}{\index{D\-E@{D\-E}!Permit\-T\-O\-U\-T@{Permit\-T\-O\-U\-T}}
+\index{Permit\-T\-O\-U\-T@{Permit\-T\-O\-U\-T}!DE@{D\-E}}
+\subsubsection[{Permit\-T\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}bool D\-E\-::\-Permit\-T\-O\-U\-T}}\label{classDE_ab4adac8a112f4c5b5600986b418e5129}
+
+
+Definition at line 135 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ab9a2adeb8253f3901c1cb39387e35fba}{\index{D\-E@{D\-E}!phase1@{phase1}}
+\index{phase1@{phase1}!DE@{D\-E}}
+\subsubsection[{phase1}]{\setlength{\rightskip}{0pt plus 5cm}bool D\-E\-::phase1\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ab9a2adeb8253f3901c1cb39387e35fba}
+
+
+Definition at line 185 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a79eb189fb7f3320d735b90ca3332311e}{\index{D\-E@{D\-E}!phi@{phi}}
+\index{phi@{phi}!DE@{D\-E}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} D\-E\-::phi\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a79eb189fb7f3320d735b90ca3332311e}
+
+
+Definition at line 180 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a7ef55ab5c646e5f540adcfa6ed392b56}{\index{D\-E@{D\-E}!psi@{psi}}
+\index{psi@{psi}!DE@{D\-E}}
+\subsubsection[{psi}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::psi\mbox{[}13\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a7ef55ab5c646e5f540adcfa6ed392b56}
+
+
+Definition at line 181 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a877edbd8bd4ba297b5602786b552059f}{\index{D\-E@{D\-E}!relerr@{relerr}}
+\index{relerr@{relerr}!DE@{D\-E}}
+\subsubsection[{relerr}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::relerr}}\label{classDE_a877edbd8bd4ba297b5602786b552059f}
+
+
+Definition at line 132 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a2ec1db657ea1d2ba57e0221ca0cb3eef}{\index{D\-E@{D\-E}!sig@{sig}}
+\index{sig@{sig}!DE@{D\-E}}
+\subsubsection[{sig}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::sig\mbox{[}14\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a2ec1db657ea1d2ba57e0221ca0cb3eef}
+
+
+Definition at line 182 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a3c9b03623043eee0c38ecefecf301320}{\index{D\-E@{D\-E}!start@{start}}
+\index{start@{start}!DE@{D\-E}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}bool D\-E\-::start\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a3c9b03623043eee0c38ecefecf301320}
+
+
+Definition at line 185 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a1d99a54650b09e8192bf89537f66bed2}{\index{D\-E@{D\-E}!State@{State}}
+\index{State@{State}!DE@{D\-E}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-\_\-\-S\-T\-A\-T\-E} D\-E\-::\-State}}\label{classDE_a1d99a54650b09e8192bf89537f66bed2}
+
+
+Definition at line 134 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a56ee5af65170db9321a5508c207cd173}{\index{D\-E@{D\-E}!t@{t}}
+\index{t@{t}!DE@{D\-E}}
+\subsubsection[{t}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::t}}\label{classDE_a56ee5af65170db9321a5508c207cd173}
+
+
+Definition at line 137 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a710c5e85925a2ce84f8d789c1b4cb99b}{\index{D\-E@{D\-E}!told@{told}}
+\index{told@{told}!DE@{D\-E}}
+\subsubsection[{told}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::told\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a710c5e85925a2ce84f8d789c1b4cb99b}
+
+
+Definition at line 183 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_af4b92bb3bf10322b581dbbcf778ef5d5}{\index{D\-E@{D\-E}!v@{v}}
+\index{v@{v}!DE@{D\-E}}
+\subsubsection[{v}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::v\mbox{[}13\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_af4b92bb3bf10322b581dbbcf778ef5d5}
+
+
+Definition at line 181 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a4cd9f3da02faec86f2926ce373a4e7c9}{\index{D\-E@{D\-E}!w@{w}}
+\index{w@{w}!DE@{D\-E}}
+\subsubsection[{w}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::w\mbox{[}13\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a4cd9f3da02faec86f2926ce373a4e7c9}
+
+
+Definition at line 181 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_adc470cb3c810cd47c8603003f10d4cac}{\index{D\-E@{D\-E}!wt@{wt}}
+\index{wt@{wt}!DE@{D\-E}}
+\subsubsection[{wt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} D\-E\-::wt\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_adc470cb3c810cd47c8603003f10d4cac}
+
+
+Definition at line 179 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a53686f8f7ab89225ba80835e910168fa}{\index{D\-E@{D\-E}!x@{x}}
+\index{x@{x}!DE@{D\-E}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double D\-E\-::x\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a53686f8f7ab89225ba80835e910168fa}
+
+
+Definition at line 183 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_acff3aaf84faff7827daf981587ef5b03}{\index{D\-E@{D\-E}!yp@{yp}}
+\index{yp@{yp}!DE@{D\-E}}
+\subsubsection[{yp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} D\-E\-::yp\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_acff3aaf84faff7827daf981587ef5b03}
+
+
+Definition at line 179 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_a985edfb71c582371040affbd4230a36a}{\index{D\-E@{D\-E}!ypout@{ypout}}
+\index{ypout@{ypout}!DE@{D\-E}}
+\subsubsection[{ypout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} D\-E\-::ypout\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_a985edfb71c582371040affbd4230a36a}
+
+
+Definition at line 179 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+\hypertarget{classDE_ab501e078b2408ca63ee44c1c4d59de86}{\index{D\-E@{D\-E}!yy@{yy}}
+\index{yy@{yy}!DE@{D\-E}}
+\subsubsection[{yy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} D\-E\-::yy\hspace{0.3cm}{\ttfamily [private]}}}\label{classDE_ab501e078b2408ca63ee44c1c4d59de86}
+
+
+Definition at line 179 of file S\-A\-T\-\_\-\-D\-E.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SAT__DE_8h}{S\-A\-T\-\_\-\-D\-E.\-h}\item 
+\hyperlink{SAT__DE_8cpp}{S\-A\-T\-\_\-\-D\-E.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,4 @@
+<map id="Station" name="Station">
+<area shape="rect" id="node2" href="$classGeodetic.html" title="Geodetic" alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node3" href="$structMeas.html" title="Meas" alt="" coords="105,5,159,32"/>
+</map>

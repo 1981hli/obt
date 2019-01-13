@@ -1,0 +1,116 @@
+\hypertarget{GEODA_8cpp}{\section{G\-E\-O\-D\-A.\-cpp File Reference}
+\label{GEODA_8cpp}\index{G\-E\-O\-D\-A.\-cpp@{G\-E\-O\-D\-A.\-cpp}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Const.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Filter.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Ref\-Sys.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Vec\-Mat.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}G\-N\-U\-\_\-iomanip.\-h\char`\"{}}\\*
+Include dependency graph for G\-E\-O\-D\-A.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{GEODA_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMeas}{Meas}
+\item 
+struct \hyperlink{structStation}{Station}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{GEODA_8cpp_ad363d83dfb0be87465bd76a2e5e0ff6b}{Phi} (double n, double t)
+\item 
+void \hyperlink{GEODA_8cpp_af62e04db95805bf3f19fcdfdbc66a49a}{Get\-Setup} (ifstream \&inp, double \&lon, \hyperlink{structStation}{Station} \&Sta1, \hyperlink{structStation}{Station} \&Sta2, int \&n\-\_\-est, int \&n\-\_\-con, double \&T\-\_\-track, double \&T\-\_\-pred)
+\item 
+int \hyperlink{GEODA_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{GEODA_8cpp_af62e04db95805bf3f19fcdfdbc66a49a}{\index{G\-E\-O\-D\-A.\-cpp@{G\-E\-O\-D\-A.\-cpp}!Get\-Setup@{Get\-Setup}}
+\index{Get\-Setup@{Get\-Setup}!GEODA.cpp@{G\-E\-O\-D\-A.\-cpp}}
+\subsubsection[{Get\-Setup}]{\setlength{\rightskip}{0pt plus 5cm}void Get\-Setup (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{inp, }
+\item[{double \&}]{lon, }
+\item[{{\bf Station} \&}]{Sta1, }
+\item[{{\bf Station} \&}]{Sta2, }
+\item[{int \&}]{n\-\_\-est, }
+\item[{int \&}]{n\-\_\-con, }
+\item[{double \&}]{T\-\_\-track, }
+\item[{double \&}]{T\-\_\-pred}
+\end{DoxyParamCaption}
+)}}\label{GEODA_8cpp_af62e04db95805bf3f19fcdfdbc66a49a}
+Get\-Setuphahah. Purpose\-:
+
+Reads G\-E\-O\-D\-A setup parameters from file $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. 
+
+Definition at line 105 of file G\-E\-O\-D\-A.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{GEODA_8cpp_af62e04db95805bf3f19fcdfdbc66a49a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{GEODA_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{\index{G\-E\-O\-D\-A.\-cpp@{G\-E\-O\-D\-A.\-cpp}!main@{main}}
+\index{main@{main}!GEODA.cpp@{G\-E\-O\-D\-A.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{GEODA_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Definition at line 179 of file G\-E\-O\-D\-A.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{GEODA_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{GEODA_8cpp_ad363d83dfb0be87465bd76a2e5e0ff6b}{\index{G\-E\-O\-D\-A.\-cpp@{G\-E\-O\-D\-A.\-cpp}!Phi@{Phi}}
+\index{Phi@{Phi}!GEODA.cpp@{G\-E\-O\-D\-A.\-cpp}}
+\subsubsection[{Phi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Phi (
+\begin{DoxyParamCaption}
+\item[{double}]{n, }
+\item[{double}]{t}
+\end{DoxyParamCaption}
+)}}\label{GEODA_8cpp_ad363d83dfb0be87465bd76a2e5e0ff6b}
+State transition matrix 
+
+Definition at line 77 of file G\-E\-O\-D\-A.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{GEODA_8cpp_ad363d83dfb0be87465bd76a2e5e0ff6b_icgraph}
+\end{center}
+\end{figure}
+
+

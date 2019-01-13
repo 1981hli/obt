@@ -1,0 +1,478 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+APPLICS	makefile	/^APPLICS= \\$/;"	m
+AU	SAT_Const.h	/^const double AU        = 149597870000.0;      \/\/ Astronomical unit [m]; IAU 1976$/;"	v
+A_Diff	Exercise_3_3.cpp	/^double A_Diff (double h)$/;"	f
+Accel	Exercise_3_4.cpp	/^Vector Accel ( double Mjd_TT, const Vector& r, const Vector& v, $/;"	f
+Accel	Exercise_7_1.cpp	/^Vector Accel ( double Mjd_UT, const Vector& r, int n, int m )$/;"	f
+Accel	RTOD.cpp	/^Vector Accel ( double Mjd_GPS, const Vector& r, int n )$/;"	f
+Accel	TDRSOD.cpp	/^Vector Accel ( double Mjd_TT, const Vector& r, const Vector& v, $/;"	f
+Accel	TDRSOD.cpp	/^void Accel ( double Mjd_TT, const Vector& r, const Vector& v,$/;"	f
+AccelDrag	SAT_Force.cpp	/^Vector AccelDrag ( double Mjd_TT, const Vector& r, const Vector& v,$/;"	f
+AccelHarmonic	SAT_Force.cpp	/^Vector AccelHarmonic (const Vector& r, const Matrix& E, $/;"	f
+AccelMain	SAT_Force.cpp	/^Vector AccelMain ( double Mjd_TT, const Vector& r, const Vector& v, $/;"	f
+AccelPointMass	SAT_Force.cpp	/^Vector AccelPointMass (const Vector& r, const Vector& s, double GM)$/;"	f
+AccelSolrad	SAT_Force.cpp	/^Vector AccelSolrad (const Vector& r, const Vector& r_Sun,$/;"	f
+Accumulate	SAT_Filter.cpp	/^void LSQ::Accumulate (const Vector& A, double b, double sigma)$/;"	f	class:LSQ
+Arcs	SAT_Const.h	/^const double Arcs      = 3600.0*180.0\/pi;     \/\/ Arcseconds per radian$/;"	v
+Area	Exercise_3_4.cpp	/^  double  Area,mass,CR,CD;$/;"	m	struct:AuxParam	file:
+Area	TDRSOD.cpp	/^  double  Area,mass;     \/\/ Spacecraft cross-section [m^2] and mass [kg]$/;"	m	struct:AuxParam	file:
+AuxDataRecord	Exercise_4_3.cpp	/^struct AuxDataRecord {$/;"	s	file:
+AuxParam	Exercise_3_4.cpp	/^struct AuxParam {$/;"	s	file:
+AuxParam	Exercise_7_1.cpp	/^struct AuxParam {$/;"	s	file:
+AuxParam	RTOD.cpp	/^struct AuxParam {$/;"	s	file:
+AuxParam	TDRSOD.cpp	/^struct AuxParam {$/;"	s	file:
+AzEl	SAT_RefSys.cpp	/^void AzEl ( const Vector& s, double& A, double& E ) $/;"	f
+AzEl	SAT_RefSys.cpp	/^void AzEl( const Vector& s, double& A, double& E, Vector& dAds, Vector& dEds ) $/;"	f
+CD	Exercise_3_4.cpp	/^  double  Area,mass,CR,CD;$/;"	m	struct:AuxParam	file:
+CD	TDRSOD.cpp	/^  double  CR,CD;         \/\/ Radiation pressure and drag coefficient$/;"	m	struct:AuxParam	file:
+CR	Exercise_3_4.cpp	/^  double  Area,mass,CR,CD;$/;"	m	struct:AuxParam	file:
+CR	TDRSOD.cpp	/^  double  CR,CD;         \/\/ Radiation pressure and drag coefficient$/;"	m	struct:AuxParam	file:
+CS	SAT_Force.h	/^  Matrix  CS;      \/\/ Unnormalized harmonic coefficients (C_nm, S_nm)$/;"	m	struct:GravModel
+CS_JGM3	SAT_Force.cpp	/^  const double CS_JGM3[N_JGM3+1][N_JGM3+1] = {$/;"	m	namespace:__anon3	file:
+CalDat	SAT_Time.cpp	/^void CalDat ( double Mjd, $/;"	f
+Cheb3D	Exercise_3_2.cpp	/^    Cheb3D ( int n, double ta, double tb, $/;"	f	class:Cheb3D
+Cheb3D	Exercise_3_2.cpp	/^class Cheb3D {$/;"	c	file:
+Col	SAT_VecMat.cpp	/^Vector Matrix::Col(int j) const$/;"	f	class:Matrix
+Cov	SAT_Filter.cpp	/^Matrix EKF::Cov()   { return P; };     \/\/ Covariance matrix$/;"	f	class:EKF
+Cov	SAT_Filter.cpp	/^Matrix LSQ::Cov()$/;"	f	class:LSQ
+Cross	SAT_VecMat.cpp	/^Vector Cross (const Vector& left, const Vector& right)$/;"	f
+Cx	Exercise_3_2.cpp	/^    Vector  Cx;      \/\/ Coefficients of Chebyshev polyomial (x-coordinate)$/;"	m	class:Cheb3D	file:
+Cy	Exercise_3_2.cpp	/^    Vector  Cy;      \/\/ Coefficients of Chebyshev polyomial (y-coordinate)$/;"	m	class:Cheb3D	file:
+Cz	Exercise_3_2.cpp	/^    Vector  Cz;      \/\/ Coefficients of Chebyshev polyomial (z-coordinate)$/;"	m	class:Cheb3D	file:
+D	Exercise_4_2.cpp	/^    Vector      D[4];        \/\/ Backward differences of acceleration at t$/;"	m	class:GJ4P	file:
+DE	SAT_DE.cpp	/^DE::DE ($/;"	f	class:DE
+DE	SAT_DE.cpp	/^DE::DE ()$/;"	f	class:DE
+DE	SAT_DE.h	/^class DE$/;"	c
+DE_BADACC	SAT_DE.h	/^  DE_BADACC   = 3,   \/\/ Accuracy requirement could not be achieved$/;"	e	enum:DE_STATE
+DE_DONE	SAT_DE.h	/^  DE_DONE     = 2,   \/\/ Successful step$/;"	e	enum:DE_STATE
+DE_INIT	SAT_DE.h	/^  DE_INIT     = 1,   \/\/ Restart integration$/;"	e	enum:DE_STATE
+DE_INVPARAM	SAT_DE.h	/^  DE_INVPARAM = 6    \/\/ Invalid input parameters$/;"	e	enum:DE_STATE
+DE_NUMSTEPS	SAT_DE.h	/^  DE_NUMSTEPS = 4,   \/\/ Permitted number of steps exceeded$/;"	e	enum:DE_STATE
+DE_STATE	SAT_DE.h	/^enum DE_STATE {$/;"	g
+DE_STIFF	SAT_DE.h	/^  DE_STIFF    = 5,   \/\/ Stiff problem suspected$/;"	e	enum:DE_STATE
+DEfunct	SAT_DE.h	/^typedef void (*DEfunct)($/;"	t
+Data	SAT_Filter.cpp	/^Vector LSQ::Data() { return d; };      \/\/ Copy of d$/;"	f	class:LSQ
+Date	SAT_Time.cpp	/^Date::Date (double Mjd)$/;"	f	class:Date
+Date	SAT_Time.h	/^class Date$/;"	c
+Define	SAT_DE.cpp	/^void DE::Define ($/;"	f	class:DE
+Define	TDRSOD.cpp	/^    void Define ( DEfunct    Deriv,      \/\/ Differential equation$/;"	f	class:TrjData
+Deg	SAT_Const.h	/^const double Deg       = 180.0 \/ pi;          \/\/ Degrees per radian$/;"	v
+Density_HP	SAT_Force.cpp	/^double Density_HP ( double Mjd_TT, const Vector& r_tod )$/;"	f
+Deriv	Exercise_3_4.cpp	/^void Deriv ( double t, const Vector& y, Vector& yp, void* pAux )$/;"	f
+Deriv	RTOD.cpp	/^void Deriv ( double t, const Vector& y, Vector& yp, void* pAux )$/;"	f
+Deriv	TDRSOD.cpp	/^void Deriv ( double t, const Vector& y, Vector& yp, void* pAux )$/;"	f
+Diag	SAT_VecMat.cpp	/^Matrix Diag(const Vector& Vec)$/;"	f
+Diag	SAT_VecMat.cpp	/^Vector Matrix::Diag() const$/;"	f	class:Matrix
+Dot	SAT_VecMat.cpp	/^double Dot (const Vector& left, const Vector& right)$/;"	f
+Drag	Exercise_3_4.cpp	/^  bool    Sun,Moon,SRad,Drag;$/;"	m	struct:AuxParam	file:
+Dyadic	SAT_VecMat.cpp	/^Matrix Dyadic (const Vector& left, const Vector& right)$/;"	f
+EKF	SAT_Filter.cpp	/^EKF::EKF(int n_)$/;"	f	class:EKF
+EKF	SAT_Filter.h	/^class EKF$/;"	c
+EccAnom	SAT_Kepler.cpp	/^double EccAnom (double M, double e)$/;"	f
+EclMatrix	SAT_RefSys.cpp	/^Matrix EclMatrix (double Mjd_TT)$/;"	f
+Elements	SAT_Kepler.cpp	/^Vector Elements ( double GM, const Vector& y )$/;"	f
+Elements	SAT_Kepler.cpp	/^Vector Elements ( double GM, double Mjd_a, double Mjd_b, $/;"	f
+Ephemeris	Exercise_3_4.cpp	/^void Ephemeris ( const Vector& Y0, int N_Step, double Step, AuxParam p, $/;"	f
+EqnEquinox	SAT_RefSys.cpp	/^double EqnEquinox (double Mjd_TT)$/;"	f
+F	SAT_Kepler.cpp	/^  double F (double eta, double m, double l)$/;"	f	namespace:__anon4
+FindEta	SAT_Kepler.cpp	/^double FindEta (const Vector& r_a, const Vector& r_b, double tau)$/;"	f
+Frac	SAT_Force.cpp	/^  double Frac (double x) { return x-floor(x); };$/;"	f	namespace:__anon3
+Frac	SAT_Kepler.cpp	/^  double Frac (double x) { return x-floor(x); };$/;"	f	namespace:__anon4
+Frac	SAT_RefSys.cpp	/^  double Frac (double x) { return x-floor(x); };$/;"	f	namespace:__anon5
+GAST	SAT_RefSys.cpp	/^double GAST (double Mjd_UT1)$/;"	f
+GHAMatrix	SAT_RefSys.cpp	/^Matrix GHAMatrix (double Mjd_UT1)$/;"	f
+GJ4P	Exercise_4_2.cpp	/^    GJ4P ($/;"	f	class:GJ4P
+GJ4P	Exercise_4_2.cpp	/^class GJ4P$/;"	c	file:
+GJ4Pfunct	Exercise_4_2.cpp	/^typedef void (*GJ4Pfunct)($/;"	t	file:
+GM	SAT_Force.h	/^  double  GM;      \/\/ Gravitational coefficient [m^3\/s^2]$/;"	m	struct:GravModel
+GMST	SAT_RefSys.cpp	/^double GMST (double Mjd_UT1)$/;"	f
+GM_Earth	SAT_Const.h	/^const double GM_Earth    = 398600.4415e+9;    \/\/ [m^3\/s^2]; JGM3$/;"	v
+GM_Moon	SAT_Const.h	/^const double GM_Moon     = GM_Earth\/81.300587;\/\/ [m^3\/s^2]; DE200$/;"	v
+GM_Sun	SAT_Const.h	/^const double GM_Sun      = 1.32712438e+20;    \/\/ [m^3\/s^2]; IAU 1976$/;"	v
+GPS_TAI	SAT_RefSys.cpp	/^const double IERS::GPS_TAI = -19.0;            \/\/ GPS-TAI time difference [s]$/;"	m	class:IERS	file:
+GPS_TAI	SAT_RefSys.h	/^    static const double GPS_TAI;              \/\/ GPS-TAI time difference -19s$/;"	m	class:IERS
+GPS_UTC	SAT_RefSys.cpp	/^double IERS::GPS_UTC(double Mjd_UTC){return GPS_TAI-UTC_TAI(Mjd_UTC);};$/;"	f	class:IERS
+Geod	GEODA.cpp	/^  Geodetic Geod;                                                                \/\/\/< Geodetic coordinates$/;"	m	struct:Station	file:
+Geodetic	SAT_RefSys.cpp	/^Geodetic::Geodetic ()$/;"	f	class:Geodetic
+Geodetic	SAT_RefSys.cpp	/^Geodetic::Geodetic (Vector r,                         \/\/ Position vector [m]$/;"	f	class:Geodetic
+Geodetic	SAT_RefSys.cpp	/^Geodetic::Geodetic (double lambda, double phi, double alt)$/;"	f	class:Geodetic
+Geodetic	SAT_RefSys.h	/^class Geodetic $/;"	c
+GetObs	RTOD.cpp	/^void GetObs(ifstream& inp, ObsType& Obs) {$/;"	f
+GetObs	TDRSOD.cpp	/^void GetObs(ifstream& inp, ObsType& Obs) {$/;"	f
+GetSetup	GEODA.cpp	/^void GetSetup ( ifstream& inp,$/;"	f
+GetSetup	RTOD.cpp	/^void GetSetup ( ifstream& inp,$/;"	f
+GetSetup	TDRSOD.cpp	/^void GetSetup ( ifstream& inp,$/;"	f
+Gradient	Exercise_7_1.cpp	/^Matrix Gradient ( double Mjd_UT, const Vector& r, int n, int m )$/;"	f
+GravModel	SAT_Force.h	/^  GravModel ( int n, double gm, double r_ref, const double* p_cs)$/;"	f	struct:GravModel
+GravModel	SAT_Force.h	/^struct GravModel {$/;"	s
+IERS	SAT_RefSys.h	/^class IERS {$/;"	c
+INC_GNU_IOMANIP_H	GNU_iomanip.h	32;"	d
+INC_SAT_CONST_H	SAT_Const.h	30;"	d
+INC_SAT_DE_H	SAT_DE.h	39;"	d
+INC_SAT_FILTER_H	SAT_Filter.h	30;"	d
+INC_SAT_FORCE_H	SAT_Force.h	31;"	d
+INC_SAT_KEPLER_H	SAT_Kepler.h	30;"	d
+INC_SAT_REFSYS_H	SAT_RefSys.h	30;"	d
+INC_SAT_TIME_H	SAT_Time.h	29;"	d
+INC_SAT_VECMAT_H	SAT_VecMat.h	30;"	d
+Id	SAT_VecMat.cpp	/^Matrix Id(int Size)$/;"	f
+Illumination	SAT_Force.cpp	/^double Illumination ( const Vector& r, const Vector& r_Sun )$/;"	f
+Init	Exercise_4_2.cpp	/^void GJ4P::Init(double t_0, const Vector& r_0, const Vector& v_0, double h_)$/;"	f	class:GJ4P
+Init	SAT_DE.cpp	/^void DE::Init ( $/;"	f	class:DE
+Init	SAT_Filter.cpp	/^void EKF::Init(double t_, Vector x_, Matrix P_) $/;"	f	class:EKF
+Init	SAT_Filter.cpp	/^void EKF::Init(double t_, Vector x_, Vector sigma)$/;"	f	class:EKF
+Init	SAT_Filter.cpp	/^void LSQ::Init()$/;"	f	class:LSQ
+Init	SAT_Filter.cpp	/^void LSQ::Init(const Vector& x,   \/\/ a priori parameters$/;"	f	class:LSQ
+Init	TDRSOD.cpp	/^    void Init (double Mjd0_TT, Vector y0) $/;"	f	class:TrjData
+Integ	SAT_DE.cpp	/^void DE::Integ ( $/;"	f	class:DE
+Integ	TDRSOD.cpp	/^    void Integ(double Mjd_TT) {$/;"	f	class:TrjData
+Integ_	SAT_DE.cpp	/^void DE::Integ_ ( $/;"	f	class:DE
+Intpol	Exercise_6_3.cpp	/^double Intpol ( int n, const double *x, const double *y, double x0 )$/;"	f
+Intrp	SAT_DE.cpp	/^void DE::Intrp ( $/;"	f	class:DE
+Intrp	SAT_DE.cpp	/^void DE::Intrp ( double xout, Vector& yout, Vector& ypout )$/;"	f	class:DE
+Inv	SAT_VecMat.cpp	/^Matrix Inv(const Matrix& Mat)$/;"	f
+InvSymp	Exercise_7_1.cpp	/^Matrix InvSymp (const Matrix& A) {$/;"	f
+InvUpper	SAT_Filter.cpp	/^void InvUpper(const Matrix& R, Matrix& T)$/;"	f
+LIB	makefile	/^LIB=libSAT.a$/;"	m
+LIBOBJS	makefile	/^LIBOBJS= \\$/;"	m
+LSQ	SAT_Filter.cpp	/^LSQ::LSQ (int nEst) $/;"	f	class:LSQ
+LSQ	SAT_Filter.h	/^class LSQ$/;"	c
+LTCMatrix	SAT_RefSys.cpp	/^Matrix LTCMatrix (double lambda, double phi)$/;"	f
+LTC_Matrix	SAT_RefSys.cpp	/^Matrix Geodetic::LTC_Matrix () const$/;"	f	class:Geodetic
+LU_BackSub	SAT_VecMat.cpp	/^void LU_BackSub ( Matrix& A, Vector& Indx, Vector& b )$/;"	f
+LU_Decomp	SAT_VecMat.cpp	/^void LU_Decomp ( Matrix& A, Vector& Indx )$/;"	f
+Loc	TDRSOD.cpp	/^  Geodetic  Loc;         \/\/ Station location$/;"	m	struct:StaParam	file:
+M	SAT_VecMat.h	/^    double **M;                       \/\/ Matrix M(n,m)$/;"	m	class:Matrix
+MJD_J2000	SAT_Const.h	/^const double MJD_J2000 = 51544.5;             \/\/ Modif. Julian Date of J2000.0$/;"	v
+Matrix	SAT_VecMat.cpp	/^Matrix::Matrix ()                          \/\/ Matrix without elements$/;"	f	class:Matrix
+Matrix	SAT_VecMat.cpp	/^Matrix::Matrix (const Matrix& M_)          \/\/ Copy$/;"	f	class:Matrix
+Matrix	SAT_VecMat.cpp	/^Matrix::Matrix (const double* p, int dim1, int dim2)   \/\/ Array copy$/;"	f	class:Matrix
+Matrix	SAT_VecMat.cpp	/^Matrix::Matrix (int dim1, int dim2)        \/\/ Nullmatrix of specified shape $/;"	f	class:Matrix
+Matrix	SAT_VecMat.h	/^class Matrix$/;"	c
+Max	Exercise_3_4.cpp	/^template<class T> const T& Max (const T& a, const T& b)$/;"	f
+Max	Exercise_7_1.cpp	/^double Max(const Matrix& M) {$/;"	f
+MeanObliquity	SAT_RefSys.cpp	/^double MeanObliquity (double Mjd_TT)$/;"	f
+Meas	GEODA.cpp	/^struct Meas {$/;"	s	file:
+MeasUpdate	SAT_Filter.cpp	/^void EKF::MeasUpdate(const Vector& z, $/;"	f	class:EKF
+MeasUpdate	SAT_Filter.cpp	/^void EKF::MeasUpdate(const Vector& z,$/;"	f	class:EKF
+MeasUpdate	SAT_Filter.cpp	/^void EKF::MeasUpdate(double z, double g, double sigma, const Vector& G)$/;"	f	class:EKF
+Mjd	SAT_Time.cpp	/^double Mjd ( int Year, int Month, int Day, int Hour, int Min, double Sec )$/;"	f
+Mjd0_GPS	RTOD.cpp	/^  double  Mjd0_GPS;   \/\/ Reference epoch (GPS time)$/;"	m	struct:AuxParam	file:
+Mjd0_TT	Exercise_3_4.cpp	/^  double  Mjd0_TT;$/;"	m	struct:AuxParam	file:
+Mjd0_TT	TDRSOD.cpp	/^  double  Mjd0_TT;       \/\/ Reference epoch$/;"	m	struct:AuxParam	file:
+Mjd_0	Exercise_7_1.cpp	/^  double  Mjd_0;     \/\/ Reference epoch$/;"	m	struct:AuxParam	file:
+Mjd_GPS	RTOD.cpp	/^  double  Mjd_GPS;    \/\/ GPS time$/;"	m	struct:ObsType	file:
+Mjd_UTC	TDRSOD.cpp	/^  double  Mjd_UTC;    \/\/ Ground received time$/;"	m	struct:ObsType	file:
+Modulo	Exercise_2_5.cpp	/^double Modulo(double x, double y) {$/;"	f
+Modulo	SAT_Kepler.cpp	/^  double Modulo (double x, double y) { return y*Frac(x\/y); }$/;"	f	namespace:__anon4
+Modulo	SAT_RefSys.cpp	/^  double Modulo (double x, double y) { return y*Frac(x\/y); }$/;"	f	namespace:__anon5
+Moon	Exercise_3_4.cpp	/^  bool    Sun,Moon,SRad,Drag;$/;"	m	struct:AuxParam	file:
+Moon	SAT_Force.cpp	/^Vector Moon (double Mjd_TT)$/;"	f
+N	Exercise_3_2.cpp	/^    int     N;       \/\/ Number of coefficients$/;"	m	class:Cheb3D	file:
+N	SAT_Filter.h	/^    int      N;         \/\/ Number of estimation parameters$/;"	m	class:LSQ
+N_JGM3	SAT_Force.cpp	/^  const int    N_JGM3 = 20;$/;"	m	namespace:__anon3	file:
+N_var	TDRSOD.cpp	/^    int       N_var;      \/\/ Dimension of variational equations$/;"	m	class:TrjData	file:
+Norm	SAT_VecMat.cpp	/^double Norm (const Vector& V)$/;"	f
+NutAngles	SAT_RefSys.cpp	/^void NutAngles (double Mjd_TT, double& dpsi, double& deps)$/;"	f
+NutMatrix	SAT_RefSys.cpp	/^Matrix NutMatrix (double Mjd_TT)$/;"	f
+NutMatrixSimple	SAT_RefSys.cpp	/^Matrix NutMatrixSimple (double Mjd_TT)$/;"	f
+ObsType	RTOD.cpp	/^struct ObsType {$/;"	s	file:
+ObsType	TDRSOD.cpp	/^struct ObsType {$/;"	s	file:
+OldPermit	SAT_DE.h	/^    bool     OldPermit, phase1,start,nornd;   $/;"	m	class:DE
+Orb	TDRSOD.cpp	/^    DE        Orb;        \/\/ Object for integrating the state vector$/;"	m	class:TrjData	file:
+P	SAT_Filter.h	/^    Matrix   P;                          \/\/ Covariance matrix$/;"	m	class:EKF
+P_Sol	SAT_Const.h	/^const double P_Sol       = 4.560E-6;          \/\/ [N\/m^2] (~1367 W\/m^2); IERS 96$/;"	v
+Pegasus	Exercise_3_3.cpp	/^void Pegasus ( PegasusFunct f,$/;"	f
+PegasusFunct	Exercise_3_3.cpp	/^typedef double (*PegasusFunct) (double x);$/;"	t	file:
+PermitTOUT	SAT_DE.h	/^    bool         PermitTOUT;  \/\/ Flag for integrating past tout$/;"	m	class:DE
+Phi	GEODA.cpp	/^Matrix Phi(double n, double t) {$/;"	f
+PhiS	TDRSOD.cpp	/^    Matrix PhiS (double Mjd_TT) {$/;"	f	class:TrjData
+PhiS_	TDRSOD.cpp	/^    Matrix    PhiS_;      \/\/ State transition and sensitivity matrix$/;"	m	class:TrjData	file:
+PoleMatrix	SAT_RefSys.cpp	/^Matrix PoleMatrix (double Mjd_UTC)$/;"	f
+Position	SAT_RefSys.cpp	/^Vector Geodetic::Position (double R_equ,   \/\/ Equator radius [m]$/;"	f	class:Geodetic
+PrecMatrix	SAT_RefSys.cpp	/^Matrix PrecMatrix (double Mjd_1, double Mjd_2)$/;"	f
+R	SAT_Filter.h	/^    Matrix   R;         \/\/ Square-root information matrix $/;"	m	class:LSQ
+RK4	Exercise_4_2.cpp	/^void GJ4P::RK4 (double&  t, Vector&  r, Vector&  v, double h )$/;"	f	class:GJ4P
+RK4	SAT_DE.h	/^    RK4 ($/;"	f	class:RK4
+RK4	SAT_DE.h	/^class RK4$/;"	c
+RK4funct	SAT_DE.h	/^typedef void (*RK4funct)($/;"	t
+R_Earth	SAT_Const.h	/^const double R_Earth     =   6378.137e3;      \/\/ Radius Earth [m]; WGS-84$/;"	v
+R_JGM3	SAT_Force.cpp	/^  const double R_JGM3 = 6378.1363e3;           \/\/ Radius Earth [m]; JGM3$/;"	m	namespace:__anon3	file:
+R_Moon	SAT_Const.h	/^const double R_Moon      =   1738.0e3;        \/\/ Radius Moon [m]$/;"	v
+R_Sun	SAT_Const.h	/^const double R_Sun       = 696000.0e3;        \/\/ Radius Sun [m]; Seidelmann 1992$/;"	v
+R_ref	SAT_Force.h	/^  double  R_ref;   \/\/ Reference radius [m]$/;"	m	struct:GravModel
+R_x	SAT_VecMat.cpp	/^Matrix R_x(double Angle)$/;"	f
+R_y	SAT_VecMat.cpp	/^Matrix R_y(double Angle)$/;"	f
+R_z	SAT_VecMat.cpp	/^Matrix R_z(double Angle)$/;"	f
+Rad	SAT_Const.h	/^const double Rad       = pi \/ 180.0;          \/\/ Radians per degree$/;"	v
+Range_4W	TDRSOD.cpp	/^void Range_4W ( double MJD_UTC, TrjData& Trj_User, TrjData& Trj_TDRS, $/;"	f
+Range_4w	TDRSOD.cpp	/^  double  Range_4w;   \/\/ 4-way range measurement$/;"	m	struct:ObsType	file:
+Row	SAT_VecMat.cpp	/^Vector Matrix::Row(int i) const$/;"	f	class:Matrix
+S1	Exercise_4_2.cpp	/^    Vector      S2,S1;       \/\/ First and second sum of acceleration$/;"	m	class:GJ4P	file:
+S2	Exercise_4_2.cpp	/^    Vector      S2,S1;       \/\/ First and second sum of acceleration$/;"	m	class:GJ4P	file:
+SAT_FORCE_CPP	SAT_Force.cpp	29;"	d	file:
+SRIM	SAT_Filter.cpp	/^Matrix LSQ::SRIM() { return R; };      \/\/ Copy of R$/;"	f	class:LSQ
+SRad	Exercise_3_4.cpp	/^  bool    Sun,Moon,SRad,Drag;$/;"	m	struct:AuxParam	file:
+Set	SAT_RefSys.cpp	/^void IERS::Set(double UT1_UTC, double UTC_TAI,$/;"	f	class:IERS
+SetCol	SAT_VecMat.cpp	/^void Matrix::SetCol(int j, const Vector& Col) $/;"	f	class:Matrix
+SetRow	SAT_VecMat.cpp	/^void Matrix::SetRow(int i, const Vector& Row)$/;"	f	class:Matrix
+Solve	SAT_Filter.cpp	/^void LSQ::Solve (Vector& x)$/;"	f	class:LSQ
+Sqrt	SAT_VecMat.cpp	/^Vector Vector::Sqrt() const$/;"	f	class:Vector
+StaNo	TDRSOD.cpp	/^  int       StaNo;       \/\/ Station number$/;"	m	struct:StaParam	file:
+StaNo	TDRSOD.cpp	/^  int     StaNo;      \/\/ Station number$/;"	m	struct:ObsType	file:
+StaParam	TDRSOD.cpp	/^struct StaParam {$/;"	s	file:
+Stack	SAT_VecMat.cpp	/^Vector Stack (const Vector& a, const Vector& b)$/;"	f
+State	SAT_DE.h	/^    DE_STATE     State;       \/\/ State code (default = DE_INIT)$/;"	m	class:DE
+State	SAT_Filter.cpp	/^Vector EKF::State() { return x; };     \/\/ State parameters$/;"	f	class:EKF
+State	SAT_Kepler.cpp	/^Vector State ( double GM, const Vector& Kep, double dt )$/;"	f
+State	TDRSOD.cpp	/^    Vector State(double Mjd_TT) {$/;"	f	class:TrjData
+StatePartials	SAT_Kepler.cpp	/^Matrix StatePartials ( double GM, const Vector& Kep, double dt )$/;"	f
+Station	GEODA.cpp	/^struct Station {$/;"	s	file:
+StdDev	SAT_Filter.cpp	/^Vector EKF::StdDev() {                 \/\/ Standard deviation$/;"	f	class:EKF
+StdDev	SAT_Filter.cpp	/^Vector LSQ::StdDev() {$/;"	f	class:LSQ
+Step	Exercise_4_2.cpp	/^void GJ4P::Step (double& t, Vector& r, Vector& v) $/;"	f	class:GJ4P
+Step	SAT_DE.cpp	/^void DE::Step (double& x, Vector& y, double& eps, bool& crash)$/;"	f	class:DE
+Step	SAT_DE.cpp	/^void RK4::Step (double& t, Vector& y, double h) {$/;"	f	class:RK4
+Sun	Exercise_3_4.cpp	/^  bool    Sun,Moon,SRad,Drag;$/;"	m	struct:AuxParam	file:
+Sun	SAT_Force.cpp	/^Vector Sun (double Mjd_TT)$/;"	f
+TAI_GPS	SAT_RefSys.cpp	/^const double IERS::TAI_GPS = -IERS::GPS_TAI;   \/\/ TAI-GPS time difference [s]$/;"	m	class:IERS	file:
+TAI_GPS	SAT_RefSys.h	/^    static const double TAI_GPS;              \/\/ TAI-GPS time difference 19s$/;"	m	class:IERS
+TT_GPS	SAT_RefSys.cpp	/^const double IERS::TT_GPS  =  IERS::TT_TAI     \/\/  TT-GPS time difference [s]$/;"	m	class:IERS	file:
+TT_GPS	SAT_RefSys.h	/^    static const double  TT_GPS;              \/\/  TT-GPS time difference 51.184s$/;"	m	class:IERS
+TT_TAI	SAT_RefSys.cpp	/^const double IERS::TT_TAI  = +32.184;          \/\/  TT-TAI time difference [s]$/;"	m	class:IERS	file:
+TT_TAI	SAT_RefSys.h	/^    static const double  TT_TAI;              \/\/  TT-TAI time difference 32.184s$/;"	m	class:IERS
+TT_UTC	SAT_RefSys.cpp	/^double IERS::TT_UTC (double Mjd_UTC){return  TT_TAI-UTC_TAI(Mjd_UTC);};$/;"	f	class:IERS
+Ta	Exercise_3_2.cpp	/^    double  Ta;      \/\/ Begin interval$/;"	m	class:Cheb3D	file:
+Tb	Exercise_3_2.cpp	/^    double  Tb;      \/\/ End interval$/;"	m	class:Cheb3D	file:
+TdrsNo	TDRSOD.cpp	/^  int     TdrsNo;     \/\/ TDRS number$/;"	m	struct:ObsType	file:
+Time	SAT_Filter.cpp	/^double EKF::Time()  { return t; };     \/\/ Time    $/;"	f	class:EKF
+TimeUpdate	SAT_Filter.cpp	/^void EKF::TimeUpdate(double        t_, $/;"	f	class:EKF
+TimeUpdate	SAT_Filter.cpp	/^void EKF::TimeUpdate(double t_, const Vector& x_, const Matrix& Phi)$/;"	f	class:EKF
+Trace	SAT_VecMat.cpp	/^double Matrix::Trace() const {$/;"	f	class:Matrix
+Trace	SAT_VecMat.cpp	/^double Matrix::Trace(int low, int upp) const {$/;"	f	class:Matrix
+Transp	SAT_VecMat.cpp	/^Matrix Transp(const Matrix& Mat)$/;"	f
+TrjData	TDRSOD.cpp	/^    TrjData ( DEfunct    Deriv,          \/\/ Differential equation$/;"	f	class:TrjData
+TrjData	TDRSOD.cpp	/^    TrjData(): N_var(0),p(0) {};         \/\/ Default constructor$/;"	f	class:TrjData
+TrjData	TDRSOD.cpp	/^class TrjData {$/;"	c	file:
+TwoBody	SAT_Kepler.cpp	/^void TwoBody ( double GM, const Vector& Y0, double dt, $/;"	f
+UT1_GPS	SAT_RefSys.cpp	/^double IERS::UT1_GPS(double Mjd_UTC){return UT1_TAI(Mjd_UTC)-GPS_TAI;};$/;"	f	class:IERS
+UT1_TAI	SAT_RefSys.cpp	/^double IERS::UT1_TAI(double Mjd_UTC){return UT1_TAI_;};$/;"	f	class:IERS
+UT1_TAI_	SAT_RefSys.cpp	/^double IERS::UT1_TAI_ = 0.0;          \/\/ UT1-TAI time difference [s]$/;"	m	class:IERS	file:
+UT1_TAI_	SAT_RefSys.h	/^    static double UT1_TAI_;                   \/\/ UT1-TAI time difference [s]$/;"	m	class:IERS
+UT1_UTC	SAT_RefSys.cpp	/^double IERS::UT1_UTC(double Mjd_UTC){return UT1_TAI(Mjd_UTC)-UTC_TAI(Mjd_UTC);};$/;"	f	class:IERS
+UTC_GPS	SAT_RefSys.cpp	/^double IERS::UTC_GPS(double Mjd_UTC){return UTC_TAI(Mjd_UTC)-GPS_TAI;};$/;"	f	class:IERS
+UTC_TAI	SAT_RefSys.cpp	/^double IERS::UTC_TAI(double Mjd_UTC){return UTC_TAI_;};$/;"	f	class:IERS
+UTC_TAI_	SAT_RefSys.cpp	/^double IERS::UTC_TAI_ = 0.0;          \/\/ UTC-TAI time difference [s] $/;"	m	class:IERS	file:
+UTC_TAI_	SAT_RefSys.h	/^    static double UTC_TAI_;                   \/\/ UTC-TAI time difference [s]$/;"	m	class:IERS
+Value	Exercise_3_2.cpp	/^Vector Cheb3D::Value (double t) const$/;"	f	class:Cheb3D
+Var	TDRSOD.cpp	/^    DE        Var;        \/\/ Object for integrating the variational equations$/;"	m	class:TrjData	file:
+VarEqn	Exercise_7_1.cpp	/^void VarEqn ( double t, const Vector& yPhi, Vector& yPhip, void* pAux )$/;"	f
+VarEqn	TDRSOD.cpp	/^void VarEqn ( double t, const Vector& yPhiS, Vector& yPhiSp, void* pAux )$/;"	f
+VecPolar	SAT_VecMat.cpp	/^Vector VecPolar (double azim, double elev, double r)$/;"	f
+Vector	SAT_VecMat.cpp	/^Vector::Vector ()                              \/\/ Vector without elements$/;"	f	class:Vector
+Vector	SAT_VecMat.cpp	/^Vector::Vector (const Vector& V)               \/\/ Vector copy$/;"	f	class:Vector
+Vector	SAT_VecMat.cpp	/^Vector::Vector (const double* p, int N)        \/\/ Array copy$/;"	f	class:Vector
+Vector	SAT_VecMat.cpp	/^Vector::Vector (double x, double y, double z)  \/\/ 3dim-Vector$/;"	f	class:Vector
+Vector	SAT_VecMat.cpp	/^Vector::Vector (double x, double y, double z,   \/\/ 6dim-Vector$/;"	f	class:Vector
+Vector	SAT_VecMat.cpp	/^Vector::Vector (int Size)                      \/\/ Creates null vector$/;"	f	class:Vector
+Vector	SAT_VecMat.h	/^class Vector$/;"	c
+Y	TDRSOD.cpp	/^    Vector    Y;          \/\/ Auxiliary state vector and partials$/;"	m	class:TrjData	file:
+_GNUC_BEFORE	GNU_iomanip.h	36;"	d
+_GNUC_BEFORE	GNU_iomanip.h	38;"	d
+abserr	SAT_DE.h	/^    double       abserr;      \/\/ Desired absolute accuracy of the solution$/;"	m	class:DE
+alpha	SAT_DE.h	/^    double   alpha[13],beta[13],v[13],w[13],psi[13];$/;"	m	class:DE
+ang	GEODA.cpp	/^  Meas     ang;                                                                 \/\/\/< Angle measurement parameters$/;"	m	struct:Station	file:
+beta	SAT_DE.h	/^    double   alpha[13],beta[13],v[13],w[13],psi[13];$/;"	m	class:DE
+c_light	SAT_Const.h	/^const double c_light   = 299792458.0;         \/\/ Speed of light  [m\/s]; IAU 1976$/;"	v
+d	Exercise_4_2.cpp	/^    Vector      d[4];        \/\/ Backward differences of acceleration at t+h$/;"	m	class:GJ4P	file:
+d	SAT_Filter.h	/^    Vector   d;         \/\/ Right hand side of transformed equations$/;"	m	class:LSQ
+delsgn	SAT_DE.h	/^    double   x,h,hold,told,delsgn;$/;"	m	class:DE
+eps_mach	SAT_Kepler.cpp	/^  const double eps_mach = DBL_EPSILON;$/;"	m	namespace:__anon4	file:
+eps_mach	SAT_RefSys.cpp	/^  const double eps_mach = DBL_EPSILON;$/;"	m	namespace:__anon5	file:
+est_bias	GEODA.cpp	/^  bool     est_bias;                                                            \/\/\/< Flag for bias estimation$/;"	m	struct:Meas	file:
+f	Exercise_4_2.cpp	/^    GJ4Pfunct   f;           \/\/ Differential equation$/;"	m	class:GJ4P	file:
+f	SAT_DE.h	/^    DEfunct  f;$/;"	m	class:DE
+f	SAT_DE.h	/^    RK4funct  f;$/;"	m	class:RK4
+f_Earth	SAT_Const.h	/^const double f_Earth     = 1.0\/298.257223563; \/\/ Flattening; WGS-84   $/;"	v
+f_Kep3D	Exercise_4_2.cpp	/^void f_Kep3D ( double t, const Vector& r, const Vector& v, $/;"	f
+f_Kep6D	Exercise_4_1.cpp	/^void f_Kep6D ( double t, const Vector& y, Vector& yp, void* pAux )$/;"	f
+f_Kep6D_	Exercise_4_3.cpp	/^void f_Kep6D_ ( double t, const Vector& y, Vector& yp, void* pAux )$/;"	f
+fixed	GNU_iomanip.h	/^     ostream& fixed(ostream& os) {$/;"	f	namespace:__anon1
+fouru	SAT_DE.cpp	/^  const double fouru  = 4.0*umach;   $/;"	m	namespace:__anon2	file:
+g	SAT_DE.h	/^    double   sig[14],g[14];$/;"	m	class:DE
+h	Exercise_4_2.cpp	/^    double      h;           \/\/ Step size$/;"	m	class:GJ4P	file:
+h	SAT_DE.h	/^    double   x,h,hold,told,delsgn;$/;"	m	class:DE
+h	SAT_RefSys.h	/^    double h;                                          \/\/ Altitude [m]$/;"	m	class:Geodetic
+hold	SAT_DE.h	/^    double   x,h,hold,told,delsgn;$/;"	m	class:DE
+index	GEODA.cpp	/^  int      index;                                                               \/\/\/< Bias parameter index$/;"	m	struct:Meas	file:
+init	SAT_DE.h	/^    bool     init;$/;"	m	class:DE
+k	SAT_DE.h	/^    int      ns,k,kold;$/;"	m	class:DE
+k_1	SAT_DE.h	/^    Vector    k_1,k_2,k_3,k_4;$/;"	m	class:RK4
+k_2	SAT_DE.h	/^    Vector    k_1,k_2,k_3,k_4;$/;"	m	class:RK4
+k_3	SAT_DE.h	/^    Vector    k_1,k_2,k_3,k_4;$/;"	m	class:RK4
+k_4	SAT_DE.h	/^    Vector    k_1,k_2,k_3,k_4;$/;"	m	class:RK4
+kold	SAT_DE.h	/^    int      ns,k,kold;$/;"	m	class:DE
+lat	SAT_RefSys.h	/^    double lat;                                        \/\/ Latitude [rad]$/;"	m	class:Geodetic
+left	GNU_iomanip.h	/^     ostream& left (ostream& os) {$/;"	f	namespace:__anon1
+lon	SAT_RefSys.h	/^    double lon;                                        \/\/ Longitude [rad]$/;"	m	class:Geodetic
+m	Exercise_3_4.cpp	/^  int     n,m;$/;"	m	struct:AuxParam	file:
+m	SAT_VecMat.h	/^    int      m;                       \/\/ Second dimension (number of columns)$/;"	m	class:Matrix
+m_G	Exercise_7_1.cpp	/^  int     n_G,m_G;   \/\/ Degree and order of gravity field for gradient$/;"	m	struct:AuxParam	file:
+m_a	Exercise_7_1.cpp	/^  int     n_a,m_a;   \/\/ Degree and order of gravity field for acceleration$/;"	m	struct:AuxParam	file:
+m_max	SAT_Force.h	/^  int     m_max;   \/\/ Order$/;"	m	struct:GravModel
+main	Exercise_2_1.cpp	/^int main() {$/;"	f
+main	Exercise_2_2.cpp	/^int main() {$/;"	f
+main	Exercise_2_3.cpp	/^int main() {$/;"	f
+main	Exercise_2_4.cpp	/^int main() {$/;"	f
+main	Exercise_2_5.cpp	/^int main() {$/;"	f
+main	Exercise_2_6.cpp	/^int main() {$/;"	f
+main	Exercise_3_1.cpp	/^int main() {$/;"	f
+main	Exercise_3_2.cpp	/^int main() {$/;"	f
+main	Exercise_3_3.cpp	/^int main() {$/;"	f
+main	Exercise_3_4.cpp	/^int main() {$/;"	f
+main	Exercise_4_1.cpp	/^int main() {$/;"	f
+main	Exercise_4_2.cpp	/^int main() {$/;"	f
+main	Exercise_4_3.cpp	/^int main() {$/;"	f
+main	Exercise_5_1.cpp	/^int main() {$/;"	f
+main	Exercise_5_2.cpp	/^int main() {$/;"	f
+main	Exercise_5_3.cpp	/^int main() {$/;"	f
+main	Exercise_6_1.cpp	/^int main() {$/;"	f
+main	Exercise_6_2.cpp	/^int main() {$/;"	f
+main	Exercise_6_3.cpp	/^int main() {$/;"	f
+main	Exercise_6_4.cpp	/^int main() {$/;"	f
+main	Exercise_7_1.cpp	/^int main() {$/;"	f
+main	Exercise_8_1.cpp	/^int main() {$/;"	f
+main	Exercise_8_2.cpp	/^int main() {$/;"	f
+main	Exercise_8_3.cpp	/^int main() {$/;"	f
+main	GEODA.cpp	/^int main(int argc, char* argv[]) {$/;"	f
+main	RTOD.cpp	/^int main(int argc, char* argv[]) {$/;"	f
+main	TDRSOD.cpp	/^int main(int argc, char* argv[]) {$/;"	f
+mass	Exercise_3_4.cpp	/^  double  Area,mass,CR,CD;$/;"	m	struct:AuxParam	file:
+mass	TDRSOD.cpp	/^  double  Area,mass;     \/\/ Spacecraft cross-section [m^2] and mass [kg]$/;"	m	struct:AuxParam	file:
+max	SAT_DE.cpp	/^  T max (T a, T b) { return ((a>b) ? a : b); };$/;"	f	namespace:__anon2
+maxnum	SAT_DE.cpp	/^  const int    maxnum = 500;  \/\/ Maximum number of steps to take$/;"	m	namespace:__anon2	file:
+min	SAT_DE.cpp	/^  T min (T a, T b) { return ((a<b) ? a : b); };$/;"	f	namespace:__anon2
+mjd	SAT_Time.h	/^    double mjd;$/;"	m	class:Date
+n	Exercise_3_4.cpp	/^  int     n,m;$/;"	m	struct:AuxParam	file:
+n	SAT_Filter.h	/^    int      n;                          \/\/ Number of state parameters$/;"	m	class:EKF
+n	SAT_Filter.h	/^    int      n;         \/\/ Number of data equations $/;"	m	class:LSQ
+n	SAT_VecMat.h	/^    int      n;                       \/\/ First dimension (number of rows)$/;"	m	class:Matrix
+n	SAT_VecMat.h	/^    int    n;      \/\/ Dimension$/;"	m	class:Vector
+nData	SAT_Filter.h	/^    int nData() { return n; };$/;"	f	class:LSQ
+n_G	Exercise_7_1.cpp	/^  int     n_G,m_G;   \/\/ Degree and order of gravity field for gradient$/;"	m	struct:AuxParam	file:
+n_a	Exercise_7_1.cpp	/^  int     n_a,m_a;   \/\/ Degree and order of gravity field for acceleration$/;"	m	struct:AuxParam	file:
+n_eqn	Exercise_4_2.cpp	/^    int         n_eqn;       \/\/ Dimension$/;"	m	class:GJ4P	file:
+n_eqn	SAT_DE.h	/^    int       n_eqn;$/;"	m	class:RK4
+n_eqn	SAT_DE.h	/^    int      n_eqn;$/;"	m	class:DE
+n_grav	RTOD.cpp	/^  int     n_grav;     \/\/ Gravity model degree and order$/;"	m	struct:AuxParam	file:
+n_max	SAT_Force.h	/^  int     n_max;   \/\/ Degree$/;"	m	struct:GravModel
+n_step	Exercise_4_3.cpp	/^  int     n_step;$/;"	m	struct:AuxDataRecord	file:
+nornd	SAT_DE.h	/^    bool     OldPermit, phase1,start,nornd;   $/;"	m	class:DE
+noshowpos	GNU_iomanip.h	/^     ostream& noshowpos(ostream& os) {$/;"	f	namespace:__anon1
+ns	SAT_DE.h	/^    int      ns,k,kold;$/;"	m	class:DE
+omega_Earth	SAT_Const.h	/^const double omega_Earth = 7.2921158553e-5;   \/\/ [rad\/s]; Aoki 1982, NIMA 1997$/;"	v
+operator &	SAT_VecMat.cpp	/^Matrix operator &(const Matrix& A, const Matrix& B) {$/;"	f
+operator &	SAT_VecMat.cpp	/^Matrix operator &(const Matrix& A, const Vector& Row) {$/;"	f
+operator &	SAT_VecMat.cpp	/^Matrix operator &(const Vector& Row, const Matrix& A) {$/;"	f
+operator &	SAT_VecMat.cpp	/^Vector operator &(const Vector& a, const Vector& b)$/;"	f
+operator &	SAT_VecMat.cpp	/^Vector operator &(const Vector& a, double b) {$/;"	f
+operator &	SAT_VecMat.cpp	/^Vector operator &(double a, const Vector& b) {$/;"	f
+operator ()	SAT_VecMat.h	/^    double  operator () (int i) const { return v[i]; };$/;"	f	class:Vector
+operator ()	SAT_VecMat.h	/^    double  operator () (int i, int j) const { return M[i][j]; };   $/;"	f	class:Matrix
+operator ()	SAT_VecMat.h	/^    double& operator () (int i)       { return v[i]; };$/;"	f	class:Vector
+operator ()	SAT_VecMat.h	/^    double& operator () (int i, int j)       { return M[i][j]; };   $/;"	f	class:Matrix
+operator *	SAT_VecMat.cpp	/^Matrix operator * (const Matrix& Mat, double value)$/;"	f
+operator *	SAT_VecMat.cpp	/^Matrix operator * (const Matrix& left, const Matrix& right)$/;"	f
+operator *	SAT_VecMat.cpp	/^Matrix operator * (double value, const Matrix& Mat)$/;"	f
+operator *	SAT_VecMat.cpp	/^Vector operator * (const Matrix& Mat, const Vector& Vec)$/;"	f
+operator *	SAT_VecMat.cpp	/^Vector operator * (const Vector& V, double value)$/;"	f
+operator *	SAT_VecMat.cpp	/^Vector operator * (const Vector& Vec, const Matrix& Mat)$/;"	f
+operator *	SAT_VecMat.cpp	/^Vector operator * (double value, const Vector& V)$/;"	f
+operator +	SAT_VecMat.cpp	/^Matrix operator + (const Matrix& left, const Matrix& right)$/;"	f
+operator +	SAT_VecMat.cpp	/^Vector operator + (const Vector& left, const Vector& right)$/;"	f
+operator +=	SAT_VecMat.cpp	/^void Matrix::operator += (const Matrix& M)$/;"	f	class:Matrix
+operator +=	SAT_VecMat.cpp	/^void Vector::operator += (const Vector& V)$/;"	f	class:Vector
+operator -	SAT_VecMat.cpp	/^Matrix operator - (const Matrix& Mat)$/;"	f
+operator -	SAT_VecMat.cpp	/^Matrix operator - (const Matrix& left, const Matrix& right)    $/;"	f
+operator -	SAT_VecMat.cpp	/^Vector operator - (const Vector& V)$/;"	f
+operator -	SAT_VecMat.cpp	/^Vector operator - (const Vector& left, const Vector& right)$/;"	f
+operator -=	SAT_VecMat.cpp	/^void Matrix::operator -= (const Matrix& M)$/;"	f	class:Matrix
+operator -=	SAT_VecMat.cpp	/^void Vector::operator -= (const Vector& V)$/;"	f	class:Vector
+operator /	SAT_VecMat.cpp	/^Matrix operator \/ (const Matrix& Mat, double value)$/;"	f
+operator /	SAT_VecMat.cpp	/^Vector operator \/ (const Vector& V, double value)$/;"	f
+operator <	TDRSOD.cpp	/^bool operator< (ObsType a, ObsType b) { return true; };$/;"	f
+operator <<	SAT_Time.cpp	/^ostream& operator << (ostream& os, const Date& D)$/;"	f
+operator <<	SAT_VecMat.cpp	/^ostream& operator << (ostream& os, const Matrix& Mat)$/;"	f
+operator <<	SAT_VecMat.cpp	/^ostream& operator << (ostream& os, const Vector& Vec)$/;"	f
+operator =	SAT_VecMat.cpp	/^Matrix& Matrix::operator=(const Matrix& M_)$/;"	f	class:Matrix
+operator =	SAT_VecMat.cpp	/^Matrix& Matrix::operator=(const double value)$/;"	f	class:Matrix
+operator =	SAT_VecMat.cpp	/^Vector& Vector::operator=(const Vector& V)$/;"	f	class:Vector
+operator =	SAT_VecMat.cpp	/^Vector& Vector::operator=(const double value)$/;"	f	class:Vector
+operator ==	TDRSOD.cpp	/^bool operator==(ObsType a, ObsType b) { return true; };$/;"	f
+operator |	SAT_VecMat.cpp	/^Matrix operator |(const Matrix& A, const Matrix& B) {$/;"	f
+operator |	SAT_VecMat.cpp	/^Matrix operator |(const Matrix& A, const Vector& Col) {$/;"	f
+operator |	SAT_VecMat.cpp	/^Matrix operator |(const Vector& Col, const Matrix& A) {$/;"	f
+p	SAT_DE.h	/^    Vector   yy,wt,p,yp,ypout;$/;"	m	class:DE
+p	TDRSOD.cpp	/^    AuxParam* p;          \/\/ Pointer to auxiliary parameters$/;"	m	class:TrjData	file:
+pAux	Exercise_4_2.cpp	/^    void*       pAux;        \/\/ Pointer to auxiliary data requird by f$/;"	m	class:GJ4P	file:
+pAux	SAT_DE.h	/^    void*     pAux;$/;"	m	class:RK4
+pAux	SAT_DE.h	/^    void*    pAux;$/;"	m	class:DE
+phase1	SAT_DE.h	/^    bool     OldPermit, phase1,start,nornd;   $/;"	m	class:DE
+phi	SAT_DE.h	/^    Matrix   phi;$/;"	m	class:DE
+pi	SAT_Const.h	/^const double pi        = 3.14159265358979324;$/;"	v
+pi2	SAT_Const.h	/^const double pi2       = 2.0*pi;              \/\/ 2pi$/;"	v
+psi	SAT_DE.h	/^    double   alpha[13],beta[13],v[13],w[13],psi[13];$/;"	m	class:DE
+r_obs	RTOD.cpp	/^  Vector  r_obs;      \/\/ Measured position vector (WGS84, [m])$/;"	m	struct:ObsType	file:
+r_p	Exercise_4_2.cpp	/^    Vector      r_p,v_p;     \/\/ Predictor$/;"	m	class:GJ4P	file:
+r_ref	RTOD.cpp	/^  Vector  r_ref;      \/\/ True position vector (WGS84, [m])$/;"	m	struct:ObsType	file:
+relerr	SAT_DE.h	/^    double       relerr;      \/\/ Desired relative accuracy of the solution$/;"	m	class:DE
+resize	SAT_VecMat.cpp	/^Matrix& Matrix::resize(int dim1, int dim2) {$/;"	f	class:Matrix
+resize	SAT_VecMat.cpp	/^Vector& Vector::resize(int Size) {$/;"	f	class:Vector
+right	GNU_iomanip.h	/^     ostream& right(ostream& os) {$/;"	f	namespace:__anon1
+rng	GEODA.cpp	/^  Meas     rng;                                                                 \/\/\/< Range measurement parameters$/;"	m	struct:Station	file:
+scientific	GNU_iomanip.h	/^     ostream& scientific(ostream& os) {$/;"	f	namespace:__anon1
+showpos	GNU_iomanip.h	/^     ostream& showpos  (ostream& os) {$/;"	f	namespace:__anon1
+sig	SAT_DE.h	/^    double   sig[14],g[14];$/;"	m	class:DE
+sig_bias	GEODA.cpp	/^  double   sig_bias;                                                            \/\/\/< Bias uncertainty$/;"	m	struct:Meas	file:
+sig_noise	GEODA.cpp	/^  double   sig_noise;                                                           \/\/\/< Measurement accuracy$/;"	m	struct:Meas	file:
+sign	SAT_DE.cpp	/^  double sign(double a, double b)$/;"	f	namespace:__anon2
+size	SAT_VecMat.h	/^    int size() const { return n; };$/;"	f	class:Vector
+size1	SAT_VecMat.h	/^    int size1() const { return n; };$/;"	f	class:Matrix
+size2	SAT_VecMat.h	/^    int size2() const { return m; };$/;"	f	class:Matrix
+slice	SAT_VecMat.cpp	/^Matrix Matrix::slice(int first_row, int last_row, int first_col, int last_col)$/;"	f	class:Matrix
+slice	SAT_VecMat.cpp	/^Vector Vector::slice (int first, int last) const$/;"	f	class:Vector
+start	SAT_DE.h	/^    bool     OldPermit, phase1,start,nornd;   $/;"	m	class:DE
+step	GEODA.cpp	/^  double   step;                                                                \/\/\/< Interval$/;"	m	struct:Meas	file:
+t	Exercise_4_3.cpp	/^  double  t;$/;"	m	struct:AuxDataRecord	file:
+t	SAT_DE.h	/^    double       t;           \/\/ Value of independent variable$/;"	m	class:DE
+t	SAT_Filter.h	/^    double   t;                          \/\/ Time $/;"	m	class:EKF
+told	SAT_DE.h	/^    double   x,h,hold,told,delsgn;$/;"	m	class:DE
+twou	SAT_DE.cpp	/^  const double twou   = 2.0*umach;   $/;"	m	namespace:__anon2	file:
+umach	SAT_DE.cpp	/^  const double umach = DBL_EPSILON;$/;"	m	namespace:__anon2	file:
+umach	SAT_DE.cpp	/^  const double umach = std::numeric_limits<double>::epsilon();$/;"	m	namespace:__anon2	file:
+v	SAT_DE.h	/^    double   alpha[13],beta[13],v[13],w[13],psi[13];$/;"	m	class:DE
+v	SAT_VecMat.h	/^    double *v;     \/\/ Vector v(n)$/;"	m	class:Vector
+v_obs	RTOD.cpp	/^  Vector  v_obs;      \/\/ Measured velocity vector (WGS84, [m\/s])$/;"	m	struct:ObsType	file:
+v_p	Exercise_4_2.cpp	/^    Vector      r_p,v_p;     \/\/ Predictor$/;"	m	class:GJ4P	file:
+v_ref	RTOD.cpp	/^  Vector  v_ref;      \/\/ True velocity vector (WGS84, [m\/s])$/;"	m	struct:ObsType	file:
+w	SAT_DE.h	/^    double   alpha[13],beta[13],v[13],w[13],psi[13];$/;"	m	class:DE
+wt	SAT_DE.h	/^    Vector   yy,wt,p,yp,ypout;$/;"	m	class:DE
+x	SAT_DE.h	/^    double   x,h,hold,told,delsgn;$/;"	m	class:DE
+x	SAT_Filter.h	/^    Vector   x;                          \/\/ State parameters$/;"	m	class:EKF
+x_pole	SAT_RefSys.cpp	/^double IERS::x_pole(double Mjd_UTC) { return x_pole_; };$/;"	f	class:IERS
+x_pole_	SAT_RefSys.cpp	/^double IERS::x_pole_  = 0.0;          \/\/ Pole coordinate [rad]$/;"	m	class:IERS	file:
+x_pole_	SAT_RefSys.h	/^    static double x_pole_;                    \/\/ Pole coordinate [rad]$/;"	m	class:IERS
+y	TDRSOD.cpp	/^    Vector    y;          \/\/ Auxiliary state vector$/;"	m	class:TrjData	file:
+y_pole	SAT_RefSys.cpp	/^double IERS::y_pole(double Mjd_UTC) { return y_pole_; };$/;"	f	class:IERS
+y_pole_	SAT_RefSys.cpp	/^double IERS::y_pole_  = 0.0;          \/\/ Pole coordinate [rad]$/;"	m	class:IERS	file:
+y_pole_	SAT_RefSys.h	/^    static double y_pole_;                    \/\/ Pole coordinate [rad]$/;"	m	class:IERS
+yp	SAT_DE.h	/^    Vector   yy,wt,p,yp,ypout;$/;"	m	class:DE
+ypout	SAT_DE.h	/^    Vector   yy,wt,p,yp,ypout;$/;"	m	class:DE
+yy	SAT_DE.h	/^    Vector   yy,wt,p,yp,ypout;$/;"	m	class:DE
+~Matrix	SAT_VecMat.cpp	/^Matrix::~Matrix() $/;"	f	class:Matrix
+~Vector	SAT_VecMat.cpp	/^Vector::~Vector() $/;"	f	class:Vector

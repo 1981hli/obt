@@ -1,0 +1,396 @@
+\hypertarget{SAT__Force_8cpp}{\section{S\-A\-T\-\_\-\-Force.\-cpp File Reference}
+\label{SAT__Force_8cpp}\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+}
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Const.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Force.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Ref\-Sys.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Vec\-Mat.\-h\char`\"{}}\\*
+Include dependency graph for S\-A\-T\-\_\-\-Force.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Force_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceanonymous__namespace_02SAT__Force_8cpp_03}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Force.\-cpp\}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{SAT__Force_8cpp_a5ca6158fe86eb56357262971ea577ba0}{S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceanonymous__namespace_02SAT__Force_8cpp_03_aa6826b33621fa6ff5736c6432c487c1a}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Force.\-cpp\}\-::\-Frac} (double x)
+\item 
+\hyperlink{structGravModel}{Grav\-Model} \hyperlink{SAT__Force_8cpp_a7c2b416d014dc79f2891530e88d96899}{Grav} (N\-\_\-\-J\-G\-M3, \hyperlink{SAT__Const_8h_abc09c61bca70fa461c128540f69ba84f}{G\-M\-\_\-\-Earth}, R\-\_\-\-J\-G\-M3,\&C\-S\-\_\-\-J\-G\-M3\mbox{[}0\mbox{]}\mbox{[}0\mbox{]})
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_a2de08a6e83f5eff12db59b0616ad7f2c}{Sun} (double Mjd\-\_\-\-T\-T)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_a787c7d05ba9e7f29d236caf719ff7900}{Moon} (double Mjd\-\_\-\-T\-T)
+\item 
+double \hyperlink{SAT__Force_8cpp_ab05039f4d20345bbf7b463449ecaef11}{Illumination} (const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classVector}{Vector} \&r\-\_\-\-Sun)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_a35b54a3eda29b936098b3cc869d6c381}{Accel\-Harmonic} (const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classMatrix}{Matrix} \&E, double G\-M, double R\-\_\-ref, const \hyperlink{classMatrix}{Matrix} \&C\-S, int n\-\_\-max, int m\-\_\-max)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_a4db2f0789d2dccce991342a00f1ad75d}{Accel\-Point\-Mass} (const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classVector}{Vector} \&s, double G\-M)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_a871f302ecd9687d7bee13583c15b0f31}{Accel\-Solrad} (const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classVector}{Vector} \&r\-\_\-\-Sun, double Area, double mass, double C\-R, double P0, double \hyperlink{SAT__Const_8h_a2b9e1ccc1a034cb26b9c794767315346}{A\-U})
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_ae20f51bcb69607d4a2268329837260f2}{Accel\-Drag} (double Mjd\-\_\-\-T\-T, const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classVector}{Vector} \&v, const \hyperlink{classMatrix}{Matrix} \&T, double Area, double mass, double C\-D)
+\item 
+double \hyperlink{SAT__Force_8cpp_a6ad9e17c2e7636b8cd8045d461940681}{Density\-\_\-\-H\-P} (double Mjd\-\_\-\-T\-T, const \hyperlink{classVector}{Vector} \&r\-\_\-tod)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Force_8cpp_a750f7a2f89dc275831e706abee33310f}{Accel\-Main} (double Mjd\-\_\-\-T\-T, const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classVector}{Vector} \&v, double Area, double mass, double C\-R, double C\-D)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \hyperlink{namespaceanonymous__namespace_02SAT__Force_8cpp_03_adc98a306a4a3c40934f207108c4f2d3a}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Force.\-cpp\}\-::\-R\-\_\-\-J\-G\-M3} = 6378.\-1363e3
+\item 
+const int \hyperlink{namespaceanonymous__namespace_02SAT__Force_8cpp_03_a21c47b295844aa01ef36e5769862e2a3}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Force.\-cpp\}\-::\-N\-\_\-\-J\-G\-M3} = 20
+\item 
+const double \hyperlink{namespaceanonymous__namespace_02SAT__Force_8cpp_03_a5d47d698acd0c2506ccfc42cdc162bf7}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Force.\-cpp\}\-::\-C\-S\-\_\-\-J\-G\-M3} \mbox{[}N\-\_\-\-J\-G\-M3+1\mbox{]}\mbox{[}N\-\_\-\-J\-G\-M3+1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{SAT__Force_8cpp_a5ca6158fe86eb56357262971ea577ba0}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P@{S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P}}
+\index{S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P@{S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-A\-T\-\_\-\-F\-O\-R\-C\-E\-\_\-\-C\-P\-P}}\label{SAT__Force_8cpp_a5ca6158fe86eb56357262971ea577ba0}
+
+
+Definition at line 29 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{SAT__Force_8cpp_ae20f51bcb69607d4a2268329837260f2}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Accel\-Drag@{Accel\-Drag}}
+\index{Accel\-Drag@{Accel\-Drag}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Accel\-Drag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel\-Drag (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-T\-T, }
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Vector} \&}]{v, }
+\item[{const {\bf Matrix} \&}]{T, }
+\item[{double}]{Area, }
+\item[{double}]{mass, }
+\item[{double}]{C\-D}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_ae20f51bcb69607d4a2268329837260f2}
+
+
+Definition at line 564 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Force_8cpp_ae20f51bcb69607d4a2268329837260f2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{SAT__Force_8cpp_ae20f51bcb69607d4a2268329837260f2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a35b54a3eda29b936098b3cc869d6c381}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Accel\-Harmonic@{Accel\-Harmonic}}
+\index{Accel\-Harmonic@{Accel\-Harmonic}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Accel\-Harmonic}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel\-Harmonic (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Matrix} \&}]{E, }
+\item[{double}]{G\-M, }
+\item[{double}]{R\-\_\-ref, }
+\item[{const {\bf Matrix} \&}]{C\-S, }
+\item[{int}]{n\-\_\-max, }
+\item[{int}]{m\-\_\-max}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a35b54a3eda29b936098b3cc869d6c381}
+
+
+Definition at line 355 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{SAT__Force_8cpp_a35b54a3eda29b936098b3cc869d6c381_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Force_8cpp_a35b54a3eda29b936098b3cc869d6c381_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a750f7a2f89dc275831e706abee33310f}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Accel\-Main@{Accel\-Main}}
+\index{Accel\-Main@{Accel\-Main}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Accel\-Main}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel\-Main (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-T\-T, }
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Vector} \&}]{v, }
+\item[{double}]{Area, }
+\item[{double}]{mass, }
+\item[{double}]{C\-R, }
+\item[{double}]{C\-D}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a750f7a2f89dc275831e706abee33310f}
+
+
+Definition at line 774 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Force_8cpp_a750f7a2f89dc275831e706abee33310f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a4db2f0789d2dccce991342a00f1ad75d}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Accel\-Point\-Mass@{Accel\-Point\-Mass}}
+\index{Accel\-Point\-Mass@{Accel\-Point\-Mass}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Accel\-Point\-Mass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel\-Point\-Mass (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Vector} \&}]{s, }
+\item[{double}]{G\-M}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a4db2f0789d2dccce991342a00f1ad75d}
+
+
+Definition at line 482 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{SAT__Force_8cpp_a4db2f0789d2dccce991342a00f1ad75d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{SAT__Force_8cpp_a4db2f0789d2dccce991342a00f1ad75d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a871f302ecd9687d7bee13583c15b0f31}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Accel\-Solrad@{Accel\-Solrad}}
+\index{Accel\-Solrad@{Accel\-Solrad}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Accel\-Solrad}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel\-Solrad (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Vector} \&}]{r\-\_\-\-Sun, }
+\item[{double}]{Area, }
+\item[{double}]{mass, }
+\item[{double}]{C\-R, }
+\item[{double}]{P0, }
+\item[{double}]{A\-U}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a871f302ecd9687d7bee13583c15b0f31}
+
+
+Definition at line 525 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{SAT__Force_8cpp_a871f302ecd9687d7bee13583c15b0f31_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{SAT__Force_8cpp_a871f302ecd9687d7bee13583c15b0f31_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a6ad9e17c2e7636b8cd8045d461940681}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Density\-\_\-\-H\-P@{Density\-\_\-\-H\-P}}
+\index{Density\-\_\-\-H\-P@{Density\-\_\-\-H\-P}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Density\-\_\-\-H\-P}]{\setlength{\rightskip}{0pt plus 5cm}double Density\-\_\-\-H\-P (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-T\-T, }
+\item[{const {\bf Vector} \&}]{r\-\_\-tod}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a6ad9e17c2e7636b8cd8045d461940681}
+
+
+Definition at line 630 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Force_8cpp_a6ad9e17c2e7636b8cd8045d461940681_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{SAT__Force_8cpp_a6ad9e17c2e7636b8cd8045d461940681_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a7c2b416d014dc79f2891530e88d96899}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Grav@{Grav}}
+\index{Grav@{Grav}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Grav}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Grav\-Model} Grav (
+\begin{DoxyParamCaption}
+\item[{N\-\_\-\-J\-G\-M3}]{, }
+\item[{{\bf G\-M\-\_\-\-Earth}}]{, }
+\item[{R\-\_\-\-J\-G\-M3}]{, }
+\item[{\&}]{C\-S\-\_\-\-J\-G\-M3\mbox{[}0\mbox{]}\mbox{[}0\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a7c2b416d014dc79f2891530e88d96899}
+\hypertarget{SAT__Force_8cpp_ab05039f4d20345bbf7b463449ecaef11}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Illumination@{Illumination}}
+\index{Illumination@{Illumination}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Illumination}]{\setlength{\rightskip}{0pt plus 5cm}double Illumination (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Vector} \&}]{r\-\_\-\-Sun}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_ab05039f4d20345bbf7b463449ecaef11}
+
+
+Definition at line 323 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{SAT__Force_8cpp_ab05039f4d20345bbf7b463449ecaef11_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{SAT__Force_8cpp_ab05039f4d20345bbf7b463449ecaef11_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a787c7d05ba9e7f29d236caf719ff7900}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Moon@{Moon}}
+\index{Moon@{Moon}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Moon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Moon (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-T\-T}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a787c7d05ba9e7f29d236caf719ff7900}
+
+
+Definition at line 245 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{SAT__Force_8cpp_a787c7d05ba9e7f29d236caf719ff7900_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{SAT__Force_8cpp_a787c7d05ba9e7f29d236caf719ff7900_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Force_8cpp_a2de08a6e83f5eff12db59b0616ad7f2c}{\index{S\-A\-T\-\_\-\-Force.\-cpp@{S\-A\-T\-\_\-\-Force.\-cpp}!Sun@{Sun}}
+\index{Sun@{Sun}!SAT_Force.cpp@{S\-A\-T\-\_\-\-Force.\-cpp}}
+\subsubsection[{Sun}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Sun (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-T\-T}
+\end{DoxyParamCaption}
+)}}\label{SAT__Force_8cpp_a2de08a6e83f5eff12db59b0616ad7f2c}
+
+
+Definition at line 200 of file S\-A\-T\-\_\-\-Force.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{SAT__Force_8cpp_a2de08a6e83f5eff12db59b0616ad7f2c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Force_8cpp_a2de08a6e83f5eff12db59b0616ad7f2c_icgraph}
+\end{center}
+\end{figure}
+
+

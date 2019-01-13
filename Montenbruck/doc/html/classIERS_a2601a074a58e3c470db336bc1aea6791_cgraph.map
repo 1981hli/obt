@@ -1,0 +1,4 @@
+<map id="IERS::UT1_UTC" name="IERS::UT1_UTC">
+<area shape="rect" id="node2" href="$classIERS.html#acfce0b1a43896fed7b1bf9cefe3baebd" title="IERS::UT1_TAI" alt="" coords="179,5,293,32"/>
+<area shape="rect" id="node3" href="$classIERS.html#ad872e267797cb8d5be328b236287565f" title="IERS::UTC_TAI" alt="" coords="177,56,295,83"/>
+</map>

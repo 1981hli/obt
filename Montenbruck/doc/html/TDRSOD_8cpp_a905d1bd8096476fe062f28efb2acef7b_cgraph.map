@@ -1,0 +1,6 @@
+<map id="GetSetup" name="GetSetup">
+<area shape="rect" id="node2" href="$classIERS.html#ae1161daecc9629cdb716884cef9d1fa9" title="IERS::Set" alt="" coords="147,5,229,32"/>
+<area shape="rect" id="node4" href="$SAT__Time_8cpp.html#a5c8f481874f5f0d660aa2c5edebdc29f" title="Mjd" alt="" coords="167,56,209,83"/>
+<area shape="rect" id="node5" href="$classIERS.html#abe17029c05804e5886ae14eae119c0f1" title="IERS::TT_UTC" alt="" coords="131,107,245,133"/>
+<area shape="rect" id="node3" href="$classIERS.html#ad872e267797cb8d5be328b236287565f" title="IERS::UTC_TAI" alt="" coords="294,56,413,83"/>
+</map>

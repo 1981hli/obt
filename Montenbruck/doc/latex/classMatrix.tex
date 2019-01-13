@@ -1,0 +1,789 @@
+\hypertarget{classMatrix}{\section{Matrix Class Reference}
+\label{classMatrix}\index{Matrix@{Matrix}}
+}
+
+
+{\ttfamily \#include $<$S\-A\-T\-\_\-\-Vec\-Mat.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix_a2dba13c45127354c9f75ef576f49269b}{Matrix} ()
+\item 
+\hyperlink{classMatrix_ac6dcd2d09c273e9d4aa825c688e27fd7}{Matrix} (int dim1, int dim2)
+\item 
+\hyperlink{classMatrix_ad8e1e1f4689815ba1064aa83c8dec516}{Matrix} (const \hyperlink{classMatrix}{Matrix} \&M\-\_\-)
+\item 
+\hyperlink{classMatrix_aaa7470f25c28612e0166e201a8bdb77e}{Matrix} (const double $\ast$p, int dim1, int dim2)
+\item 
+\hyperlink{classMatrix_a9b1c3627f573d78a2f08623fdfef990f}{$\sim$\-Matrix} ()
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_aeb7802816a5f9c01e0703f1a6a691e9b}{operator=} (const double value)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_ac2667ec6586a945d5062d95e762ad1d4}{operator=} (const \hyperlink{classMatrix}{Matrix} \&M\-\_\-)
+\item 
+int \hyperlink{classMatrix_aec0c767dcd6da0724ccb6df4ec0f2a82}{size1} () const 
+\item 
+int \hyperlink{classMatrix_a306220f01f6859a16e738590214d008d}{size2} () const 
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_aed4e281aadfd6055e02e950988d6d427}{resize} (int dim1, int dim2)
+\item 
+double \hyperlink{classMatrix_ac6b0e8ce2c566a0379bd8da579d1cb45}{operator()} (int i, int j) const 
+\item 
+double \& \hyperlink{classMatrix_ad6c820c473b60706e10a7b43fa6575ee}{operator()} (int i, int j)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classMatrix_a02c825325655a07eb94e4a57478a4c18}{Col} (int j) const 
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classMatrix_af11392830874339383f4449d6efc3e71}{Row} (int i) const 
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classMatrix_ae6b225896639ed624596fff9a01f0618}{Diag} () const 
+\item 
+double \hyperlink{classMatrix_a6b5f0679c723652340ff8316308854b7}{Trace} () const 
+\item 
+double \hyperlink{classMatrix_acdd5ac95adb5e5cbcd929342bf5aad29}{Trace} (int low, int upp) const 
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a220d7f201c5dc597cd14530fe92402b0}{slice} (int first\-\_\-row, int last\-\_\-row, int first\-\_\-col, int last\-\_\-col)
+\item 
+void \hyperlink{classMatrix_ae9f1574a9cf6595c64ce1236a8003cd2}{Set\-Col} (int j, const \hyperlink{classVector}{Vector} \&\hyperlink{classMatrix_a02c825325655a07eb94e4a57478a4c18}{Col})
+\item 
+void \hyperlink{classMatrix_a308d1f64fcf50b39a26fa10a34657637}{Set\-Row} (int i, const \hyperlink{classVector}{Vector} \&\hyperlink{classMatrix_af11392830874339383f4449d6efc3e71}{Row})
+\item 
+void \hyperlink{classMatrix_a3ac5eee33c322def8e5979b931f09e12}{operator+=} (const \hyperlink{classMatrix}{Matrix} \&V)
+\item 
+void \hyperlink{classMatrix_a53793b2dda77eee2f6b648c5bf5f6686}{operator-\/=} (const \hyperlink{classMatrix}{Matrix} \&V)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classMatrix_a6f755dbfbefb9b4ba6c2b3acea8932f2}{n}
+\item 
+int \hyperlink{classMatrix_af5435c7814eef8c12549d34e7be2184c}{m}
+\item 
+double $\ast$$\ast$ \hyperlink{classMatrix_a6809ed961617c63dfdea6ca953990b8f}{M}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_abac5bb38f6d2767db9359ff26f2d772b}{operator\&} (const \hyperlink{classMatrix}{Matrix} \&A, const \hyperlink{classVector}{Vector} \&\hyperlink{classMatrix_af11392830874339383f4449d6efc3e71}{Row})
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a52818bc7441c2d401f0378b7c1002da6}{operator\&} (const \hyperlink{classVector}{Vector} \&\hyperlink{classMatrix_af11392830874339383f4449d6efc3e71}{Row}, const \hyperlink{classMatrix}{Matrix} \&A)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_addc226f84201673fed592aef51237564}{operator\&} (const \hyperlink{classMatrix}{Matrix} \&A, const \hyperlink{classMatrix}{Matrix} \&B)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ab1d3ddb78982da536099cac5e4734999}{operator$|$} (const \hyperlink{classMatrix}{Matrix} \&A, const \hyperlink{classVector}{Vector} \&\hyperlink{classMatrix_a02c825325655a07eb94e4a57478a4c18}{Col})
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_affee7481d9187bfc81b85b0fcc9f2c55}{operator$|$} (const \hyperlink{classVector}{Vector} \&\hyperlink{classMatrix_a02c825325655a07eb94e4a57478a4c18}{Col}, const \hyperlink{classMatrix}{Matrix} \&A)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_adb2721510b1e82a72241a37d766f7abb}{operator$|$} (const \hyperlink{classMatrix}{Matrix} \&A, const \hyperlink{classMatrix}{Matrix} \&B)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ac71a8aaf67fa3c90f274788d91002af9}{Id} (int Size)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_af7d7bb183b22c5c942a8afdadc433bc2}{Diag} (const \hyperlink{classVector}{Vector} \&Vec)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ae452267b1d1da6280386846d97ec4e4f}{R\-\_\-x} (double Angle)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a66b3b116958d5c2f1c528faa04c71674}{R\-\_\-y} (double Angle)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a94c9c4e1f3afc6636dda6572f72ef4c2}{R\-\_\-z} (double Angle)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_aa54829a0c63c78e6bfbd12285ad94075}{Transp} (const \hyperlink{classMatrix}{Matrix} \&Mat)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a5bdf67234eadeb0a304f11d4537047aa}{Inv} (const \hyperlink{classMatrix}{Matrix} \&Mat)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a268bff5a8ac028eb9ef9671f2a4185db}{operator$\ast$} (double value, const \hyperlink{classMatrix}{Matrix} \&Mat)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a7e0731e101b2ddd82e506e09394962e9}{operator$\ast$} (const \hyperlink{classMatrix}{Matrix} \&Mat, double value)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a204b6db43c7ea7ff6f15e927d25c1c3c}{operator/} (const \hyperlink{classMatrix}{Matrix} \&Mat, double value)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a443e399b244090d5d912a25e488874c2}{operator-\/} (const \hyperlink{classMatrix}{Matrix} \&Mat)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ac82b2ffb982879784a901be332961065}{operator+} (const \hyperlink{classMatrix}{Matrix} \&left, const \hyperlink{classMatrix}{Matrix} \&right)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a617ecec648cf992c05346391108ddae3}{operator-\/} (const \hyperlink{classMatrix}{Matrix} \&left, const \hyperlink{classMatrix}{Matrix} \&right)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a6b58c286243be002bf669704ad15353a}{operator$\ast$} (const \hyperlink{classMatrix}{Matrix} \&left, const \hyperlink{classMatrix}{Matrix} \&right)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classMatrix_ad239de62f336223aebc6a42debc44883}{operator$\ast$} (const \hyperlink{classMatrix}{Matrix} \&Mat, const \hyperlink{classVector}{Vector} \&Vec)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classMatrix_adf558aeff97481fccb373a50dcba1c2d}{operator$\ast$} (const \hyperlink{classVector}{Vector} \&Vec, const \hyperlink{classMatrix}{Matrix} \&Mat)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a4c5b7e42a648b06a906407b0155e3342}{Dyadic} (const \hyperlink{classVector}{Vector} \&left, const \hyperlink{classVector}{Vector} \&right)
+\item 
+std\-::ostream \& \hyperlink{classMatrix_af4c0397ea9493076522e569cacddb99f}{operator$<$$<$} (std\-::ostream \&os, const \hyperlink{classMatrix}{Matrix} \&Mat)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 155 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMatrix_a2dba13c45127354c9f75ef576f49269b}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_a2dba13c45127354c9f75ef576f49269b}
+
+
+Definition at line 349 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ac6dcd2d09c273e9d4aa825c688e27fd7}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+\item[{int}]{dim1, }
+\item[{int}]{dim2}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_ac6dcd2d09c273e9d4aa825c688e27fd7}
+
+
+Definition at line 355 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ad8e1e1f4689815ba1064aa83c8dec516}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{M\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_ad8e1e1f4689815ba1064aa83c8dec516}
+
+
+Definition at line 368 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_aaa7470f25c28612e0166e201a8bdb77e}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{p, }
+\item[{int}]{dim1, }
+\item[{int}]{dim2}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_aaa7470f25c28612e0166e201a8bdb77e}
+
+
+Definition at line 382 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a9b1c3627f573d78a2f08623fdfef990f}{\index{Matrix@{Matrix}!$\sim$\-Matrix@{$\sim$\-Matrix}}
+\index{$\sim$\-Matrix@{$\sim$\-Matrix}!Matrix@{Matrix}}
+\subsubsection[{$\sim$\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-::$\sim$\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_a9b1c3627f573d78a2f08623fdfef990f}
+
+
+Definition at line 397 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMatrix_a02c825325655a07eb94e4a57478a4c18}{\index{Matrix@{Matrix}!Col@{Col}}
+\index{Col@{Col}!Matrix@{Matrix}}
+\subsubsection[{Col}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Matrix\-::\-Col (
+\begin{DoxyParamCaption}
+\item[{int}]{j}
+\end{DoxyParamCaption}
+) const}}\label{classMatrix_a02c825325655a07eb94e4a57478a4c18}
+
+
+Definition at line 462 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMatrix_a02c825325655a07eb94e4a57478a4c18_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_ae6b225896639ed624596fff9a01f0618}{\index{Matrix@{Matrix}!Diag@{Diag}}
+\index{Diag@{Diag}!Matrix@{Matrix}}
+\subsubsection[{Diag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Matrix\-::\-Diag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classMatrix_ae6b225896639ed624596fff9a01f0618}
+
+
+Definition at line 476 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classMatrix_ae6b225896639ed624596fff9a01f0618_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_ac6b0e8ce2c566a0379bd8da579d1cb45}{\index{Matrix@{Matrix}!operator()@{operator()}}
+\index{operator()@{operator()}!Matrix@{Matrix}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix\-::operator() (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrix_ac6b0e8ce2c566a0379bd8da579d1cb45}
+
+
+Definition at line 179 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+\hypertarget{classMatrix_ad6c820c473b60706e10a7b43fa6575ee}{\index{Matrix@{Matrix}!operator()@{operator()}}
+\index{operator()@{operator()}!Matrix@{Matrix}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}double\& Matrix\-::operator() (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrix_ad6c820c473b60706e10a7b43fa6575ee}
+
+
+Definition at line 180 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+\hypertarget{classMatrix_a3ac5eee33c322def8e5979b931f09e12}{\index{Matrix@{Matrix}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Matrix@{Matrix}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::operator+= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{V}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_a3ac5eee33c322def8e5979b931f09e12}
+
+
+Definition at line 646 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a53793b2dda77eee2f6b648c5bf5f6686}{\index{Matrix@{Matrix}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Matrix@{Matrix}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::operator-\/= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{V}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_a53793b2dda77eee2f6b648c5bf5f6686}
+
+
+Definition at line 657 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_aeb7802816a5f9c01e0703f1a6a691e9b}{\index{Matrix@{Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!Matrix@{Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const double}]{value}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_aeb7802816a5f9c01e0703f1a6a691e9b}
+
+
+Definition at line 430 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ac2667ec6586a945d5062d95e762ad1d4}{\index{Matrix@{Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!Matrix@{Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{M\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_ac2667ec6586a945d5062d95e762ad1d4}
+
+
+Definition at line 438 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_aed4e281aadfd6055e02e950988d6d427}{\index{Matrix@{Matrix}!resize@{resize}}
+\index{resize@{resize}!Matrix@{Matrix}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} \& Matrix\-::resize (
+\begin{DoxyParamCaption}
+\item[{int}]{dim1, }
+\item[{int}]{dim2}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_aed4e281aadfd6055e02e950988d6d427}
+
+
+Definition at line 405 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_af11392830874339383f4449d6efc3e71}{\index{Matrix@{Matrix}!Row@{Row}}
+\index{Row@{Row}!Matrix@{Matrix}}
+\subsubsection[{Row}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Matrix\-::\-Row (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const}}\label{classMatrix_af11392830874339383f4449d6efc3e71}
+
+
+Definition at line 469 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{classMatrix_af11392830874339383f4449d6efc3e71_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_ae9f1574a9cf6595c64ce1236a8003cd2}{\index{Matrix@{Matrix}!Set\-Col@{Set\-Col}}
+\index{Set\-Col@{Set\-Col}!Matrix@{Matrix}}
+\subsubsection[{Set\-Col}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::\-Set\-Col (
+\begin{DoxyParamCaption}
+\item[{int}]{j, }
+\item[{const {\bf Vector} \&}]{Col}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_ae9f1574a9cf6595c64ce1236a8003cd2}
+
+
+Definition at line 521 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{classMatrix_ae9f1574a9cf6595c64ce1236a8003cd2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMatrix_ae9f1574a9cf6595c64ce1236a8003cd2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_a308d1f64fcf50b39a26fa10a34657637}{\index{Matrix@{Matrix}!Set\-Row@{Set\-Row}}
+\index{Set\-Row@{Set\-Row}!Matrix@{Matrix}}
+\subsubsection[{Set\-Row}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-::\-Set\-Row (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{const {\bf Vector} \&}]{Row}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_a308d1f64fcf50b39a26fa10a34657637}
+
+
+Definition at line 534 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{classMatrix_a308d1f64fcf50b39a26fa10a34657637_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_aec0c767dcd6da0724ccb6df4ec0f2a82}{\index{Matrix@{Matrix}!size1@{size1}}
+\index{size1@{size1}!Matrix@{Matrix}}
+\subsubsection[{size1}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::size1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrix_aec0c767dcd6da0724ccb6df4ec0f2a82}
+
+
+Definition at line 174 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMatrix_aec0c767dcd6da0724ccb6df4ec0f2a82_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_a306220f01f6859a16e738590214d008d}{\index{Matrix@{Matrix}!size2@{size2}}
+\index{size2@{size2}!Matrix@{Matrix}}
+\subsubsection[{size2}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::size2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrix_a306220f01f6859a16e738590214d008d}
+
+
+Definition at line 175 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMatrix_a306220f01f6859a16e738590214d008d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_a220d7f201c5dc597cd14530fe92402b0}{\index{Matrix@{Matrix}!slice@{slice}}
+\index{slice@{slice}!Matrix@{Matrix}}
+\subsubsection[{slice}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Matrix\-::slice (
+\begin{DoxyParamCaption}
+\item[{int}]{first\-\_\-row, }
+\item[{int}]{last\-\_\-row, }
+\item[{int}]{first\-\_\-col, }
+\item[{int}]{last\-\_\-col}
+\end{DoxyParamCaption}
+)}}\label{classMatrix_a220d7f201c5dc597cd14530fe92402b0}
+
+
+Definition at line 506 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classMatrix_a220d7f201c5dc597cd14530fe92402b0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classMatrix_a6b5f0679c723652340ff8316308854b7}{\index{Matrix@{Matrix}!Trace@{Trace}}
+\index{Trace@{Trace}!Matrix@{Matrix}}
+\subsubsection[{Trace}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix\-::\-Trace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classMatrix_a6b5f0679c723652340ff8316308854b7}
+
+
+Definition at line 487 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_acdd5ac95adb5e5cbcd929342bf5aad29}{\index{Matrix@{Matrix}!Trace@{Trace}}
+\index{Trace@{Trace}!Matrix@{Matrix}}
+\subsubsection[{Trace}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix\-::\-Trace (
+\begin{DoxyParamCaption}
+\item[{int}]{low, }
+\item[{int}]{upp}
+\end{DoxyParamCaption}
+) const}}\label{classMatrix_acdd5ac95adb5e5cbcd929342bf5aad29}
+
+
+Definition at line 491 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classMatrix_af7d7bb183b22c5c942a8afdadc433bc2}{\index{Matrix@{Matrix}!Diag@{Diag}}
+\index{Diag@{Diag}!Matrix@{Matrix}}
+\subsubsection[{Diag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Diag (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{Vec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_af7d7bb183b22c5c942a8afdadc433bc2}
+
+
+Definition at line 681 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a4c5b7e42a648b06a906407b0155e3342}{\index{Matrix@{Matrix}!Dyadic@{Dyadic}}
+\index{Dyadic@{Dyadic}!Matrix@{Matrix}}
+\subsubsection[{Dyadic}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Dyadic (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{left, }
+\item[{const {\bf Vector} \&}]{right}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a4c5b7e42a648b06a906407b0155e3342}
+
+
+Definition at line 896 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ac71a8aaf67fa3c90f274788d91002af9}{\index{Matrix@{Matrix}!Id@{Id}}
+\index{Id@{Id}!Matrix@{Matrix}}
+\subsubsection[{Id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Id (
+\begin{DoxyParamCaption}
+\item[{int}]{Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_ac71a8aaf67fa3c90f274788d91002af9}
+
+
+Definition at line 671 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a5bdf67234eadeb0a304f11d4537047aa}{\index{Matrix@{Matrix}!Inv@{Inv}}
+\index{Inv@{Inv}!Matrix@{Matrix}}
+\subsubsection[{Inv}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Inv (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{Mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a5bdf67234eadeb0a304f11d4537047aa}
+
+
+Definition at line 739 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_abac5bb38f6d2767db9359ff26f2d772b}{\index{Matrix@{Matrix}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!Matrix@{Matrix}}
+\subsubsection[{operator\&}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator\& (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{A, }
+\item[{const {\bf Vector} \&}]{Row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_abac5bb38f6d2767db9359ff26f2d772b}
+
+
+Definition at line 550 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a52818bc7441c2d401f0378b7c1002da6}{\index{Matrix@{Matrix}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!Matrix@{Matrix}}
+\subsubsection[{operator\&}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator\& (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{Row, }
+\item[{const {\bf Matrix} \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a52818bc7441c2d401f0378b7c1002da6}
+
+
+Definition at line 565 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_addc226f84201673fed592aef51237564}{\index{Matrix@{Matrix}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!Matrix@{Matrix}}
+\subsubsection[{operator\&}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator\& (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{A, }
+\item[{const {\bf Matrix} \&}]{B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_addc226f84201673fed592aef51237564}
+
+
+Definition at line 580 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a268bff5a8ac028eb9ef9671f2a4185db}{\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{double}]{value, }
+\item[{const {\bf Matrix} \&}]{Mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a268bff5a8ac028eb9ef9671f2a4185db}
+
+
+Definition at line 771 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a7e0731e101b2ddd82e506e09394962e9}{\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{Mat, }
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a7e0731e101b2ddd82e506e09394962e9}
+
+
+Definition at line 780 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a6b58c286243be002bf669704ad15353a}{\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{left, }
+\item[{const {\bf Matrix} \&}]{right}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a6b58c286243be002bf669704ad15353a}
+
+
+Definition at line 838 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ad239de62f336223aebc6a42debc44883}{\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{Mat, }
+\item[{const {\bf Vector} \&}]{Vec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_ad239de62f336223aebc6a42debc44883}
+
+
+Definition at line 859 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_adf558aeff97481fccb373a50dcba1c2d}{\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{Vec, }
+\item[{const {\bf Matrix} \&}]{Mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_adf558aeff97481fccb373a50dcba1c2d}
+
+
+Definition at line 876 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ac82b2ffb982879784a901be332961065}{\index{Matrix@{Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix@{Matrix}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{left, }
+\item[{const {\bf Matrix} \&}]{right}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_ac82b2ffb982879784a901be332961065}
+
+
+Definition at line 809 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a443e399b244090d5d912a25e488874c2}{\index{Matrix@{Matrix}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix@{Matrix}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{Mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a443e399b244090d5d912a25e488874c2}
+
+
+Definition at line 797 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a617ecec648cf992c05346391108ddae3}{\index{Matrix@{Matrix}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix@{Matrix}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{left, }
+\item[{const {\bf Matrix} \&}]{right}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a617ecec648cf992c05346391108ddae3}
+
+
+Definition at line 822 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a204b6db43c7ea7ff6f15e927d25c1c3c}{\index{Matrix@{Matrix}!operator/@{operator/}}
+\index{operator/@{operator/}!Matrix@{Matrix}}
+\subsubsection[{operator/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{Mat, }
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a204b6db43c7ea7ff6f15e927d25c1c3c}
+
+
+Definition at line 785 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_af4c0397ea9493076522e569cacddb99f}{\index{Matrix@{Matrix}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Matrix@{Matrix}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os, }
+\item[{const {\bf Matrix} \&}]{Mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_af4c0397ea9493076522e569cacddb99f}
+\hypertarget{classMatrix_ab1d3ddb78982da536099cac5e4734999}{\index{Matrix@{Matrix}!operator$|$@{operator$|$}}
+\index{operator$|$@{operator$|$}!Matrix@{Matrix}}
+\subsubsection[{operator$|$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator$|$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{A, }
+\item[{const {\bf Vector} \&}]{Col}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_ab1d3ddb78982da536099cac5e4734999}
+
+
+Definition at line 595 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_affee7481d9187bfc81b85b0fcc9f2c55}{\index{Matrix@{Matrix}!operator$|$@{operator$|$}}
+\index{operator$|$@{operator$|$}!Matrix@{Matrix}}
+\subsubsection[{operator$|$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator$|$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{Col, }
+\item[{const {\bf Matrix} \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_affee7481d9187bfc81b85b0fcc9f2c55}
+
+
+Definition at line 610 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_adb2721510b1e82a72241a37d766f7abb}{\index{Matrix@{Matrix}!operator$|$@{operator$|$}}
+\index{operator$|$@{operator$|$}!Matrix@{Matrix}}
+\subsubsection[{operator$|$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} operator$|$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{A, }
+\item[{const {\bf Matrix} \&}]{B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_adb2721510b1e82a72241a37d766f7abb}
+
+
+Definition at line 625 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_ae452267b1d1da6280386846d97ec4e4f}{\index{Matrix@{Matrix}!R\-\_\-x@{R\-\_\-x}}
+\index{R\-\_\-x@{R\-\_\-x}!Matrix@{Matrix}}
+\subsubsection[{R\-\_\-x}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} R\-\_\-x (
+\begin{DoxyParamCaption}
+\item[{double}]{Angle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_ae452267b1d1da6280386846d97ec4e4f}
+
+
+Definition at line 691 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a66b3b116958d5c2f1c528faa04c71674}{\index{Matrix@{Matrix}!R\-\_\-y@{R\-\_\-y}}
+\index{R\-\_\-y@{R\-\_\-y}!Matrix@{Matrix}}
+\subsubsection[{R\-\_\-y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} R\-\_\-y (
+\begin{DoxyParamCaption}
+\item[{double}]{Angle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a66b3b116958d5c2f1c528faa04c71674}
+
+
+Definition at line 702 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_a94c9c4e1f3afc6636dda6572f72ef4c2}{\index{Matrix@{Matrix}!R\-\_\-z@{R\-\_\-z}}
+\index{R\-\_\-z@{R\-\_\-z}!Matrix@{Matrix}}
+\subsubsection[{R\-\_\-z}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} R\-\_\-z (
+\begin{DoxyParamCaption}
+\item[{double}]{Angle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_a94c9c4e1f3afc6636dda6572f72ef4c2}
+
+
+Definition at line 713 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+\hypertarget{classMatrix_aa54829a0c63c78e6bfbd12285ad94075}{\index{Matrix@{Matrix}!Transp@{Transp}}
+\index{Transp@{Transp}!Matrix@{Matrix}}
+\subsubsection[{Transp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} Transp (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{Mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classMatrix_aa54829a0c63c78e6bfbd12285ad94075}
+
+
+Definition at line 727 of file S\-A\-T\-\_\-\-Vec\-Mat.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classMatrix_af5435c7814eef8c12549d34e7be2184c}{\index{Matrix@{Matrix}!m@{m}}
+\index{m@{m}!Matrix@{Matrix}}
+\subsubsection[{m}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::m\hspace{0.3cm}{\ttfamily [private]}}}\label{classMatrix_af5435c7814eef8c12549d34e7be2184c}
+
+
+Definition at line 246 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+\hypertarget{classMatrix_a6809ed961617c63dfdea6ca953990b8f}{\index{Matrix@{Matrix}!M@{M}}
+\index{M@{M}!Matrix@{Matrix}}
+\subsubsection[{M}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$$\ast$ Matrix\-::\-M\hspace{0.3cm}{\ttfamily [private]}}}\label{classMatrix_a6809ed961617c63dfdea6ca953990b8f}
+
+
+Definition at line 247 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+\hypertarget{classMatrix_a6f755dbfbefb9b4ba6c2b3acea8932f2}{\index{Matrix@{Matrix}!n@{n}}
+\index{n@{n}!Matrix@{Matrix}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\-::n\hspace{0.3cm}{\ttfamily [private]}}}\label{classMatrix_a6f755dbfbefb9b4ba6c2b3acea8932f2}
+
+
+Definition at line 245 of file S\-A\-T\-\_\-\-Vec\-Mat.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SAT__VecMat_8h}{S\-A\-T\-\_\-\-Vec\-Mat.\-h}\item 
+\hyperlink{SAT__VecMat_8cpp}{S\-A\-T\-\_\-\-Vec\-Mat.\-cpp}\end{DoxyCompactItemize}

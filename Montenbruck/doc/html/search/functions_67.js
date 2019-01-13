@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['gast',['GAST',['../SAT__RefSys_8cpp.html#a120de1171391bce3ca4111e46331a93c',1,'GAST(double Mjd_UT1):&#160;SAT_RefSys.cpp'],['../SAT__RefSys_8h.html#a120de1171391bce3ca4111e46331a93c',1,'GAST(double Mjd_UT1):&#160;SAT_RefSys.cpp']]],
+  ['geodetic',['Geodetic',['../classGeodetic.html#a3f673f6471171da70ef7fb27b90a0737',1,'Geodetic::Geodetic()'],['../classGeodetic.html#ae97afd6fa6138fbe24496f1345ac27fc',1,'Geodetic::Geodetic(double lambda, double phi, double alt)'],['../classGeodetic.html#ad813b9417dac1cee7ea962c36b82bb9c',1,'Geodetic::Geodetic(Vector r, double R_equ=R_Earth, double f=f_Earth)']]],
+  ['getobs',['GetObs',['../RTOD_8cpp.html#a414f260c3afbab0dddecaf55f18baecf',1,'GetObs(ifstream &amp;inp, ObsType &amp;Obs):&#160;RTOD.cpp'],['../TDRSOD_8cpp.html#a414f260c3afbab0dddecaf55f18baecf',1,'GetObs(ifstream &amp;inp, ObsType &amp;Obs):&#160;TDRSOD.cpp']]],
+  ['getsetup',['GetSetup',['../GEODA_8cpp.html#af62e04db95805bf3f19fcdfdbc66a49a',1,'GetSetup(ifstream &amp;inp, double &amp;lon, Station &amp;Sta1, Station &amp;Sta2, int &amp;n_est, int &amp;n_con, double &amp;T_track, double &amp;T_pred):&#160;GEODA.cpp'],['../RTOD_8cpp.html#aa4bc0219c040572edcf3d52aea14be67',1,'GetSetup(ifstream &amp;inp, int &amp;n_grav, double &amp;Step, double &amp;sig_xyz, double &amp;sig_pos, double &amp;sig_vel, double &amp;w_pos, double &amp;w_vel, double &amp;EditLevel):&#160;RTOD.cpp'],['../TDRSOD_8cpp.html#a905d1bd8096476fe062f28efb2acef7b',1,'GetSetup(ifstream &amp;inp, double &amp;Mjd0_TT, int &amp;n_iterat, int &amp;n_sat, int TdrsNo[], Vector y0[], Vector Sigy0[], Vector p[], Vector Sigp[], AuxParam Aux[], int &amp;n_Sta, StaParam Sta[]):&#160;TDRSOD.cpp']]],
+  ['ghamatrix',['GHAMatrix',['../SAT__RefSys_8cpp.html#a9699d3dfbd482534e86059e5613f8b8c',1,'GHAMatrix(double Mjd_UT1):&#160;SAT_RefSys.cpp'],['../SAT__RefSys_8h.html#a9699d3dfbd482534e86059e5613f8b8c',1,'GHAMatrix(double Mjd_UT1):&#160;SAT_RefSys.cpp']]],
+  ['gmst',['GMST',['../SAT__RefSys_8cpp.html#a2a4cc14aa92a1449e08540255af19f8e',1,'GMST(double Mjd_UT1):&#160;SAT_RefSys.cpp'],['../SAT__RefSys_8h.html#a2a4cc14aa92a1449e08540255af19f8e',1,'GMST(double Mjd_UT1):&#160;SAT_RefSys.cpp']]],
+  ['gps_5futc',['GPS_UTC',['../classIERS.html#a79c2d9fcfafe0c0d8cee4545e17af0f3',1,'IERS']]],
+  ['grav',['Grav',['../SAT__Force_8cpp.html#a7c2b416d014dc79f2891530e88d96899',1,'SAT_Force.cpp']]],
+  ['gravmodel',['GravModel',['../structGravModel.html#a0497787562c367ca5f322d23885df1c1',1,'GravModel']]]
+];

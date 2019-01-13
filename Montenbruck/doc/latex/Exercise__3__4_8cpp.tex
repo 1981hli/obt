@@ -1,0 +1,90 @@
+\hypertarget{Exercise__3__4_8cpp}{\section{Exercise\-\_\-3\-\_\-4.\-cpp File Reference}
+\label{Exercise__3__4_8cpp}\index{Exercise\-\_\-3\-\_\-4.\-cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include \char`\"{}G\-N\-U\-\_\-iomanip.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Const.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-D\-E.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Kepler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Force.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Ref\-Sys.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Vec\-Mat.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structAuxParam}{Aux\-Param}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{Exercise__3__4_8cpp_a6f259f7c826653eca713694553626b71}{Accel} (double Mjd\-\_\-\-T\-T, const \hyperlink{classVector}{Vector} \&r, const \hyperlink{classVector}{Vector} \&v, double Area, double mass, double C\-R, double C\-D, int n, int m, bool Flag\-Sun, bool Flag\-Moon, bool Flag\-S\-Rad, bool Flag\-Drag)
+\item 
+void \hyperlink{Exercise__3__4_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649}{Deriv} (double t, const \hyperlink{classVector}{Vector} \&y, \hyperlink{classVector}{Vector} \&yp, void $\ast$p\-Aux)
+\item 
+void \hyperlink{Exercise__3__4_8cpp_ad6a25c1a7a810a6eb4625c4b838ffdcf}{Ephemeris} (const \hyperlink{classVector}{Vector} \&Y0, int N\-\_\-\-Step, double Step, \hyperlink{structAuxParam}{Aux\-Param} p, \hyperlink{classVector}{Vector} Eph\mbox{[}$\,$\mbox{]})
+\item 
+{\footnotesize template$<$class T $>$ }\\const T \& \hyperlink{Exercise__3__4_8cpp_a763ade6af1e7f9ac1759ec72fff1bae5}{Max} (const T \&a, const T \&b)
+\item 
+int \hyperlink{Exercise__3__4_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{Exercise__3__4_8cpp_a6f259f7c826653eca713694553626b71}{\index{Exercise\-\_\-3\-\_\-4.\-cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}!Accel@{Accel}}
+\index{Accel@{Accel}!Exercise_3_4.cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}}
+\subsubsection[{Accel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-T\-T, }
+\item[{const {\bf Vector} \&}]{r, }
+\item[{const {\bf Vector} \&}]{v, }
+\item[{double}]{Area, }
+\item[{double}]{mass, }
+\item[{double}]{C\-R, }
+\item[{double}]{C\-D, }
+\item[{int}]{n, }
+\item[{int}]{m, }
+\item[{bool}]{Flag\-Sun, }
+\item[{bool}]{Flag\-Moon, }
+\item[{bool}]{Flag\-S\-Rad, }
+\item[{bool}]{Flag\-Drag}
+\end{DoxyParamCaption}
+)}}\label{Exercise__3__4_8cpp_a6f259f7c826653eca713694553626b71}
+\hypertarget{Exercise__3__4_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649}{\index{Exercise\-\_\-3\-\_\-4.\-cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}!Deriv@{Deriv}}
+\index{Deriv@{Deriv}!Exercise_3_4.cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}}
+\subsubsection[{Deriv}]{\setlength{\rightskip}{0pt plus 5cm}void Deriv (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{const {\bf Vector} \&}]{y, }
+\item[{{\bf Vector} \&}]{yp, }
+\item[{void $\ast$}]{p\-Aux}
+\end{DoxyParamCaption}
+)}}\label{Exercise__3__4_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649}
+\hypertarget{Exercise__3__4_8cpp_ad6a25c1a7a810a6eb4625c4b838ffdcf}{\index{Exercise\-\_\-3\-\_\-4.\-cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}!Ephemeris@{Ephemeris}}
+\index{Ephemeris@{Ephemeris}!Exercise_3_4.cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}}
+\subsubsection[{Ephemeris}]{\setlength{\rightskip}{0pt plus 5cm}void Ephemeris (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{Y0, }
+\item[{int}]{N\-\_\-\-Step, }
+\item[{double}]{Step, }
+\item[{{\bf Aux\-Param}}]{p, }
+\item[{{\bf Vector}}]{Eph\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{Exercise__3__4_8cpp_ad6a25c1a7a810a6eb4625c4b838ffdcf}
+\hypertarget{Exercise__3__4_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{Exercise\-\_\-3\-\_\-4.\-cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}!main@{main}}
+\index{main@{main}!Exercise_3_4.cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Exercise__3__4_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+\hypertarget{Exercise__3__4_8cpp_a763ade6af1e7f9ac1759ec72fff1bae5}{\index{Exercise\-\_\-3\-\_\-4.\-cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}!Max@{Max}}
+\index{Max@{Max}!Exercise_3_4.cpp@{Exercise\-\_\-3\-\_\-4.\-cpp}}
+\subsubsection[{Max}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ const T\& Max (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{a, }
+\item[{const T \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{Exercise__3__4_8cpp_a763ade6af1e7f9ac1759ec72fff1bae5}

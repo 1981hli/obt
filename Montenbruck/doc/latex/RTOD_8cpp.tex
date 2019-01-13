@@ -1,0 +1,193 @@
+\hypertarget{RTOD_8cpp}{\section{R\-T\-O\-D.\-cpp File Reference}
+\label{RTOD_8cpp}\index{R\-T\-O\-D.\-cpp@{R\-T\-O\-D.\-cpp}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Const.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-D\-E.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Kepler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Filter.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Force.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Ref\-Sys.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Vec\-Mat.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}G\-N\-U\-\_\-iomanip.\-h\char`\"{}}\\*
+Include dependency graph for R\-T\-O\-D.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RTOD_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structObsType}{Obs\-Type}
+\item 
+struct \hyperlink{structAuxParam}{Aux\-Param}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{RTOD_8cpp_ad928b0e88089fe577162bad47f911adf}{Accel} (double Mjd\-\_\-\-G\-P\-S, const \hyperlink{classVector}{Vector} \&r, int n)
+\item 
+void \hyperlink{RTOD_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649}{Deriv} (double t, const \hyperlink{classVector}{Vector} \&y, \hyperlink{classVector}{Vector} \&yp, void $\ast$p\-Aux)
+\item 
+void \hyperlink{RTOD_8cpp_aa4bc0219c040572edcf3d52aea14be67}{Get\-Setup} (ifstream \&inp, int \&n\-\_\-grav, double \&Step, double \&sig\-\_\-xyz, double \&sig\-\_\-pos, double \&sig\-\_\-vel, double \&w\-\_\-pos, double \&w\-\_\-vel, double \&Edit\-Level)
+\item 
+void \hyperlink{RTOD_8cpp_a414f260c3afbab0dddecaf55f18baecf}{Get\-Obs} (ifstream \&inp, \hyperlink{structObsType}{Obs\-Type} \&Obs)
+\item 
+int \hyperlink{RTOD_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{RTOD_8cpp_ad928b0e88089fe577162bad47f911adf}{\index{R\-T\-O\-D.\-cpp@{R\-T\-O\-D.\-cpp}!Accel@{Accel}}
+\index{Accel@{Accel}!RTOD.cpp@{R\-T\-O\-D.\-cpp}}
+\subsubsection[{Accel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Accel (
+\begin{DoxyParamCaption}
+\item[{double}]{Mjd\-\_\-\-G\-P\-S, }
+\item[{const {\bf Vector} \&}]{r, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{RTOD_8cpp_ad928b0e88089fe577162bad47f911adf}
+
+
+Definition at line 92 of file R\-T\-O\-D.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RTOD_8cpp_ad928b0e88089fe577162bad47f911adf_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{RTOD_8cpp_ad928b0e88089fe577162bad47f911adf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{RTOD_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649}{\index{R\-T\-O\-D.\-cpp@{R\-T\-O\-D.\-cpp}!Deriv@{Deriv}}
+\index{Deriv@{Deriv}!RTOD.cpp@{R\-T\-O\-D.\-cpp}}
+\subsubsection[{Deriv}]{\setlength{\rightskip}{0pt plus 5cm}void Deriv (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{const {\bf Vector} \&}]{y, }
+\item[{{\bf Vector} \&}]{yp, }
+\item[{void $\ast$}]{p\-Aux}
+\end{DoxyParamCaption}
+)}}\label{RTOD_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649}
+
+
+Definition at line 132 of file R\-T\-O\-D.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RTOD_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{RTOD_8cpp_a8ed60f2e5115e2e00c123e12b1cbb649_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{RTOD_8cpp_a414f260c3afbab0dddecaf55f18baecf}{\index{R\-T\-O\-D.\-cpp@{R\-T\-O\-D.\-cpp}!Get\-Obs@{Get\-Obs}}
+\index{Get\-Obs@{Get\-Obs}!RTOD.cpp@{R\-T\-O\-D.\-cpp}}
+\subsubsection[{Get\-Obs}]{\setlength{\rightskip}{0pt plus 5cm}void Get\-Obs (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{inp, }
+\item[{{\bf Obs\-Type} \&}]{Obs}
+\end{DoxyParamCaption}
+)}}\label{RTOD_8cpp_a414f260c3afbab0dddecaf55f18baecf}
+
+
+Definition at line 192 of file R\-T\-O\-D.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{RTOD_8cpp_a414f260c3afbab0dddecaf55f18baecf_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{RTOD_8cpp_a414f260c3afbab0dddecaf55f18baecf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{RTOD_8cpp_aa4bc0219c040572edcf3d52aea14be67}{\index{R\-T\-O\-D.\-cpp@{R\-T\-O\-D.\-cpp}!Get\-Setup@{Get\-Setup}}
+\index{Get\-Setup@{Get\-Setup}!RTOD.cpp@{R\-T\-O\-D.\-cpp}}
+\subsubsection[{Get\-Setup}]{\setlength{\rightskip}{0pt plus 5cm}void Get\-Setup (
+\begin{DoxyParamCaption}
+\item[{ifstream \&}]{inp, }
+\item[{int \&}]{n\-\_\-grav, }
+\item[{double \&}]{Step, }
+\item[{double \&}]{sig\-\_\-xyz, }
+\item[{double \&}]{sig\-\_\-pos, }
+\item[{double \&}]{sig\-\_\-vel, }
+\item[{double \&}]{w\-\_\-pos, }
+\item[{double \&}]{w\-\_\-vel, }
+\item[{double \&}]{Edit\-Level}
+\end{DoxyParamCaption}
+)}}\label{RTOD_8cpp_aa4bc0219c040572edcf3d52aea14be67}
+
+
+Definition at line 163 of file R\-T\-O\-D.\-cpp.
+
+\hypertarget{RTOD_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{\index{R\-T\-O\-D.\-cpp@{R\-T\-O\-D.\-cpp}!main@{main}}
+\index{main@{main}!RTOD.cpp@{R\-T\-O\-D.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{RTOD_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Definition at line 231 of file R\-T\-O\-D.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RTOD_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+

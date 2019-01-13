@@ -1,0 +1,10 @@
+Subsatellite longitude [deg]                     :   -72.0
+Station 1 (lon [deg], lat [deg], alt [m])        :   -58.7  -34.4    0.0    
+Angles (noise & bias [deg], step [h], est.bias)  :     0.02  0.05 0.1  1
+Range (noise & bias [m], step [h], est.bias)     :     2.0  20.0  3.0  0
+Station 2 (lon [deg], lat [deg], alt [m])        :   -64.6  +31.6 1000.0    
+Angles (noise & bias [deg], step [h], est.bias)  :     0.02  0.05 0.0  0
+Range (noise & bias [m], step [h], est.bias)     :     2.0  20.0  0.0  0
+Tracking interval [h]                            :    24.0
+Prediction interval [h]                          :   336.0
+

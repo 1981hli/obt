@@ -1,0 +1,122 @@
+\hypertarget{classGJ4P}{\section{G\-J4\-P Class Reference}
+\label{classGJ4P}\index{G\-J4\-P@{G\-J4\-P}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGJ4P_a767167f705037e20345053afa857238c}{G\-J4\-P} (\hyperlink{Exercise__4__2_8cpp_ad73be7c0c82be97eb6a69c195369217a}{G\-J4\-Pfunct} f\-\_\-, int n\-\_\-eqn\-\_\-, void $\ast$p\-Aux\-\_\-)
+\item 
+void \hyperlink{classGJ4P_ad549e0ad4a301c22492e60e6c237a791}{Init} (double t\-\_\-0, const \hyperlink{classVector}{Vector} \&r\-\_\-0, const \hyperlink{classVector}{Vector} \&v\-\_\-0, double h\-\_\-)
+\item 
+void \hyperlink{classGJ4P_a44f0bf0441af880ade30f8bb9c8a26d8}{Step} (double \&t, \hyperlink{classVector}{Vector} \&r, \hyperlink{classVector}{Vector} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGJ4P_a4a31761a8af65b7dc18f0cd709830227}{R\-K4} (double \&t, \hyperlink{classVector}{Vector} \&r, \hyperlink{classVector}{Vector} \&v, double \hyperlink{classGJ4P_a9753300eabe5c63cbb459b149c915fc7}{h})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classGJ4P_a20994ce5f5a14b8000786ad42639ca97}{n\-\_\-eqn}
+\item 
+\hyperlink{Exercise__4__2_8cpp_ad73be7c0c82be97eb6a69c195369217a}{G\-J4\-Pfunct} \hyperlink{classGJ4P_aa89b54b895c07be97071abb62b855db7}{f}
+\item 
+double \hyperlink{classGJ4P_a9753300eabe5c63cbb459b149c915fc7}{h}
+\item 
+void $\ast$ \hyperlink{classGJ4P_ae919e3fcac68b64836cd15098f5dbf57}{p\-Aux}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classGJ4P_a8f9b87e77a9379c9c2cb4cd8eb96bdb5}{S2}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classGJ4P_abeae76a4e3b98e6b27c5cd2014456f23}{S1}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classGJ4P_a3eae5b98a2fffccb6ac8077b6b9f91ac}{D} \mbox{[}4\mbox{]}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classGJ4P_af79b34b383d9f4a1833a824c88930e2f}{d} \mbox{[}4\mbox{]}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classGJ4P_af7f0a7b35f1a11b509581037c3ce9bad}{r\-\_\-p}
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{classGJ4P_a5ce44c5a2b0b304651c4d463ad440c75}{v\-\_\-p}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGJ4P_a767167f705037e20345053afa857238c}{\index{G\-J4\-P@{G\-J4\-P}!G\-J4\-P@{G\-J4\-P}}
+\index{G\-J4\-P@{G\-J4\-P}!GJ4P@{G\-J4\-P}}
+\subsubsection[{G\-J4\-P}]{\setlength{\rightskip}{0pt plus 5cm}G\-J4\-P\-::\-G\-J4\-P (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-J4\-Pfunct}}]{f\-\_\-, }
+\item[{int}]{n\-\_\-eqn\-\_\-, }
+\item[{void $\ast$}]{p\-Aux\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classGJ4P_a767167f705037e20345053afa857238c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGJ4P_ad549e0ad4a301c22492e60e6c237a791}{\index{G\-J4\-P@{G\-J4\-P}!Init@{Init}}
+\index{Init@{Init}!GJ4P@{G\-J4\-P}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void G\-J4\-P\-::\-Init (
+\begin{DoxyParamCaption}
+\item[{double}]{t\-\_\-0, }
+\item[{const {\bf Vector} \&}]{r\-\_\-0, }
+\item[{const {\bf Vector} \&}]{v\-\_\-0, }
+\item[{double}]{h\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classGJ4P_ad549e0ad4a301c22492e60e6c237a791}
+\hypertarget{classGJ4P_a4a31761a8af65b7dc18f0cd709830227}{\index{G\-J4\-P@{G\-J4\-P}!R\-K4@{R\-K4}}
+\index{R\-K4@{R\-K4}!GJ4P@{G\-J4\-P}}
+\subsubsection[{R\-K4}]{\setlength{\rightskip}{0pt plus 5cm}void G\-J4\-P\-::\-R\-K4 (
+\begin{DoxyParamCaption}
+\item[{double \&}]{t, }
+\item[{{\bf Vector} \&}]{r, }
+\item[{{\bf Vector} \&}]{v, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_a4a31761a8af65b7dc18f0cd709830227}
+\hypertarget{classGJ4P_a44f0bf0441af880ade30f8bb9c8a26d8}{\index{G\-J4\-P@{G\-J4\-P}!Step@{Step}}
+\index{Step@{Step}!GJ4P@{G\-J4\-P}}
+\subsubsection[{Step}]{\setlength{\rightskip}{0pt plus 5cm}void G\-J4\-P\-::\-Step (
+\begin{DoxyParamCaption}
+\item[{double \&}]{t, }
+\item[{{\bf Vector} \&}]{r, }
+\item[{{\bf Vector} \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{classGJ4P_a44f0bf0441af880ade30f8bb9c8a26d8}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classGJ4P_a3eae5b98a2fffccb6ac8077b6b9f91ac}{\index{G\-J4\-P@{G\-J4\-P}!D@{D}}
+\index{D@{D}!GJ4P@{G\-J4\-P}}
+\subsubsection[{D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} G\-J4\-P\-::\-D\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_a3eae5b98a2fffccb6ac8077b6b9f91ac}
+\hypertarget{classGJ4P_af79b34b383d9f4a1833a824c88930e2f}{\index{G\-J4\-P@{G\-J4\-P}!d@{d}}
+\index{d@{d}!GJ4P@{G\-J4\-P}}
+\subsubsection[{d}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} G\-J4\-P\-::d\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_af79b34b383d9f4a1833a824c88930e2f}
+\hypertarget{classGJ4P_aa89b54b895c07be97071abb62b855db7}{\index{G\-J4\-P@{G\-J4\-P}!f@{f}}
+\index{f@{f}!GJ4P@{G\-J4\-P}}
+\subsubsection[{f}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-J4\-Pfunct} G\-J4\-P\-::f\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_aa89b54b895c07be97071abb62b855db7}
+\hypertarget{classGJ4P_a9753300eabe5c63cbb459b149c915fc7}{\index{G\-J4\-P@{G\-J4\-P}!h@{h}}
+\index{h@{h}!GJ4P@{G\-J4\-P}}
+\subsubsection[{h}]{\setlength{\rightskip}{0pt plus 5cm}double G\-J4\-P\-::h\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_a9753300eabe5c63cbb459b149c915fc7}
+\hypertarget{classGJ4P_a20994ce5f5a14b8000786ad42639ca97}{\index{G\-J4\-P@{G\-J4\-P}!n\-\_\-eqn@{n\-\_\-eqn}}
+\index{n\-\_\-eqn@{n\-\_\-eqn}!GJ4P@{G\-J4\-P}}
+\subsubsection[{n\-\_\-eqn}]{\setlength{\rightskip}{0pt plus 5cm}int G\-J4\-P\-::n\-\_\-eqn\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_a20994ce5f5a14b8000786ad42639ca97}
+\hypertarget{classGJ4P_ae919e3fcac68b64836cd15098f5dbf57}{\index{G\-J4\-P@{G\-J4\-P}!p\-Aux@{p\-Aux}}
+\index{p\-Aux@{p\-Aux}!GJ4P@{G\-J4\-P}}
+\subsubsection[{p\-Aux}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ G\-J4\-P\-::p\-Aux\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_ae919e3fcac68b64836cd15098f5dbf57}
+\hypertarget{classGJ4P_af7f0a7b35f1a11b509581037c3ce9bad}{\index{G\-J4\-P@{G\-J4\-P}!r\-\_\-p@{r\-\_\-p}}
+\index{r\-\_\-p@{r\-\_\-p}!GJ4P@{G\-J4\-P}}
+\subsubsection[{r\-\_\-p}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} G\-J4\-P\-::r\-\_\-p\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_af7f0a7b35f1a11b509581037c3ce9bad}
+\hypertarget{classGJ4P_abeae76a4e3b98e6b27c5cd2014456f23}{\index{G\-J4\-P@{G\-J4\-P}!S1@{S1}}
+\index{S1@{S1}!GJ4P@{G\-J4\-P}}
+\subsubsection[{S1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} G\-J4\-P\-::\-S1\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_abeae76a4e3b98e6b27c5cd2014456f23}
+\hypertarget{classGJ4P_a8f9b87e77a9379c9c2cb4cd8eb96bdb5}{\index{G\-J4\-P@{G\-J4\-P}!S2@{S2}}
+\index{S2@{S2}!GJ4P@{G\-J4\-P}}
+\subsubsection[{S2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} G\-J4\-P\-::\-S2\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_a8f9b87e77a9379c9c2cb4cd8eb96bdb5}
+\hypertarget{classGJ4P_a5ce44c5a2b0b304651c4d463ad440c75}{\index{G\-J4\-P@{G\-J4\-P}!v\-\_\-p@{v\-\_\-p}}
+\index{v\-\_\-p@{v\-\_\-p}!GJ4P@{G\-J4\-P}}
+\subsubsection[{v\-\_\-p}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} G\-J4\-P\-::v\-\_\-p\hspace{0.3cm}{\ttfamily [private]}}}\label{classGJ4P_a5ce44c5a2b0b304651c4d463ad440c75}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Exercise__4__2_8cpp}{Exercise\-\_\-4\-\_\-2.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,288 @@
+\hypertarget{SAT__Kepler_8cpp}{\section{S\-A\-T\-\_\-\-Kepler.\-cpp File Reference}
+\label{SAT__Kepler_8cpp}\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+}
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Const.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Kepler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}S\-A\-T\-\_\-\-Vec\-Mat.\-h\char`\"{}}\\*
+Include dependency graph for S\-A\-T\-\_\-\-Kepler.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceanonymous__namespace_02SAT__Kepler_8cpp_03}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Kepler.\-cpp\}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{namespaceanonymous__namespace_02SAT__Kepler_8cpp_03_aa49f9f9ad3a8153f0982dc37fe17c4f2}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Kepler.\-cpp\}\-::\-Frac} (double x)
+\item 
+double \hyperlink{namespaceanonymous__namespace_02SAT__Kepler_8cpp_03_ae5d42531d691a174363f296c22d23217}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Kepler.\-cpp\}\-::\-Modulo} (double x, double y)
+\item 
+double \hyperlink{namespaceanonymous__namespace_02SAT__Kepler_8cpp_03_a898091d856dff0d563448625b7634f16}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Kepler.\-cpp\}\-::\-F} (double eta, double m, double l)
+\item 
+double \hyperlink{SAT__Kepler_8cpp_a2ad531000471d74f459467a747a79aff}{Ecc\-Anom} (double M, double e)
+\item 
+double \hyperlink{SAT__Kepler_8cpp_a131c46c69e895d1d1bf15bf54830012d}{Find\-Eta} (const \hyperlink{classVector}{Vector} \&r\-\_\-a, const \hyperlink{classVector}{Vector} \&r\-\_\-b, double tau)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Kepler_8cpp_a451b90edb1cf7dcb4281dd26dfcacfaf}{State} (double G\-M, const \hyperlink{classVector}{Vector} \&Kep, double dt)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{SAT__Kepler_8cpp_a0ad5246987cf2f6c19950ecf2aa00390}{State\-Partials} (double G\-M, const \hyperlink{classVector}{Vector} \&Kep, double dt)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Kepler_8cpp_a1d7fdd2727e376b6aa5a54877ca6a205}{Elements} (double G\-M, const \hyperlink{classVector}{Vector} \&y)
+\item 
+\hyperlink{classVector}{Vector} \hyperlink{SAT__Kepler_8cpp_ae76d62d97df6e450fe706aebb882b103}{Elements} (double G\-M, double Mjd\-\_\-a, double Mjd\-\_\-b, const \hyperlink{classVector}{Vector} \&r\-\_\-a, const \hyperlink{classVector}{Vector} \&r\-\_\-b)
+\item 
+void \hyperlink{SAT__Kepler_8cpp_aeb2175e4cdc39ea590f44fc2949ea8d3}{Two\-Body} (double G\-M, const \hyperlink{classVector}{Vector} \&Y0, double dt, \hyperlink{classVector}{Vector} \&Y, \hyperlink{classMatrix}{Matrix} \&d\-Yd\-Y0)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \hyperlink{namespaceanonymous__namespace_02SAT__Kepler_8cpp_03_a4a19f0e7912b0c72da53321784af4b1b}{anonymous\-\_\-namespace\{\-S\-A\-T\-\_\-\-Kepler.\-cpp\}\-::eps\-\_\-mach} = std\-::numeric\-\_\-limits$<$double$>$\-::epsilon()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{SAT__Kepler_8cpp_a2ad531000471d74f459467a747a79aff}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!Ecc\-Anom@{Ecc\-Anom}}
+\index{Ecc\-Anom@{Ecc\-Anom}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{Ecc\-Anom}]{\setlength{\rightskip}{0pt plus 5cm}double Ecc\-Anom (
+\begin{DoxyParamCaption}
+\item[{double}]{M, }
+\item[{double}]{e}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_a2ad531000471d74f459467a747a79aff}
+
+
+Definition at line 130 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_a2ad531000471d74f459467a747a79aff_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_a2ad531000471d74f459467a747a79aff_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Kepler_8cpp_a1d7fdd2727e376b6aa5a54877ca6a205}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!Elements@{Elements}}
+\index{Elements@{Elements}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{Elements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Elements (
+\begin{DoxyParamCaption}
+\item[{double}]{G\-M, }
+\item[{const {\bf Vector} \&}]{y}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_a1d7fdd2727e376b6aa5a54877ca6a205}
+
+
+Definition at line 479 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_a1d7fdd2727e376b6aa5a54877ca6a205_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{SAT__Kepler_8cpp_a1d7fdd2727e376b6aa5a54877ca6a205_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Kepler_8cpp_ae76d62d97df6e450fe706aebb882b103}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!Elements@{Elements}}
+\index{Elements@{Elements}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{Elements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} Elements (
+\begin{DoxyParamCaption}
+\item[{double}]{G\-M, }
+\item[{double}]{Mjd\-\_\-a, }
+\item[{double}]{Mjd\-\_\-b, }
+\item[{const {\bf Vector} \&}]{r\-\_\-a, }
+\item[{const {\bf Vector} \&}]{r\-\_\-b}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_ae76d62d97df6e450fe706aebb882b103}
+
+
+Definition at line 557 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_ae76d62d97df6e450fe706aebb882b103_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Kepler_8cpp_a131c46c69e895d1d1bf15bf54830012d}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!Find\-Eta@{Find\-Eta}}
+\index{Find\-Eta@{Find\-Eta}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{Find\-Eta}]{\setlength{\rightskip}{0pt plus 5cm}double Find\-Eta (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector} \&}]{r\-\_\-a, }
+\item[{const {\bf Vector} \&}]{r\-\_\-b, }
+\item[{double}]{tau}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_a131c46c69e895d1d1bf15bf54830012d}
+
+
+Definition at line 182 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_a131c46c69e895d1d1bf15bf54830012d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{SAT__Kepler_8cpp_a131c46c69e895d1d1bf15bf54830012d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Kepler_8cpp_a451b90edb1cf7dcb4281dd26dfcacfaf}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!State@{State}}
+\index{State@{State}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector} State (
+\begin{DoxyParamCaption}
+\item[{double}]{G\-M, }
+\item[{const {\bf Vector} \&}]{Kep, }
+\item[{double}]{dt}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_a451b90edb1cf7dcb4281dd26dfcacfaf}
+
+
+Definition at line 268 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_a451b90edb1cf7dcb4281dd26dfcacfaf_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{SAT__Kepler_8cpp_a451b90edb1cf7dcb4281dd26dfcacfaf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Kepler_8cpp_a0ad5246987cf2f6c19950ecf2aa00390}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!State\-Partials@{State\-Partials}}
+\index{State\-Partials@{State\-Partials}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{State\-Partials}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} State\-Partials (
+\begin{DoxyParamCaption}
+\item[{double}]{G\-M, }
+\item[{const {\bf Vector} \&}]{Kep, }
+\item[{double}]{dt}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_a0ad5246987cf2f6c19950ecf2aa00390}
+
+
+Definition at line 359 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_a0ad5246987cf2f6c19950ecf2aa00390_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{SAT__Kepler_8cpp_a0ad5246987cf2f6c19950ecf2aa00390_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{SAT__Kepler_8cpp_aeb2175e4cdc39ea590f44fc2949ea8d3}{\index{S\-A\-T\-\_\-\-Kepler.\-cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}!Two\-Body@{Two\-Body}}
+\index{Two\-Body@{Two\-Body}!SAT_Kepler.cpp@{S\-A\-T\-\_\-\-Kepler.\-cpp}}
+\subsubsection[{Two\-Body}]{\setlength{\rightskip}{0pt plus 5cm}void Two\-Body (
+\begin{DoxyParamCaption}
+\item[{double}]{G\-M, }
+\item[{const {\bf Vector} \&}]{Y0, }
+\item[{double}]{dt, }
+\item[{{\bf Vector} \&}]{Y, }
+\item[{{\bf Matrix} \&}]{d\-Yd\-Y0}
+\end{DoxyParamCaption}
+)}}\label{SAT__Kepler_8cpp_aeb2175e4cdc39ea590f44fc2949ea8d3}
+
+
+Definition at line 661 of file S\-A\-T\-\_\-\-Kepler.\-cpp.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{SAT__Kepler_8cpp_aeb2175e4cdc39ea590f44fc2949ea8d3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{SAT__Kepler_8cpp_aeb2175e4cdc39ea590f44fc2949ea8d3_icgraph}
+\end{center}
+\end{figure}
+
+
