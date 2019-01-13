@@ -1,8 +1,0 @@
-<map id="IERS::UT1_UTC" name="IERS::UT1_UTC">
-<area shape="rect" id="node2" href="$RTOD_8cpp.html#ad928b0e88089fe577162bad47f911adf" title="Accel" alt="" coords="193,33,247,60"/>
-<area shape="rect" id="node4" href="$RTOD_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="427,9,477,36"/>
-<area shape="rect" id="node7" href="$TDRSOD_8cpp.html#a466ab098330aeb2aa659365279071640" title="Range_4W" alt="" coords="177,109,263,136"/>
-<area shape="rect" id="node3" href="$RTOD_8cpp.html#a8ed60f2e5115e2e00c123e12b1cbb649" title="Deriv" alt="" coords="319,21,372,48"/>
-<area shape="rect" id="node5" href="$TDRSOD_8cpp.html#a3df5b7f547d4cb81cae1bbb6d6a2962a" title="VarEqn" alt="" coords="313,72,378,99"/>
-<area shape="rect" id="node6" href="$TDRSOD_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="427,85,477,112"/>
-</map>

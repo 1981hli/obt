@@ -1,6 +1,0 @@
-<map id="PoleMatrix" name="PoleMatrix">
-<area shape="rect" id="node2" href="$SAT__VecMat_8cpp.html#a66b3b116958d5c2f1c528faa04c71674" title="R_y" alt="" coords="166,5,213,32"/>
-<area shape="rect" id="node3" href="$classIERS.html#aa6619a8885c83540cf92a32510285edb" title="IERS::x_pole" alt="" coords="139,56,239,83"/>
-<area shape="rect" id="node4" href="$SAT__VecMat_8cpp.html#ae452267b1d1da6280386846d97ec4e4f" title="R_x" alt="" coords="166,107,213,133"/>
-<area shape="rect" id="node5" href="$classIERS.html#a685869b1f1ac92c0595f8be01307a2ce" title="IERS::y_pole" alt="" coords="139,157,239,184"/>
-</map>

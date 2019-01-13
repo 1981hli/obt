@@ -1,9 +1,0 @@
-<map id="State" name="State">
-<area shape="rect" id="node2" href="$SAT__Kepler_8cpp.html#a2ad531000471d74f459467a747a79aff" title="EccAnom" alt="" coords="107,12,186,39"/>
-<area shape="rect" id="node5" href="$SAT__VecMat_8cpp.html#a94c9c4e1f3afc6636dda6572f72ef4c2" title="R_z" alt="" coords="123,63,170,89"/>
-<area shape="rect" id="node6" href="$SAT__VecMat_8cpp.html#ae452267b1d1da6280386846d97ec4e4f" title="R_x" alt="" coords="123,113,170,140"/>
-<area shape="rect" id="node7" href="$SAT__VecMat_8cpp.html#ad3352c6f838a6a97403bc6f2d6bda5df" title="Stack" alt="" coords="119,164,175,191"/>
-<area shape="rect" id="node3" href="$namespaceanonymous__namespace_02SAT__Kepler_8cpp_03.html#ae5d42531d691a174363f296c22d23217" title="anonymous_namespace\l\{SAT_Kepler::cpp\}::Modulo" alt="" coords="235,5,413,46"/>
-<area shape="rect" id="node4" href="$namespaceanonymous__namespace_02SAT__Force_8cpp_03.html#aa6826b33621fa6ff5736c6432c487c1a" title="anonymous_namespace\l\{SAT_Force::cpp\}::Frac" alt="" coords="461,5,624,46"/>
-<area shape="rect" id="node8" href="$classVector.html#a3c8f59182463d6da833e7856f06e6171" title="Vector::size" alt="" coords="278,164,370,191"/>
-</map>

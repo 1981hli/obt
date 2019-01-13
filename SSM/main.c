@@ -7,8 +7,8 @@
 #include <string.h>
 #include <math.h>
 #define TotalBody 2
-#define TotalStep 3650
-#define dtBetweenSteps 24.*3600.
+#define TotalStep 365
+#define dtBetweenSteps 1.
 
 //-----------------------------------------------------------------------------
 
@@ -281,12 +281,12 @@ int main()
   strcpy(steps[0].body[1].name,   "Earth");
   steps[0].body[1].mass=          5.97238e24;
   steps[0].body[1].radius=        6371000.;
-  steps[0].body[1].x[0]=          150000000000.;
-  steps[0].body[1].x[1]=          0.;
-  steps[0].body[1].x[2]=          0.;
-  steps[0].body[1].v[0]=          0.;
-  steps[0].body[1].v[1]=          29780.;
-  steps[0].body[1].v[2]=          0.;
+  steps[0].body[1].x[0]=          136751328832.;
+  steps[0].body[1].x[1]=          -59890629319.;
+  steps[0].body[1].x[2]=          -25970518175.;
+  steps[0].body[1].v[0]=          1070033330.;
+  steps[0].body[1].v[1]=          2128896394.;
+  steps[0].body[1].v[2]=          923202104.;
 
   for(i=1;i<TotalStep;i++)
     rk4(&steps[i],&steps[i-1],dtBetweenSteps);
