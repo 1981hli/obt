@@ -66,7 +66,7 @@ void gravitybyAll(Real *force/*output*/,int testMassNumber,Step *currentStep)
   force[1]=0.;
   force[2]=0.;
 
-  for(i=0;i<TotalBody;i++) {
+  for(i=0;i<TotalBody;i++){
     if(i==testMassNumber) continue;
 
     gravityby1(force1,currentStep->body[testMassNumber],currentStep->body[i]); 
@@ -108,14 +108,14 @@ void copyStep(Step *target/*output*/,Step *step)
 
 
 
-// step(t,y)+c= step(t+c,y+c)
+//step(t,y)+c= step(t+c,y+c)
 void stepMultiplyConstant(Step *inoutput,Real c)
 {
   int i;
 
   inoutput->time*= c;
 
-  for(i=0;i<TotalBody;i++) {
+  for(i=0;i<TotalBody;i++){
     inoutput->body[i].x[0]*= c;
     inoutput->body[i].x[1]*= c;
     inoutput->body[i].x[2]*= c;
@@ -128,14 +128,14 @@ void stepMultiplyConstant(Step *inoutput,Real c)
 
 
 
-// step(t1,y1)+step(t2,y2)= step(t1+t2,y1+y2)
+//step(t1,y1)+step(t2,y2)= step(t1+t2,y1+y2)
 void stepPlusStep(Step *inoutput,Step *step2)
 {
   int i;
 
   inoutput->time+= step2->time;
 
-  for(i=0;i<TotalBody;i++) {
+  for(i=0;i<TotalBody;i++){
     inoutput->body[i].x[0]+= step2->body[i].x[0];
     inoutput->body[i].x[1]+= step2->body[i].x[1];
     inoutput->body[i].x[2]+= step2->body[i].x[2];
@@ -148,7 +148,7 @@ void stepPlusStep(Step *inoutput,Step *step2)
 
 //-----------------------------------------------------------------------------
 
-// Calculate $dy=f(t,y)dt$, which is coded as dStep=fdt(step).
+//Calculate $dy=f(t,y)dt$, which is coded as dStep=fdt(step).
 void fdt(Step *dStep/*output*/,Step *input,Real dt)
 {
   int i;
@@ -156,10 +156,10 @@ void fdt(Step *dStep/*output*/,Step *input,Real dt)
 
   copyStep(dStep,input);
 
-  // dStep is the change of step, so its time is dt.
+  //dStep is the change of step, so its time is dt.
   dStep->time= dt;
   
-  for(i=0;i<TotalBody;i++) {
+  for(i=0;i<TotalBody;i++){
     gravitybyAll(force,i,input);
 
     dStep->body[i].x[0]= input->body[i].v[0]*dt;
@@ -174,36 +174,36 @@ void fdt(Step *dStep/*output*/,Step *input,Real dt)
 
 
 
-// The differential equation is $\frac{dy}{dt}=f(t,y)$.
-// nextStep= currentStep+dStep
+//The differential equation is $\frac{dy}{dt}=f(t,y)$.
+//nextStep= currentStep+dStep
 void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
 {
   Step k1,k2,k3,k4;
   Step tmpStep,tmpStep2;
 
-  // k1=f(t,y)dt=fdt(step)
+  //k1=f(t,y)dt=fdt(step)
   fdt(&k1,currentStep,dt);
     
-  // k2=f(t+dt/2,y+k1/2)dt=fdt(step+dStep/2)
+  //k2=f(t+dt/2,y+k1/2)dt=fdt(step+dStep/2)
   copyStep(&tmpStep,currentStep);
   copyStep(&tmpStep2,&k1);
   stepMultiplyConstant(&tmpStep2,0.5);
   stepPlusStep(&tmpStep,&tmpStep2);
   fdt(&k2,&tmpStep,dt);
   
-  // k3=f(t+dt/2,y+k2/2)dt=fdt(step+dStep/2)
+  //k3=f(t+dt/2,y+k2/2)dt=fdt(step+dStep/2)
   copyStep(&tmpStep,currentStep);
   copyStep(&tmpStep2,&k2);
   stepMultiplyConstant(&tmpStep2,0.5);
   stepPlusStep(&tmpStep,&tmpStep2);
   fdt(&k3,&tmpStep,dt);
   
-  // k4=f(t+dt,y+k3)dt=fdt(step+dStep)
+  //k4=f(t+dt,y+k3)dt=fdt(step+dStep)
   copyStep(&tmpStep,currentStep);
   stepPlusStep(&tmpStep,&k3);
   fdt(&k4,&tmpStep,dt);
   
-  // dStep=(k1+2k2+2k3+k4)/6
+  //dStep=(k1+2k2+2k3+k4)/6
   copyStep(&tmpStep,&k1);
 
   copyStep(&tmpStep2,&k2);
@@ -217,7 +217,7 @@ void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
   stepPlusStep(&tmpStep,&k4);
 
   stepMultiplyConstant(&tmpStep,1./6.);
-  // for now, dStep=tmpStep
+  //for now, dStep=tmpStep
 
   copyStep(nextStep,currentStep);
   stepPlusStep(nextStep,&tmpStep);
