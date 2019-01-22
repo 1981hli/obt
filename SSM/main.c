@@ -1,5 +1,6 @@
 //-----------------------------------------------------------------------------
 // Solar System Modeling
+//                                                                    by LiHuan
 //-----------------------------------------------------------------------------
 
 #include <stdio.h>
@@ -44,10 +45,12 @@ void gravityby1(Real *force/*output*/,Body testMass,Body source)
   Real distance;
   Real term;
 
+  // distance between source and testMass
   distance= sqrt( pow(testMass.x[0]-source.x[0],2)+ 
                   pow(testMass.x[1]-source.x[1],2)+ 
                   pow(testMass.x[2]-source.x[2],2)  );
   
+  // term= G m1 m2 / r^3
   term= constantG*testMass.mass*source.mass/pow(distance,3);
 
   force[0]= term*(source.x[0]-testMass.x[0]);
@@ -57,6 +60,7 @@ void gravityby1(Real *force/*output*/,Body testMass,Body source)
 
 
 
+// gravity on the testMassNumber-th body by all the n-1 bodies
 void gravitybyAll(Real *force/*output*/,int testMassNumber,Step *currentStep)
 {
   int i;
@@ -67,6 +71,7 @@ void gravitybyAll(Real *force/*output*/,int testMassNumber,Step *currentStep)
   force[2]=0.;
 
   for(i=0;i<TotalBody;i++){
+    // avoid to calculate the force by itself
     if(i==testMassNumber) continue;
 
     gravityby1(force1,currentStep->body[testMassNumber],currentStep->body[i]); 
@@ -79,6 +84,7 @@ void gravitybyAll(Real *force/*output*/,int testMassNumber,Step *currentStep)
 
 //-----------------------------------------------------------------------------
 
+// make a copy of a body
 void copyBody(Body *target/*output*/,Body *body)
 {
   strcpy(target->name,  body->name);
@@ -96,6 +102,7 @@ void copyBody(Body *target/*output*/,Body *body)
 
 
 
+// make a copy of a step
 void copyStep(Step *target/*output*/,Step *step)
 {
   int i;
@@ -108,7 +115,7 @@ void copyStep(Step *target/*output*/,Step *step)
 
 
 
-// step(t,y)+c= step(t+c,y+c)
+// calculate step(t,y)*c, which is defined as step(t*c,y*c) 
 void stepMultiplyConstant(Step *inoutput,Real c)
 {
   int i;
@@ -128,7 +135,7 @@ void stepMultiplyConstant(Step *inoutput,Real c)
 
 
 
-// step(t1,y1)+step(t2,y2)= step(t1+t2,y1+y2)
+// calculate step(t1,y1)+step(t2,y2), which is defined as step(t1+t2,y1+y2)
 void stepPlusStep(Step *inoutput,Step *step2)
 {
   int i;
@@ -148,7 +155,7 @@ void stepPlusStep(Step *inoutput,Step *step2)
 
 //-----------------------------------------------------------------------------
 
-// Calculate $dy=f(t,y)dt$, which is coded as dStep=fdt(step).
+// calculate dy=f(t,y)dt, which is coded as dStep=fdt(step)
 void fdt(Step *dStep/*output*/,Step *input,Real dt)
 {
   int i;
@@ -156,7 +163,7 @@ void fdt(Step *dStep/*output*/,Step *input,Real dt)
 
   copyStep(dStep,input);
 
-  // dStep is the change of step, so its time is dt.
+  // dStep is the change of step, so its time should be set to dt
   dStep->time= dt;
   
   for(i=0;i<TotalBody;i++){
@@ -174,31 +181,33 @@ void fdt(Step *dStep/*output*/,Step *input,Real dt)
 
 
 
-// The differential equation is $\frac{dy}{dt}=f(t,y)$.
-// nextStep= currentStep+dStep
+// 4th order Runge-Kutta method
+// the differential equation is $\frac{dy}{dt}=f(t,y)$
+// the equation is coded as dStep=fdt(step)
+// nextStep=currentStep+dStep
 void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
 {
   Step k1,k2,k3,k4;
   Step tmpStep,tmpStep2;
 
-  // k1=f(t,y)dt=fdt(step)
+  // k1=f(t,y)dt, coded as fdt(step)
   fdt(&k1,currentStep,dt);
     
-  // k2=f(t+dt/2,y+k1/2)dt=fdt(step+dStep/2)
+  // k2=f(t+dt/2,y+k1/2)dt, coded as fdt(step+dStep/2)
   copyStep(&tmpStep,currentStep);
   copyStep(&tmpStep2,&k1);
   stepMultiplyConstant(&tmpStep2,0.5);
   stepPlusStep(&tmpStep,&tmpStep2);
   fdt(&k2,&tmpStep,dt);
   
-  // k3=f(t+dt/2,y+k2/2)dt=fdt(step+dStep/2)
+  // k3=f(t+dt/2,y+k2/2)dt, coded as fdt(step+dStep/2)
   copyStep(&tmpStep,currentStep);
   copyStep(&tmpStep2,&k2);
   stepMultiplyConstant(&tmpStep2,0.5);
   stepPlusStep(&tmpStep,&tmpStep2);
   fdt(&k3,&tmpStep,dt);
   
-  // k4=f(t+dt,y+k3)dt=fdt(step+dStep)
+  // k4=f(t+dt,y+k3)dt, coded as fdt(step+dStep)
   copyStep(&tmpStep,currentStep);
   stepPlusStep(&tmpStep,&k3);
   fdt(&k4,&tmpStep,dt);
@@ -217,7 +226,7 @@ void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
   stepPlusStep(&tmpStep,&k4);
 
   stepMultiplyConstant(&tmpStep,1./6.);
-  // for now, dStep=tmpStep
+  // for the moment, dStep=tmpStep
 
   copyStep(nextStep,currentStep);
   stepPlusStep(nextStep,&tmpStep);
@@ -225,6 +234,17 @@ void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
 
 //-----------------------------------------------------------------------------
 
+// write the data of a body to a file
+// the file has the structure as
+/*
+steps[0].body[bodyNumber].time   steps[1].body[bodyNumber].time   ...
+steps[0].body[bodyNumber].x[0]   steps[1].body[bodyNumber].x[0]   ...
+steps[0].body[bodyNumber].x[1]   steps[1].body[bodyNumber].x[1]   ...
+steps[0].body[bodyNumber].x[2]   steps[1].body[bodyNumber].x[2]   ...
+steps[0].body[bodyNumber].v[0]   steps[1].body[bodyNumber].v[0]   ...
+steps[0].body[bodyNumber].v[1]   steps[1].body[bodyNumber].v[1]   ...
+steps[0].body[bodyNumber].v[2]   steps[1].body[bodyNumber].v[2]   ...
+*/
 void bodyDataToFile(int bodyNumber,Step *steps,FILE *fp)
 {
   int i;
@@ -260,6 +280,7 @@ void bodyDataToFile(int bodyNumber,Step *steps,FILE *fp)
 
 //-----------------------------------------------------------------------------
 
+
 int main()
 {
   int i;
@@ -268,8 +289,8 @@ int main()
 
   // Sun
   strcpy(steps[0].body[0].name,   "Sun");
-  steps[0].body[0].mass=          19885.e30;
-  steps[0].body[0].radius=        696392000.;
+  steps[0].body[0].mass=          1000.;
+  steps[0].body[0].radius=        1.;
   steps[0].body[0].x[0]=          0.;
   steps[0].body[0].x[1]=          0.;
   steps[0].body[0].x[2]=          0.;
@@ -279,14 +300,14 @@ int main()
   
   // Earth
   strcpy(steps[0].body[1].name,   "Earth");
-  steps[0].body[1].mass=          5.97238e24;
-  steps[0].body[1].radius=        6371000.;
-  steps[0].body[1].x[0]=          136751328832.;
-  steps[0].body[1].x[1]=          -59890629319.;
-  steps[0].body[1].x[2]=          -25970518175.;
-  steps[0].body[1].v[0]=          1070033330.;
-  steps[0].body[1].v[1]=          2128896394.;
-  steps[0].body[1].v[2]=          923202104.;
+  steps[0].body[1].mass=          1.;
+  steps[0].body[1].radius=        1.;
+  steps[0].body[1].x[0]=          1000.;
+  steps[0].body[1].x[1]=          0.;
+  steps[0].body[1].x[2]=          0.;
+  steps[0].body[1].v[0]=          1.;
+  steps[0].body[1].v[1]=          1.;
+  steps[0].body[1].v[2]=          0.;
 
   for(i=1;i<TotalStep;i++)
     rk4(&steps[i],&steps[i-1],dtBetweenSteps);
@@ -299,6 +320,52 @@ int main()
   bodyDataToFile(1,steps,fp);
   fclose(fp);
 
+  Real iforce[3];
+  gravityby1(iforce,steps[0].body[1],steps[0].body[0]);
+  printf("%Lf",*iforce);
+
   return 0;
 }
+
+
+
+//int main()
+//{
+//  int i;
+//  FILE *fp;
+//  Step steps[TotalStep];
+//
+//  // Sun
+//  strcpy(steps[0].body[0].name,   "Sun");
+//  steps[0].body[0].mass=          19885.e30;
+//  steps[0].body[0].radius=        696392000.;
+//  steps[0].body[0].x[0]=          0.;
+//  steps[0].body[0].x[1]=          0.;
+//  steps[0].body[0].x[2]=          0.;
+//  steps[0].body[0].v[0]=          0.;
+//  steps[0].body[0].v[1]=          0.;
+//  steps[0].body[0].v[2]=          0.;
+//  
+//  // Earth
+//  strcpy(steps[0].body[1].name,   "Earth");
+//  steps[0].body[1].mass=          5.97238e24;
+//  steps[0].body[1].radius=        6371000.;
+//  steps[0].body[1].x[0]=          136751328832.;
+//  steps[0].body[1].x[1]=          -59890629319.;
+//  steps[0].body[1].x[2]=          -25970518175.;
+//  steps[0].body[1].v[0]=          1070033330.;
+//  steps[0].body[1].v[1]=          2128896394.;
+//  steps[0].body[1].v[2]=          923202104.;
+//
+//  for(i=1;i<TotalStep;i++)
+//    rk4(&steps[i],&steps[i-1],dtBetweenSteps);
+//
+//  for(i=0;i<TotalBody;i++){
+//    fp=fopen("body_i","w");
+//    bodyDataToFile(i,steps,fp);
+//    fclose(fp);
+//  }
+//
+//  return 0;
+//}
 

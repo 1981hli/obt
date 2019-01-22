@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Body	main.c	/^} Body;$/;"	t	typeref:struct:__anon1	file:
+Real	main.c	/^typedef long double Real;$/;"	t	file:
+Step	main.c	/^} Step;$/;"	t	typeref:struct:__anon2	file:
+TotalBody	main.c	9;"	d	file:
+TotalStep	main.c	10;"	d	file:
+body	main.c	/^  Body  body[TotalBody];$/;"	m	struct:__anon2	file:
+bodyDataToFile	main.c	/^void bodyDataToFile(int bodyNumber,Step *steps,FILE *fp)$/;"	f
+constantG	main.c	/^Real constantG= 6.67e-11;$/;"	v
+copyBody	main.c	/^void copyBody(Body *target\/*output*\/,Body *body)$/;"	f
+copyStep	main.c	/^void copyStep(Step *target\/*output*\/,Step *step)$/;"	f
+dtBetweenSteps	main.c	11;"	d	file:
+fdt	main.c	/^void fdt(Step *dStep\/*output*\/,Step *input,Real dt)$/;"	f
+gravityby1	main.c	/^void gravityby1(Real *force\/*output*\/,Body testMass,Body source)$/;"	f
+gravitybyAll	main.c	/^void gravitybyAll(Real *force\/*output*\/,int testMassNumber,Step *currentStep)$/;"	f
+main	main.c	/^int main()$/;"	f
+mass	main.c	/^  Real  mass;$/;"	m	struct:__anon1	file:
+name	main.c	/^  char  name[20];$/;"	m	struct:__anon1	file:
+radius	main.c	/^  Real  radius;$/;"	m	struct:__anon1	file:
+rk4	main.c	/^void rk4(Step *nextStep\/*output*\/,Step *currentStep,Real dt)$/;"	f
+stepMultiplyConstant	main.c	/^void stepMultiplyConstant(Step *inoutput,Real c)$/;"	f
+stepPlusStep	main.c	/^void stepPlusStep(Step *inoutput,Step *step2)$/;"	f
+time	main.c	/^  Real  time;$/;"	m	struct:__anon2	file:
+v	main.c	/^  Real  v[3];$/;"	m	struct:__anon1	file:
+x	main.c	/^  Real  x[3];$/;"	m	struct:__anon1	file:
