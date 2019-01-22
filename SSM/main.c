@@ -155,27 +155,27 @@ void stepPlusStep(Step *inoutput,Step *step2)
 
 //-----------------------------------------------------------------------------
 
-// calculate dy=f(t,y)dt, which is coded as dStep=fdt(step)
-void fdt(Step *dStep/*output*/,Step *input,Real dt)
+// calculate dy=f(t,y)dt, which is coded as dstep=fdt(step)
+void fdt(Step *dstep/*output*/,Step *input,Real dt)
 {
   int i;
   Real force[3];
 
-  copyStep(dStep,input);
+  copyStep(dstep,input);
 
-  // dStep is the change of step, so its time should be set to dt
-  dStep->time= dt;
+  // dstep is the change of step, so its time should be set to dt
+  dstep->time= dt;
   
   for(i=0;i<TotalBody;i++){
     gravitybyAll(force,i,input);
 
-    dStep->body[i].x[0]= input->body[i].v[0]*dt;
-    dStep->body[i].x[1]= input->body[i].v[1]*dt;
-    dStep->body[i].x[2]= input->body[i].v[2]*dt;
+    dstep->body[i].x[0]= input->body[i].v[0]*dt;
+    dstep->body[i].x[1]= input->body[i].v[1]*dt;
+    dstep->body[i].x[2]= input->body[i].v[2]*dt;
 
-    dStep->body[i].v[0]= force[0]/(input->body[i].mass)*dt;
-    dStep->body[i].v[1]= force[1]/(input->body[i].mass)*dt;
-    dStep->body[i].v[2]= force[2]/(input->body[i].mass)*dt;
+    dstep->body[i].v[0]= force[0]/(input->body[i].mass)*dt;
+    dstep->body[i].v[1]= force[1]/(input->body[i].mass)*dt;
+    dstep->body[i].v[2]= force[2]/(input->body[i].mass)*dt;
   }
 }
 
@@ -183,8 +183,8 @@ void fdt(Step *dStep/*output*/,Step *input,Real dt)
 
 // 4th order Runge-Kutta method
 // the differential equation is $\frac{dy}{dt}=f(t,y)$
-// the equation is coded as dStep=fdt(step)
-// nextStep=currentStep+dStep
+// the equation is coded as dstep=fdt(step)
+// nextStep=currentStep+dstep
 void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
 {
   Step k1,k2,k3,k4;
@@ -193,26 +193,26 @@ void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
   // k1=f(t,y)dt, coded as fdt(step)
   fdt(&k1,currentStep,dt);
     
-  // k2=f(t+dt/2,y+k1/2)dt, coded as fdt(step+dStep/2)
+  // k2=f(t+dt/2,y+k1/2)dt, coded as fdt(step+dstep/2)
   copyStep(&tmpStep,currentStep);
   copyStep(&tmpStep2,&k1);
   stepMultiplyConstant(&tmpStep2,0.5);
   stepPlusStep(&tmpStep,&tmpStep2);
   fdt(&k2,&tmpStep,dt);
   
-  // k3=f(t+dt/2,y+k2/2)dt, coded as fdt(step+dStep/2)
+  // k3=f(t+dt/2,y+k2/2)dt, coded as fdt(step+dstep/2)
   copyStep(&tmpStep,currentStep);
   copyStep(&tmpStep2,&k2);
   stepMultiplyConstant(&tmpStep2,0.5);
   stepPlusStep(&tmpStep,&tmpStep2);
   fdt(&k3,&tmpStep,dt);
   
-  // k4=f(t+dt,y+k3)dt, coded as fdt(step+dStep)
+  // k4=f(t+dt,y+k3)dt, coded as fdt(step+dstep)
   copyStep(&tmpStep,currentStep);
   stepPlusStep(&tmpStep,&k3);
   fdt(&k4,&tmpStep,dt);
   
-  // dStep=(k1+2k2+2k3+k4)/6
+  // dstep=(k1+2k2+2k3+k4)/6
   copyStep(&tmpStep,&k1);
 
   copyStep(&tmpStep2,&k2);
@@ -226,7 +226,7 @@ void rk4(Step *nextStep/*output*/,Step *currentStep,Real dt)
   stepPlusStep(&tmpStep,&k4);
 
   stepMultiplyConstant(&tmpStep,1./6.);
-  // for the moment, dStep=tmpStep
+  // for the moment, dstep=tmpStep
 
   copyStep(nextStep,currentStep);
   stepPlusStep(nextStep,&tmpStep);
