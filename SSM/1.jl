@@ -27,16 +27,6 @@ end
 
 
 
-stepNull =Step(
-  0.,
-  [
-    Body("Sun",  0.,0.,[0.,0.,0.],[0.,0.,0.]),
-    Body("Earth",0.,0.,[0.,0.,0.],[0.,0.,0.]),
-  ]
-)
-
-
-
 step1 =Step(
   0.,
   [
@@ -69,7 +59,7 @@ end
 #------------------------------------------------------------------------------
 
 function stepMultiplyConstant(input::Step, c::AbstractFloat)
-  output =stepNull
+  output =input
 
   output.time =output.time *c
   
@@ -84,7 +74,7 @@ end
 
 
 function stepPlusStep(step1::Step, step2::Step)
-  output =stepNull
+  output =step1
 
   output.time =step1.time+step2.time
 
