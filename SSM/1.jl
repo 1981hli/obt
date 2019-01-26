@@ -46,13 +46,11 @@ end
 
 function gravitybyAll(testMassNumber::Int, currentStep::Step)
   force=[0.,0.,0.]
-
   for i in 1:totalBody
     if i==testMassNumber continue end
     force =force+
            gravityby1(currentStep.body[testMassNumber], currentStep.body[i])
   end
-
   force
 end
 
@@ -60,14 +58,11 @@ end
 
 function stepMultiplyConstant(input::Step, c::AbstractFloat)
   output =input
-
   output.time =output.time *c
-  
   for i in 1:totalBody
     output.body[i].x =output.body[i].x *c
     output.body[i].v =output.body[i].v *c
   end
-
   output
 end
 
@@ -75,14 +70,11 @@ end
 
 function stepPlusStep(step1::Step, step2::Step)
   output =step1
-
   output.time =step1.time+step2.time
-
   for i in 1:totalBody
     output.body[i].x =step1.body[i].x+step2.body[i].x
     output.body[i].v =step1.body[i].v+step2.body[i].v
   end
-
   output
 end
 
@@ -92,12 +84,10 @@ end
 function fdt(input::Step, dt::AbstractFloat)
   dstep =input
   dstep.time =dt
-
   for i in 1:totalBody
     dstep.body[i].x =input.body[i].v *dt
     dstep.body[i].v =gravitybyAll(i,input)/input.body[i].mass *dt
   end
-  
   dstep
 end
 
