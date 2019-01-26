@@ -133,20 +133,27 @@ end
 
 -------------------------------------------------------------------------------
 
-function fdt(step,dt)
-  local dstep=step
-  dstep.time=dt
-  for i=1, #step1.body do
+function dstep(step,dt)
+  local dstep1=step
+  dstep1.time=dt
+  for i=1, #step.body do
     local force=gravitybyall(i,step)
-    dstep.body[i].x= multiplyCV( dt, step.body[i].v )
-    dstep.body[i].v= multiplyCV( dt, multiplyCV(1/step.body[i].mass, force) )
+    dstep1.body[i].x= multiplyCV( dt, step.body[i].v )
+    dstep1.body[i].v= multiplyCV( dt, multiplyCV(1/step.body[i].mass, force) )
   end
-  return dstep
+  return dstep1
 end
 
 
 
-function rk4()
+function rk4(step,dt)
+  -- k1=dstep(step,dt)
+  k1=dstep(step,dt)
+
+  -- k2=dstep(step+k1/2,dt)
+  -- k3=dstep(step+k2/2,dt)
+  -- k4=dstep(step+k3,dt)
+  -- dstep1=(k1+2k2+2K3+k4)/6
 end
 
 
