@@ -5,21 +5,25 @@
 
 -- print table for debug
 function p(table)
-  for k,v in pairs(table) do
-    print(k ..':  '.. v)
-  end
-end
-
-
-
--- print table keys for debug
-function pk(table)
-  for k,v in pairs(table) do
-    print(' ' .. k)
-    if (type(v)=='table') then
-      pk(v)
+  local indent=1
+  -- We should use an extern variable to count the indent. Thus we should put
+  -- a inner_p function into function p.
+  function inner_p(table)
+    for k,v in pairs(table) do
+      if (type(v)=="table") then
+        print(string.rep("   ",indent)..k..":")
+        -- Increase the indent to print sub table.
+        indent=indent+1
+        inner_p(v)
+        -- When sub table printing finished, decrease the indent to print the
+        -- following elements.
+        indent=indent-1
+      else
+        print(string.rep("   ",indent)..k.."= "..v)
+      end
     end
   end
+  inner_p(table)
 end
 
 
