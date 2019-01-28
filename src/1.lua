@@ -6,7 +6,19 @@
 -- print table for debug
 function p(table)
   for k,v in pairs(table) do
-    print(k ..' : '.. v)
+    print(k ..':  '.. v)
+  end
+end
+
+
+
+-- print table keys for debug
+function pk(table)
+  for k,v in pairs(table) do
+    print(' ' .. k)
+    if (type(v)=='table') then
+      pk(v)
+    end
   end
 end
 
@@ -66,11 +78,12 @@ end
 
 -- vector module
 function vMOD(v)
+  local sqrt=math.sqrt
   local tmp=0
   for i=1, #v do
     tmp=tmp+v[i]^2
   end
-  return math.sqrt(tmp)
+  return sqrt(tmp)
 end
 
 
