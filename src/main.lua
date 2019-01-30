@@ -129,8 +129,8 @@ end
 
 -------------------------------------------------------------------------------
 
-local TimeInterval=0.5
-local TotalStep=3650
+local TimeInterval=1
+local TotalStep=365
 local Day=24*60*60          -- s
 local AU=149597870700       -- m
 local Earthmass=5.97237e24  -- kg
@@ -226,9 +226,33 @@ end
 
 
 
+-- use Runge-Kutta method to generate all steps
 for i=2, TotalStep do
   step[i]=copy(rk4(step[i-1],TimeInterval))
 end
 
+
+
+-- write the results into output/i.csv where i is the body number
+for i=1, 2 do
+  io.output("output/"..tostring(i)..".csv")
+  for j=1, TotalStep do
+    io.write(step[j].time)
+    io.write(",")
+    io.write(step[j].body[i].x[1])
+    io.write(",")
+    io.write(step[j].body[i].x[2])
+    io.write(",")
+    io.write(step[j].body[i].x[3])
+    io.write(",")
+    io.write(step[j].body[i].v[1])
+    io.write(",")
+    io.write(step[j].body[i].v[2])
+    io.write(",")
+    io.write(step[j].body[i].v[3])
+    io.write("\n")
+  end
+  io.close()
+end
 
 
