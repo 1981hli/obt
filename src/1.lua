@@ -5,25 +5,35 @@
 
 -- print table for debug
 function p(table)
-  local indent=1
-  -- We should use an extern variable to count the indent. Thus we should put
-  -- a inner_p function into function p.
-  function inner_p(table)
-    for k,v in pairs(table) do
+  local function diveinto(printout,level)
+    for k,v in pairs(printout) do
       if (type(v)=="table") then
-        print(string.rep("   ",indent)..k..":")
-        -- Increase the indent to print sub table.
-        indent=indent+1
-        inner_p(v)
-        -- When sub table printing finished, decrease the indent to print the
-        -- following elements.
-        indent=indent-1
+        print(string.rep("   ",level-1)..k..":")
+        diveinto(v,level+1)
       else
-        print(string.rep("   ",indent)..k.."= "..v)
+        print(string.rep("   ",level-1)..k.."= "..v)
       end
     end
   end
-  inner_p(table)
+  diveinto(table,1)
+end
+
+
+
+function copy(table)
+  local function diveinto(origin,replica)
+    for k,v in pairs(origin) do
+      if (type(v)=="table") then
+        replica[k]={}
+        diveinto(v,replica[k])
+      else
+        replica[k]=v
+      end
+    end
+  end
+  local output={}
+  diveinto(table,output)
+  return output
 end
 
 
@@ -42,7 +52,7 @@ end
 -- vector plus vector
 function vPLSv(v1,v2)
   if (#v1 ~= #v2) then
-    print("vPLSv!! Length do not match") 
+    print("vPLSv: Length do not match!") 
     return
   end
   local output={}
@@ -57,7 +67,7 @@ end
 -- vector minus vector
 function vMNSv(v1,v2)
   if (#v1 ~= #v2) then
-    print("vMNSv!! Length do not match") 
+    print("vMNSv: Length do not match!") 
     return
   end
   local output={}
@@ -94,12 +104,12 @@ end
 
 -- constant multiply step
 function cMTPs(c,step)
-  local tmp=step
-  tmp.time= c*tmp.time
+  local tmp=copy(step)
+  tmp.time= c*step.time
   -- #step.body is the number of all bodies
   for i=1, #step.body do        
-    tmp.body[i].x= cMTPv(c, tmp.body[i].x)
-    tmp.body[i].v= cMTPv(c, tmp.body[i].v)
+    tmp.body[i].x= cMTPv(c, step.body[i].x)
+    tmp.body[i].v= cMTPv(c, step.body[i].v)
   end
   return tmp
 end
@@ -108,9 +118,9 @@ end
 
 -- step plus step
 function sPLSs(step1,step2)
-  local tmp=step1
+  local tmp=copy(step1)
   tmp.time= step1.time+step2.time
-  for i=1, #step1.body do
+  for i=1, #tmp.body do
     tmp.body[i].x= vPLSv(step1.body[i].x, step2.body[i].x)
     tmp.body[i].v= vPLSv(step1.body[i].v, step2.body[i].v)
   end
@@ -119,19 +129,21 @@ end
 
 -------------------------------------------------------------------------------
 
-local Day=24*60*60 --s
-local AU=149597870700 --m
-local EarthMass=5.97237e24 --kg
--- G=6.67408e-11(m3.kg-1.s-2)
-local gravityG=6.67408e-11*(1/AU)^3*(1/EarthMass)*(1/Day)^2
+local TimeInterval=0.5
+local TotalStep=3650
+local Day=24*60*60          -- s
+local AU=149597870700       -- m
+local Earthmass=5.97237e24  -- kg
+-- G=6.67408e-11 (s-2.m3.kg-1)
+local gravityG=6.67408e-11 *(1/Day)^-2*(1/AU)^3*(1/Earthmass)^-1
 
 
 
-step={}
+local step={}
 step[1]={
   time=2451545, -- julian day of AD 2000.01.01
   body={
-    {name="Sun",        mass=1.9885e30/EarthMass,
+    {name="Sun",        mass=1.9885e30/Earthmass,
                         radius=696392000/AU,
                         x={0,0,0},
                         v={0,0,0}
@@ -145,20 +157,21 @@ step[1]={
                            -2.8981677276473366e-003,
                            -1.2563950525522731e-003}
     }
---    ,{name="Jupiter",    mass=1.8982e27/EarthMass,
---                        radius=69911000/AU,
---                        x={0,0,0},
---                        v={0,0,0}
---    }
+    --,{name="Jupiter",    mass=1.8982e27/Earthmass,
+                        --radius=69911000/AU,
+                        --x={0,0,0},
+                        --v={0,0,0}
+    --}
   }
 } 
+s=step -- for debug
 
 -------------------------------------------------------------------------------
 
 function gravityby1(testmass,source)
   local dx= vMNSv(testmass.x, source.x)
   local term= gravityG*testmass.mass*source.mass/vMOD(dx)^3
-  return cMTPv(term,dx)
+  return cMTPv(-term,dx)
 end 
 
 
@@ -179,8 +192,9 @@ end
 
 -------------------------------------------------------------------------------
 
+-- calculate dstep from the differential equation
 function dstep(step,dt)
-  local tmp=step
+  local tmp=copy(step)
   tmp.time=dt
   for i=1, #step.body do
     local force=gravitybyall(i,step)
@@ -194,25 +208,27 @@ end
 
 function rk4(step,dt)
   -- k1=dstep(step,dt)
-  k1=dstep(step,dt)
-
+  local k1=dstep(step,dt)
   -- k2=dstep(step+k1/2,dt)
-  k2=dstep( sPLSs( step, cMTPs(1/2,k1) ), dt )
-
+  local k2=dstep( sPLSs( step, cMTPs(1/2,k1) ), dt )
   -- k3=dstep(step+k2/2,dt)
-  k3=dstep( sPLSs( step, cMTPs(1/2,k2) ), dt )
-
+  local k3=dstep( sPLSs( step, cMTPs(1/2,k2) ), dt )
   -- k4=dstep(step+k3,dt)
-  k4=dstep( sPLSs( step, k3 ), dt )
-
+  local k4=dstep( sPLSs( step, k3 ), dt )
   -- dstepfinal=(k1+2k2+2K3+k4)/6
-  local tmp=sPLSs(k1, cMTPs(2,k2)) 
-        tmp=sPLSs(tmp, cMTPs(2,k3))
-        tmp=sPLSs(tmp, k4)
-        tmp=cMTPs(1/6,tmp)
-  
-  local nextstep=sPLSs(step,tmp)
+  local dstepAll=sPLSs(k1, cMTPs(2,k2)) 
+        dstepAll=sPLSs(dstepAll, cMTPs(2,k3))
+        dstepAll=sPLSs(dstepAll, k4)
+        dstepAll=cMTPs(1/6,dstepAll)
+  local nextstep=sPLSs(step,dstepAll)
   return nextstep
 end
+
+
+
+for i=2, TotalStep do
+  step[i]=copy(rk4(step[i-1],TimeInterval))
+end
+
 
 

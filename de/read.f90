@@ -7,7 +7,7 @@ program read
   real(8),dimension(6)  :: StateVector
 
   JuliaDate = 2451545
-  Planet    = 3
+  Planet    = 1
   Centre    = 11
 
   call pleph(JuliaDate,Planet,Centre,StateVector)
