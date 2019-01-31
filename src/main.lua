@@ -236,10 +236,11 @@ end
 
 -- write the results into output/i.csv where i is the body number
 io.output("output.csv")
-io.write("time"..","..
-         "1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..
-         "2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3"..
-         "\n")
+io.write(
+  "time"..","..
+  "1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..","..
+  "2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3".."\n"
+)
 for j=1, TotalStep do
   io.write(step[j].time)
   for i=1, TotalBody do
