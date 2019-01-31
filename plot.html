@@ -1,0 +1,24 @@
+<html>
+<!--<head><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head>-->
+<head><script src="plotly-latest.min.js"></script></head>
+<body><div id="mychart"></div></body>
+<script>
+<!--Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/3d-line1.csv',function(err,rows){-->
+<!--Plotly.d3.csv('http://47.106.72.248:9130/view/code/obt/src/output/2.csv',function(err,rows){-->
+Plotly.d3.csv('http://47.106.72.248:9130/view/code/obt/3d.csv',function(err,rows){
+  function readcsv(rows,key){return rows.map(function(row){return row[key];});};
+  var trace1={
+    x:        readcsv(rows,'x'),
+    y:        readcsv(rows,'y'),
+    z:        readcsv(rows,'z'),
+    mode:     'lines+markers',
+    line:     {color:'',width:1},
+    marker:   {color:'',size:1.2},
+    type:     'scatter3d'
+  };
+  var data=   [trace1];
+  var layout= {title:'',width:1000,height:1000};
+  Plotly.newPlot('mychart',data,layout); 
+});
+</script>
+</html>
