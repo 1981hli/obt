@@ -3,13 +3,14 @@
 <body><div id="mychart"></div></body>
 <script>
 Plotly.d3.csv(
-  'https://raw.githubusercontent.com/1981hli/obt/master/src/output/2.csv?token=AF5uvoFKNMlMnMuYXMgEuyc4xZvCNuWHks5cUwgSwA%3D%3D'
+  'https://raw.githubusercontent.com/1981hli/obt/master/src/output/1.csv?token=AF5uvqdUxXcv4wwqxS3y151gnW7e3hhiks5cUwtFwA%3D%3D'
+  <!--'https://raw.githubusercontent.com/1981hli/obt/master/src/output/2.csv?token=AF5uvgHsrv_UUSqWGBJneyoyGB9jtCIJks5cUwqRwA%3D%3D'-->
   ,function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key];});};
   var trace1={
-    x:        readcsv(rows,'x'),
-    y:        readcsv(rows,'y'),
-    z:        readcsv(rows,'z'),
+    x:        readcsv(rows,'x1'),
+    y:        readcsv(rows,'x2'),
+    z:        readcsv(rows,'x3'),
     mode:     'lines+markers',
     line:     {color:'',width:1},
     marker:   {color:'',size:1.2},

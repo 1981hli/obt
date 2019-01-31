@@ -131,6 +131,7 @@ end
 
 local TimeInterval=1
 local TotalStep=365
+local TotalBody=2
 local Day=24*60*60          -- s
 local AU=149597870700       -- m
 local Earthmass=5.97237e24  -- kg
@@ -234,12 +235,14 @@ end
 
 
 -- write the results into output/i.csv where i is the body number
-for i=1, 2 do
-  io.output("output/"..tostring(i)..".csv")
-  io.write("time"..",".."x1"..",".."x2"..",".."x3"..","..
-                        "v1"..",".."v2"..",".."v3".."\n")
-  for j=1, TotalStep do
-    io.write(step[j].time)
+io.output("output.csv")
+io.write("time"..","..
+         "1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..
+         "2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3"..
+         "\n")
+for j=1, TotalStep do
+  io.write(step[j].time)
+  for i=1, TotalBody do
     io.write(",")
     io.write(step[j].body[i].x[1])
     io.write(",")
@@ -252,9 +255,9 @@ for i=1, 2 do
     io.write(step[j].body[i].v[2])
     io.write(",")
     io.write(step[j].body[i].v[3])
-    io.write("\n")
   end
-  io.close()
+  io.write("\n")
 end
+io.close()
 
 
