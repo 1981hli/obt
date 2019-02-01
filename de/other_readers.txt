@@ -1,0 +1,89 @@
+---------------------------------------------------------------------
+INDEPENDENT EPHEMERIS SOFTWARE UTILITES (not supported by JPL) 
+---------------------------------------------------------------------
+
+All responsibility for these software packages resides with their
+authors, and all questions pertaining to their use must be directed to
+the authors themselves. 
+
+###########
+C-Versions
+###########
+
+-------------
+ephcom2
+-------------
+
+Based on the ephemeris.com library by Paul Hardy, ephcom2 has been updated
+by Alan Irwin to include new capabilities, including reading an integrated
+time scale TT-TDB stored on some of the more recent JPL planetary ephemerides. 
+
+     http://timeephem.sourceforge.net/index.php
+
+--------------------------------------------------------
+Astronomical Observatory of the A. Mickiewicz University
+--------------------------------------------------------
+
+Piotr A. Dybczynski, Sloneczna 36, 60-286 Poznan, POLAND. 
+e-mail: dybol@amu.edu.pl
+
+http://apollo.astro.amu.edu.pl/PAD/index.php?n=Dybol.JPLEph
+
+
+-------------
+Project Pluto
+-------------
+
+An update on the above C-version
+
+http://www.projectpluto.com/jpl_eph.htm#other_versions
+
+
+------------
+FITS-version
+------------
+
+Arnold Rots of Harvard-Smithsonian Astrophysical Observatory
+e-mail:arots@head-cfa.harvard.edu
+
+ftp://heasarc.gsfc.nasa.gov/xte/calib_data/clock/bary
+
+###############
+Python versions
+###############
+
+--------------
+EphemPy
+--------------
+
+http://pypi.python.org/pypi/EphemPy
+
+Ray Buvel, MIT
+e-mail: rlbuvel@gmail.com
+
+-------------------------------------
+National Radio Astronomy Organization
+-------------------------------------
+
+Rick Fisher,
+e-mail: rfisher@nrao.edu
+
+http://www.cv.nrao.edu/~rfisher/Python/py_solar_system.html
+
+###############
+IDL version
+###############
+
+Craig B. Markwardt
+e-mail: craigm@lheamail.gsfc.nasa.gov
+
+http://www.physics.wisc.edu/~craigm/idl/ephem.html
+
+
+###############
+JAVA version
+###############
+
+Peter Hristozov
+
+http://sourceforge.net/projects/jderead/

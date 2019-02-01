@@ -6,7 +6,8 @@ program read
   integer               :: Planet,Centre
   real(8),dimension(6)  :: StateVector
 
-  JuliaDate = 2451545
+  !JuliaDate = 2451545
+  JuliaDate = 2440400.5
   Planet    = 1
   Centre    = 11
 
