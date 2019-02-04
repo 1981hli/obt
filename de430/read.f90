@@ -20,4 +20,9 @@ program read
   write(*,*) "velocity="
   write(*,*) StateVector(4:6)
 
+  open(1,file="outputde.csv")
+  write(1,*) StateVector(1),',',StateVector(2),',',StateVector(3),',',&
+             StateVector(4),',',StateVector(5),',',StateVector(6)
+  close(1)
+
 end program

@@ -140,32 +140,32 @@ local gravityG=6.67408e-11 *(1/Day)^-2*(1/AU)^3*(1/Earthmass)^-1
 
 
 
-local step={}
-step[1]={
-  time=2451545, -- julian day of AD 2000.01.01
-  body={
-    {name="Sun",        mass=1.9885e30/Earthmass,
-                        radius=696392000/AU,
-                        x={0,0,0},
-                        v={0,0,0}
-    },
-    {name="Earth",      mass=1,
-                        radius=6371000/AU,
-                        x={-0.17713509980340372,
-                            0.88742852243545500,
-                            0.38474289861125888},
-                        v={-1.7207625066858249e-002,
-                           -2.8981677276473366e-003,
-                           -1.2563950525522731e-003}
-    }
-    --,{name="Jupiter",    mass=1.8982e27/Earthmass,
-                        --radius=69911000/AU,
+--local step={}
+--step[1]={
+  --time=2451545, -- julian day of AD 2000.01.01
+  --body={
+    --{name="Sun",        mass=1.9885e30/Earthmass,
+                        --radius=696392000/AU,
                         --x={0,0,0},
                         --v={0,0,0}
+    --},
+    --{name="Earth",      mass=1,
+                        --radius=6371000/AU,
+                        --x={-0.17713509980340372,
+                            --0.88742852243545500,
+                            --0.38474289861125888},
+                        --v={-1.7207625066858249e-002,
+                           ---2.8981677276473366e-003,
+                           ---1.2563950525522731e-003}
     --}
-  }
-} 
-s=step -- for debug
+    ----,{name="Jupiter",    mass=1.8982e27/Earthmass,
+                        ----radius=69911000/AU,
+                        ----x={0,0,0},
+                        ----v={0,0,0}
+    ----}
+  --}
+--} 
+--s=step -- for debug
 
 -------------------------------------------------------------------------------
 
@@ -227,38 +227,113 @@ end
 
 
 
--- use Runge-Kutta method to generate all steps
-for i=2, TotalStep do
-  step[i]=copy(rk4(step[i-1],TimeInterval))
-end
+---- use Runge-Kutta method to generate all steps
+--for i=2, TotalStep do
+  --step[i]=rk4(step[i-1],TimeInterval)
+--end
 
 
 
--- write the results into output/i.csv where i is the body number
-io.output("output.csv")
-io.write(
-  "time"..","..
-  "1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..","..
-  "2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3".."\n"
-)
-for j=1, TotalStep do
-  io.write(step[j].time)
-  for i=1, TotalBody do
-    io.write(",")
-    io.write(step[j].body[i].x[1])
-    io.write(",")
-    io.write(step[j].body[i].x[2])
-    io.write(",")
-    io.write(step[j].body[i].x[3])
-    io.write(",")
-    io.write(step[j].body[i].v[1])
-    io.write(",")
-    io.write(step[j].body[i].v[2])
-    io.write(",")
-    io.write(step[j].body[i].v[3])
+---- write the results into output/i.csv where i is the body number
+--io.output("output.csv")
+--io.write(
+  --"time"..","..
+  --"1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..","..
+  --"2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3".."\n"
+--)
+--for j=1, TotalStep do
+  --io.write(step[j].time)
+  --for i=1, TotalBody do
+    --io.write(",")
+    --io.write(step[j].body[i].x[1])
+    --io.write(",")
+    --io.write(step[j].body[i].x[2])
+    --io.write(",")
+    --io.write(step[j].body[i].x[3])
+    --io.write(",")
+    --io.write(step[j].body[i].v[1])
+    --io.write(",")
+    --io.write(step[j].body[i].v[2])
+    --io.write(",")
+    --io.write(step[j].body[i].v[3])
+  --end
+  --io.write("\n")
+--end
+--io.close()
+
+-------------------------------------------------------------------------------
+
+function readCSV(CSVfileName)
+  local function splitline(line,symbol)
+    local linesplit={}
+    local line1=line
+    local i=1
+    while true do
+      local locationofSymbol=string.find(line1,symbol)
+      if locationofSymbol==nil then 
+        linesplit[i]=line1
+        break 
+      end
+      linesplit[i]=string.sub(line1,1,locationofSymbol-1)
+      line1=string.sub(line1,locationofSymbol+1,#line1)
+      i=i+1
+    end
+    return linesplit
   end
-  io.write("\n")
+
+  local i=1
+  for line in io.lines(CSVfileName) do
+    while true do
+      -- omit the head line
+      if i==1 then 
+        i=i+1
+        break 
+      end
+      local tmp=splitline(line,",")
+      step[1].body[i-1].name=tmp[1]
+      step[1].body[i-1].mass=tmp[2]
+      step[1].body[i-1].radius=tmp[3]
+      i=i+1
+      break
+    end
+  end
 end
-io.close()
+
+
+
+stepBegintime=2451545
+step={}
+step[1]={
+  time=stepBegintime,
+  body={
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
+    {name=nil,mass=nil,radius=nil,x=nil,v=nil}
+  }
+}
+local i=1
+for line in io.lines("bodydata.csv") do
+  while true do
+    -- omit the header line
+    if i==1 then 
+      i=i+1
+      break 
+    end
+    local tmp=splitline(line,",")
+    step[1].body[i-1].name=tmp[1]
+    step[1].body[i-1].mass=tmp[2]
+    step[1].body[i-1].radius=tmp[3]
+    i=i+1
+    break
+  end
+end
 
 
