@@ -101,6 +101,46 @@ function vMOD(v)
 end
 
 
+function readCSV(CSVfileName)
+  -- cut a line of string to segments according to symbol(comma for instance)
+  local function splitline(line,symbol)
+    local linesplit={}
+    local line1=line
+    local i=1
+    while true do
+      local locationofSymbol=string.find(line1,symbol)
+      if locationofSymbol==nil then 
+        linesplit[i]=line1
+        break 
+      end
+      linesplit[i]=string.sub(line1,1,locationofSymbol-1)
+      line1=string.sub(line1,locationofSymbol+1,#line1)
+      i=i+1
+    end
+    return linesplit
+  end
+
+  local i=1
+  local tmp={}
+  for line in io.lines(CSVfileName) do
+    while true do
+      -- omit the head line
+      if i==1 then 
+        i=i+1
+        break 
+      else
+        -- read from the 2nd line to the last line
+        -- indices of tmp go from 1
+        tmp[i-1]=splitline(line,",")
+        i=i+1
+        break
+      end
+    end
+  end
+  return tmp
+end
+
+
 
 -- constant multiply step
 function cMTPs(c,step)
@@ -263,41 +303,6 @@ end
 
 -------------------------------------------------------------------------------
 
-function readCSV(CSVfileName)
-  local function splitline(line,symbol)
-    local linesplit={}
-    local line1=line
-    local i=1
-    while true do
-      local locationofSymbol=string.find(line1,symbol)
-      if locationofSymbol==nil then 
-        linesplit[i]=line1
-        break 
-      end
-      linesplit[i]=string.sub(line1,1,locationofSymbol-1)
-      line1=string.sub(line1,locationofSymbol+1,#line1)
-      i=i+1
-    end
-    return linesplit
-  end
-
-  local i=1
-  for line in io.lines(CSVfileName) do
-    while true do
-      -- omit the head line
-      if i==1 then 
-        i=i+1
-        break 
-      end
-      local tmp=splitline(line,",")
-      step[1].body[i-1].name=tmp[1]
-      step[1].body[i-1].mass=tmp[2]
-      step[1].body[i-1].radius=tmp[3]
-      i=i+1
-      break
-    end
-  end
-end
 
 
 
@@ -305,35 +310,11 @@ stepBegintime=2451545
 step={}
 step[1]={
   time=stepBegintime,
-  body={
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil},
-    {name=nil,mass=nil,radius=nil,x=nil,v=nil}
-  }
+  body={}
 }
-local i=1
-for line in io.lines("bodydata.csv") do
-  while true do
-    -- omit the header line
-    if i==1 then 
-      i=i+1
-      break 
-    end
-    local tmp=splitline(line,",")
-    step[1].body[i-1].name=tmp[1]
-    step[1].body[i-1].mass=tmp[2]
-    step[1].body[i-1].radius=tmp[3]
-    i=i+1
-    break
-  end
+for i=1,11 do 
+  table.insert(step[1].body,{name=nil,mass=nil,radius=nil,x=nil,v=nil})
 end
+
 
 

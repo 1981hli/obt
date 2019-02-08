@@ -3,7 +3,7 @@
 <body><div id="thechart"></div></body>
 <script>
 Plotly.d3.csv(
-  'https://raw.githubusercontent.com/1981hli/obt/master/src/output.csv'
+  'https://raw.githubusercontent.com/1981hli/obt/master/data/output.csv'
   ,function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key];});};
   var Sun={
