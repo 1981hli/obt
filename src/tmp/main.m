@@ -49,15 +49,12 @@ gravityby1[testMass_,source_]:=Module[{distance,term,force},
 
 gravitybyAll[testMassNumber_,currentStep_]:=Module[{force1,force},
   force={0,0,0};
-  
   Do[
     If[i==testMassNumber,Continue[]];
     force1 =gravityby1[currentStep[body[testMassNumber]],currentStep[body[i]]];
     force +=force1,
-
     {i,1,TotalBody}
   ];
-  
   force
 ]
 
@@ -66,14 +63,11 @@ gravitybyAll[testMassNumber_,currentStep_]:=Module[{force1,force},
 stepMultiplyConstant[step_,c_]:=Module[{outputStep},
   outputStep=step;
   outputStep[time]*=c;
-
   Do[
     outputStep[body[i]][x]*=c;
     outputStep[body[i]][v]*=c,
-
     {i,1,TotalBody}
   ];
-
   outputStep
 ]
 
@@ -82,14 +76,11 @@ stepMultiplyConstant[step_,c_]:=Module[{outputStep},
 stepPlusStep[step1_,step2_]:=Module[{outputStep},
   outputStep=stepInit;
   outputStep[time]=step1[time]+step2[time];
-  
   Do[
     outputStep[body[i]][x]=step1[body[i]][x]+step2[body[i]][x];
     outputStep[body[i]][v]=step1[body[i]][v]+step2[body[i]][v],
-    
     {i,1,TotalBody}
   ];
-
   outputStep
 ]
 
@@ -98,15 +89,12 @@ stepPlusStep[step1_,step2_]:=Module[{outputStep},
 fdt[stepInput_,dt_]:=Module[{dstep,force},
   dstep=stepInput;
   dstep[time]=dt;
-   
   Do[
     force=gravitybyAll[i,stepInput];
     dstep[body[i]][x] =stepInput[body[i]][v] *dt;
     dstep[body[i]][v] =force/stepInput[body[i]][mass] *dt,
-
     {i,1,TotalBody}
   ];
-  
   dstep
 ]
 
@@ -117,7 +105,6 @@ rk4[currentStep_,dt_]:=Module[{dstep}(*{k1,k2,k3,k4,dstep}*),
   k2=fdt[ stepPlusStep[ currentStep, stepMultiplyConstant[k1,1/2] ], dt];
   k3=fdt[ stepPlusStep[ currentStep, stepMultiplyConstant[k2,1/2] ], dt];
   k4=fdt[ stepPlusStep[ currentStep, k3 ],                           dt];
-
   (*dstep=1/6(k1+2k2+2k3+k4)*)
   dstep =stepMultiplyConstant[
     stepPlusStep[

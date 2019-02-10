@@ -3,142 +3,7 @@
 --                                                                    by LiHuan
 -------------------------------------------------------------------------------
 
--- print table for debug
-function p(table)
-  local function diveinto(printout,level)
-    for k,v in pairs(printout) do
-      if (type(v)=="table") then
-        print(string.rep("   ",level-1)..k..":")
-        diveinto(v,level+1)
-      else
-        print(string.rep("   ",level-1)..k.."= "..v)
-      end
-    end
-  end
-  diveinto(table,1)
-end
-
-
-
-function copy(table)
-  local function diveinto(origin,replica)
-    for k,v in pairs(origin) do
-      if (type(v)=="table") then
-        replica[k]={}
-        diveinto(v,replica[k])
-      else
-        replica[k]=v
-      end
-    end
-  end
-  local output={}
-  diveinto(table,output)
-  return output
-end
-
-
-
--- constant plus vector
-function cPLSv(c,v)
-  local output={}
-  for i=1, #v do
-    output[i]=c+v[i]
-  end
-  return output
-end
-
-
-
--- vector plus vector
-function vPLSv(v1,v2)
-  if (#v1 ~= #v2) then
-    print("vPLSv: Length do not match!") 
-    return
-  end
-  local output={}
-  for i=1, #v1 do
-    output[i]=v1[i]+v2[i]
-  end
-  return output
-end
-
-
-
--- vector minus vector
-function vMNSv(v1,v2)
-  if (#v1 ~= #v2) then
-    print("vMNSv: Length do not match!") 
-    return
-  end
-  local output={}
-  for i=1, #v1 do
-    output[i]=v1[i]-v2[i]
-  end
-  return output
-end
-
-
-
--- constant multiply vector
-function cMTPv(c,v)
-  local output={}
-  for i=1, #v do
-    output[i]=c*v[i]
-  end
-  return output
-end
-
-
-
--- vector module
-function vMOD(v)
-  local sqrt=math.sqrt
-  local tmp=0
-  for i=1, #v do
-    tmp=tmp+v[i]^2
-  end
-  return sqrt(tmp)
-end
-
-
-function readCSV(CSVfileName)
-  -- cut a line of string to segments according to symbol(comma for instance)
-  local function splitline(line,symbol)
-    local linesplit={}
-    local line1=line
-    local i=1
-    while true do
-      local locationofSymbol=string.find(line1,symbol)
-      if locationofSymbol==nil then 
-        linesplit[i]=line1
-        break 
-      end
-      linesplit[i]=string.sub(line1,1,locationofSymbol-1)
-      line1=string.sub(line1,locationofSymbol+1,#line1)
-      i=i+1
-    end
-    return linesplit
-  end
-
-  local i=1
-  local tmp={}
-  for line in io.lines(CSVfileName) do
-    while true do
-      -- omit the head line
-      if i==1 then 
-        i=i+1
-        break 
-      else
-        -- read from the 2nd line to the last line
-        -- indices of tmp go from 1
-        tmp[i-1]=splitline(line,",")
-        i=i+1
-        break
-      end
-    end
-  end
-  return tmp
-end
+require("common")
 
 
 
@@ -169,9 +34,10 @@ end
 
 -------------------------------------------------------------------------------
 
+local stepBegintime=2451545
 local TimeInterval=1
 local TotalStep=365
-local TotalBody=2
+local TotalBody=11
 local Day=24*60*60          -- s
 local AU=149597870700       -- m
 local Earthmass=5.97237e24  -- kg
@@ -180,32 +46,31 @@ local gravityG=6.67408e-11 *(1/Day)^-2*(1/AU)^3*(1/Earthmass)^-1
 
 
 
---local step={}
---step[1]={
-  --time=2451545, -- julian day of AD 2000.01.01
-  --body={
-    --{name="Sun",        mass=1.9885e30/Earthmass,
-                        --radius=696392000/AU,
-                        --x={0,0,0},
-                        --v={0,0,0}
-    --},
-    --{name="Earth",      mass=1,
-                        --radius=6371000/AU,
-                        --x={-0.17713509980340372,
-                            --0.88742852243545500,
-                            --0.38474289861125888},
-                        --v={-1.7207625066858249e-002,
-                           ---2.8981677276473366e-003,
-                           ---1.2563950525522731e-003}
-    --}
-    ----,{name="Jupiter",    mass=1.8982e27/Earthmass,
-                        ----radius=69911000/AU,
-                        ----x={0,0,0},
-                        ----v={0,0,0}
-    ----}
-  --}
---} 
---s=step -- for debug
+step={}
+step[1]={
+  time=stepBegintime,
+  body={}
+}
+for i=1,TotalBody do 
+  table.insert(step[1].body,{name=nil,mass=nil,radius=nil,x={},v={}})
+end
+
+local bodydata=readCSV("../data/bodydata.csv")
+for i=1,TotalBody do
+  step[1].body[i].name  =bodydata[i][1]
+  step[1].body[i].mass  =bodydata[i][2]/Earthmass
+  step[1].body[i].radius=bodydata[i][3]/AU
+end
+
+local initdata=readCSV("../data/initdata.csv")
+for i=1,TotalBody do
+  step[1].body[i].x[1] =initdata[i][1]
+  step[1].body[i].x[2] =initdata[i][2]
+  step[1].body[i].x[3] =initdata[i][3]
+  step[1].body[i].v[1] =initdata[i][4]
+  step[1].body[i].v[2] =initdata[i][5]
+  step[1].body[i].v[3] =initdata[i][6]
+end
 
 -------------------------------------------------------------------------------
 
@@ -267,54 +132,39 @@ end
 
 
 
----- use Runge-Kutta method to generate all steps
---for i=2, TotalStep do
-  --step[i]=rk4(step[i-1],TimeInterval)
---end
-
-
-
----- write the results into output/i.csv where i is the body number
---io.output("output.csv")
---io.write(
-  --"time"..","..
-  --"1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..","..
-  --"2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3".."\n"
---)
---for j=1, TotalStep do
-  --io.write(step[j].time)
-  --for i=1, TotalBody do
-    --io.write(",")
-    --io.write(step[j].body[i].x[1])
-    --io.write(",")
-    --io.write(step[j].body[i].x[2])
-    --io.write(",")
-    --io.write(step[j].body[i].x[3])
-    --io.write(",")
-    --io.write(step[j].body[i].v[1])
-    --io.write(",")
-    --io.write(step[j].body[i].v[2])
-    --io.write(",")
-    --io.write(step[j].body[i].v[3])
-  --end
-  --io.write("\n")
---end
---io.close()
-
--------------------------------------------------------------------------------
-
-
-
-
-stepBegintime=2451545
-step={}
-step[1]={
-  time=stepBegintime,
-  body={}
-}
-for i=1,11 do 
-  table.insert(step[1].body,{name=nil,mass=nil,radius=nil,x=nil,v=nil})
+-- use Runge-Kutta method to generate all steps
+for i=2, TotalStep do
+  step[i]=rk4(step[i-1],TimeInterval)
+  --print(i.." done")
 end
 
+
+
+-- write the results into output/i.csv where i is the body number
+io.output("../data/output.csv")
+io.write(
+  "time"..","..
+  "1x1"..",".."1x2"..",".."1x3"..",".."1v1"..",".."1v2"..",".."1v3"..","..
+  "2x1"..",".."2x2"..",".."2x3"..",".."2v1"..",".."2v2"..",".."2v3".."\n"
+)
+for j=1, TotalStep do
+  io.write(step[j].time)
+  for i=1, TotalBody do
+    io.write(",")
+    io.write(step[j].body[i].x[1])
+    io.write(",")
+    io.write(step[j].body[i].x[2])
+    io.write(",")
+    io.write(step[j].body[i].x[3])
+    io.write(",")
+    io.write(step[j].body[i].v[1])
+    io.write(",")
+    io.write(step[j].body[i].v[2])
+    io.write(",")
+    io.write(step[j].body[i].v[3])
+  end
+  io.write("\n")
+end
+io.close()
 
 
