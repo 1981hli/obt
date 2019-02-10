@@ -37,7 +37,7 @@ end
 local stepBegintime=2451545
 local TimeInterval=1
 local TotalStep=365
-local TotalBody=2
+local TotalBody=11
 local Day=24*60*60          -- s
 local AU=149597870700       -- m
 local Earthmass=5.97237e24  -- kg
