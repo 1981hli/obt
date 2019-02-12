@@ -106,15 +106,14 @@ end
 -- read csv file to a table
 function readCSV(CSVfileName)
   -- cut a line of string to segments according to symbol(comma for instance)
-  local function splitline(line,symbol)
+  local function splitline(stringline,symbol)
     local linesplit={}
-    local line1=line
+    local line1=stringline
     local i=1
     while true do
       local locationofSymbol=string.find(line1,symbol)
       if locationofSymbol==nil then 
-        -- #line1-1 means drop the '\n'
-        linesplit[i]=string.sub(line1,1,#line1-1)
+        linesplit[i]=line1
         break 
       end
       linesplit[i]=string.sub(line1,1,locationofSymbol-1)

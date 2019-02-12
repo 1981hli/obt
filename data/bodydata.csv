@@ -1,4 +1,4 @@
-name,mass,radius
+name,mass(kg),radius(m)
 Mercury,3.3011e23,2439700
 Venus,4.8675e24,6051800
 Earrh,5.97237e24,6371000
@@ -11,4 +11,4 @@ Pluto,1.303e22,1188300
 Moon,7.342e22,1737100
 Sun,1.9885e30,695700000
 SSB,0,0
-EMB,5.97237e24+7.342e22,0
+EMB,6.04579e24,0
