@@ -34,15 +34,16 @@ end
 
 -------------------------------------------------------------------------------
 
-local stepBegintime=2451545
-local TimeInterval=1
-local TotalStep=365
-local TotalBody=11
-local Day=24*60*60          -- s
-local AU=149597870700       -- m
-local Earthmass=5.97237e24  -- kg
+TotalBody=11
+stepBegintime=2451545 -- Julian date at 2000.01.01
+TimeInterval=1        -- day
+TotalStep=365
+
+Day=24*60*60          -- s
+AU=149597870700       -- m
+Earthmass=5.97237e24  -- kg
 -- G=6.67408e-11 (s-2.m3.kg-1)
-local gravityG=6.67408e-11 *(1/Day)^-2*(1/AU)^3*(1/Earthmass)^-1
+gravityG=6.67408e-11 *(1/Day)^-2*(1/AU)^3*(1/Earthmass)^-1
 
 
 
@@ -55,14 +56,14 @@ for i=1,TotalBody do
   table.insert(step[1].body,{name=nil,mass=nil,radius=nil,x={},v={}})
 end
 
-local bodydata=readCSV("../data/bodydata.csv")
+bodydata=readCSV("../data/bodydata.csv")
 for i=1,TotalBody do
   step[1].body[i].name  =bodydata[i][1]
   step[1].body[i].mass  =bodydata[i][2]/Earthmass
   step[1].body[i].radius=bodydata[i][3]/AU
 end
 
-local initdata=readCSV("../data/initdata.csv")
+initdata=readCSV("../data/initdata.csv")
 for i=1,TotalBody do
   step[1].body[i].x[1] =initdata[i][1]
   step[1].body[i].x[2] =initdata[i][2]
@@ -154,9 +155,9 @@ end
 csvhead=csvhead.."\n"
 io.write(csvhead)
 
-for j=1, TotalStep do
+for j=1,TotalStep do
   io.write(step[j].time)
-  for i=1, TotalBody do
+  for i=1,TotalBody do
     io.write(",")
     io.write(step[j].body[i].x[1])
     io.write(",")

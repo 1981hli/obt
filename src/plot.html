@@ -1,6 +1,6 @@
 <html>
 <head><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head>
-<body><div id="thechart"></div></body>
+<body><div align="center" id="thechart"></div></body>
 <script>
 Plotly.d3.csv(
   'https://raw.githubusercontent.com/1981hli/obt/master/data/output.csv'
@@ -106,7 +106,7 @@ Plotly.d3.csv(
     marker:           {color:'',size:1.2},
     type:             'scatter3d'
   };
-  var data=[body1,body2,body3,body4,body5,body6,body7,body8,body9,body10,body11];
+  var data=[body3,body11];
   var layout={title:'',width:900,height:900};
   Plotly.newPlot('thechart',data,layout); 
 });

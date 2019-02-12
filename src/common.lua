@@ -1,5 +1,6 @@
 -------------------------------------------------------------------------------
 -- commonly used functions and classes
+--                                                                    by LiHuan
 -------------------------------------------------------------------------------
 
 -- print table for debug
@@ -112,7 +113,8 @@ function readCSV(CSVfileName)
     while true do
       local locationofSymbol=string.find(line1,symbol)
       if locationofSymbol==nil then 
-        linesplit[i]=line1
+        -- #line1-1 means drop the '\n'
+        linesplit[i]=string.sub(line1,1,#line1-1)
         break 
       end
       linesplit[i]=string.sub(line1,1,locationofSymbol-1)

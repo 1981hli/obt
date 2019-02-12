@@ -5,7 +5,7 @@ program read
   real(8),dimension(6)  :: StateVector
   JuliaDate =2451545
   !JuliaDate = 2440400.5
-  TotalBody =11
+  TotalBody =13
   Centre    =12
   open(100,file="../data/initdata.csv")
   write(100,*) 'x1',',','x2',',','x3',',','v1',',','v2',',','v3'
