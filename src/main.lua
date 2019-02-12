@@ -37,7 +37,7 @@ end
 BodyTotal=13
 StepBegintime=2451545 -- Julian date at 2000.01.01
 TimeInterval=1        -- day
-StepTotal=365
+StepTotal=90560
 
 Day=24*60*60          -- s
 AU=149597870700       -- m

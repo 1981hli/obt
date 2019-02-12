@@ -106,7 +106,28 @@ Plotly.d3.csv(
     marker:           {color:'',size:1.2},
     type:             'scatter3d'
   };
-  var data=[body3,body11];
+  var body12={
+    x:                readcsv(rows,'body12x1'),
+    y:                readcsv(rows,'body12x2'),
+    z:                readcsv(rows,'body12x3'),
+    mode:             'lines+markers',
+    line:             {color:'',width:1},
+    marker:           {color:'',size:1.2},
+    type:             'scatter3d'
+  };
+  var body13={
+    x:                readcsv(rows,'body13x1'),
+    y:                readcsv(rows,'body13x2'),
+    z:                readcsv(rows,'body13x3'),
+    mode:             'lines+markers',
+    line:             {color:'',width:1},
+    marker:           {color:'',size:1.2},
+    type:             'scatter3d'
+  };
+  var data=[body1,body2,
+            body4,body5,body6,body7,body8,body9,
+            body11,body13
+  ];
   var layout={title:'',width:900,height:900};
   Plotly.newPlot('thechart',data,layout); 
 });
