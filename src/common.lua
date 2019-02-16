@@ -3,6 +3,11 @@
 --                                                                    by LiHuan
 -------------------------------------------------------------------------------
 
+-- print table
+pp=require("inspect")
+
+
+
 -- print table for debug
 function p(table)
   local function diveinto(printout,level)
@@ -103,43 +108,53 @@ end
 
 -------------------------------------------------------------------------------
 
--- read csv file to a table
-function readCSV(CSVfileName)
-  -- cut a line of string to segments according to symbol(comma for instance)
-  local function splitline(stringline,symbol)
-    local linesplit={}
-    local line1=stringline
-    local i=1
-    while true do
-      local locationofSymbol=string.find(line1,symbol)
-      if locationofSymbol==nil then 
-        linesplit[i]=line1
-        break 
-      end
-      linesplit[i]=string.sub(line1,1,locationofSymbol-1)
-      line1=string.sub(line1,locationofSymbol+1,#line1)
-      i=i+1
-    end
-    return linesplit
-  end
+ftcsv=require("ftcsv")
+readCSV=ftcsv.parse
+writeCSV=ftcsv.encode
 
-  local i=1
-  local tmp={}
-  for line in io.lines(CSVfileName) do
-    while true do
-      -- omit the head line
-      if i==1 then 
-        i=i+1
-        break 
-      else
-        -- read from the 2nd line to the last line
-        -- indices of tmp go from 1
-        tmp[i-1]=splitline(line,",")
-        i=i+1
-        break
-      end
-    end
-  end
-  return tmp
-end
+---- read csv file to a table
+--function readCSV(CSVfileName)
+  ---- cut a line of string to segments according to symbol(comma for instance)
+  --local function splitline(stringline,symbol)
+    --local linesplit={}
+    --local line1=stringline
+    --local i=1
+    --while true do
+      --local locationofSymbol=string.find(line1,symbol)
+      --if locationofSymbol==nil then 
+        --linesplit[i]=line1
+        --break 
+      --end
+      --linesplit[i]=string.sub(line1,1,locationofSymbol-1)
+      --line1=string.sub(line1,locationofSymbol+1,#line1)
+      --i=i+1
+    --end
+    --return linesplit
+  --end
+
+  --local i=1
+  --local tmp={}
+  --for line in io.lines(CSVfileName) do
+    --while true do
+      ---- omit the head line
+      --if i==1 then 
+        --i=i+1
+        --break 
+      --else
+        ---- read from the 2nd line to the last line
+        ---- indices of tmp go from 1
+        --tmp[i-1]=splitline(line,",")
+        --i=i+1
+        --break
+      --end
+    --end
+  --end
+  --return tmp
+--end
+
+
+
+---- write a table to a csv file
+--function writeCSV(table,CSVfileName)
+--end
 

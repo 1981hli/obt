@@ -7,7 +7,7 @@
 </body>
 <script>
 Plotly.d3.csv(
-  '../data/output.csv'
+  'output.csv'
   ,function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key];});};
   var body1={
@@ -127,9 +127,8 @@ Plotly.d3.csv(
     marker:           {color:'',size:1.2},
     type:             'scatter3d'
   };
-  var data=[body1,body2,
-            body4,body5,body6,body7,body8,body9,
-            body11,body13
+  var data=[
+    body1,body2,body4,body11,body13
   ];
   var layout={title:'',width:900,height:900};
   Plotly.newPlot('thechart',data,layout); 

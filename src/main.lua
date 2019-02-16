@@ -37,7 +37,7 @@ end
 BodyTotal=13
 StepBegintime=2451545 -- Julian date at 2000.01.01
 TimeInterval=1        -- day
-StepTotal=90560
+StepTotal=365  --90560
 
 Day=24*60*60          -- s
 AU=149597870700       -- m
@@ -144,6 +144,9 @@ end
 
 -- write the results into output/i.csv where i is the body number
 io.output("../data/output.csv")
+
+-- head of output.csv is 
+-- time,body1x1,body1x2,body1x3,body1v1,body1v2,body1v3,body2x1,body2x2,...
 local csvhead="time"
 for i=1,BodyTotal do
   csvhead=csvhead..",".."body"..i.."x1"..","
