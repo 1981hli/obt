@@ -108,9 +108,10 @@ end
 
 -------------------------------------------------------------------------------
 
-ftcsv=require("ftcsv")
-readCSV=ftcsv.parse
-writeCSV=ftcsv.encode
+ftcsv=require('luamod/ftcsv')
+csv={}
+csv.read=ftcsv.parse
+csv.write=ftcsv.encode
 
 ---- read csv file to a table
 --function readCSV(CSVfileName)
