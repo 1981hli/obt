@@ -26,7 +26,7 @@ end
 
 
 -- copy table
-function copy(table)
+function table.copy(table)
   local function diveinto(origin,replica)
     for k,v in pairs(origin) do
       if (type(v)=="table") then
@@ -108,10 +108,10 @@ end
 
 -------------------------------------------------------------------------------
 
-ftcsv=require('luamod/ftcsv')
 csv={}
+ftcsv=require('luamod/ftcsv')
 csv.read=ftcsv.parse
-csv.write=ftcsv.encode
+csv.encode=ftcsv.encode
 
 ---- read csv file to a table
 --function readCSV(CSVfileName)
