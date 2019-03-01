@@ -11,33 +11,28 @@ local gravity={}
 local rk={}
 
 -------------------------------------------------------------------------------
--- metatable of Step
 
-Step.__add=function(step1,step2)
+-- constant multiply step
+function step.cMTPs(c,step1)
   local tmp=LH.table.clone(step1)
-  tmp.time=step1.time+step2.time
-  for i=1,#tmp.body do
-    tmp.body[i].x= LH.vector.vPLSv(step1.body[i].x, step2.body[i].x)
-    tmp.body[i].v= LH.vector.vPLSv(step1.body[i].v, step2.body[i].v)
+  tmp.time=c*step1.time
+  -- #step.body is the number of all bodies
+  for i=1,#tmp.body do        
+    tmp.body[i].x=LH.vector.cMTPv(c, step1.body[i].x)
+    tmp.body[i].v=LH.vector.cMTPv(c, step1.body[i].v)
   end
   return tmp
 end
 
 
 
-Step.__mul=function(arg1,arg2)
-  if(type(arg1)=='number' and type(arg2)=='table') then
-    c=arg1
-    step1=arg2
-  else if(type(arg1)=='table' and type(arg2)=='number') then
-    c=arg2
-    step1=arg1
-  end
+-- step plus step
+function step.sPLSs(step1,step2)
   local tmp=LH.table.clone(step1)
-  tmp.time=c*step1.time
-  for i=1,#tmp.body do        
-    tmp.body[i].x=LH.vector.cMTPv(c, step1.body[i].x)
-    tmp.body[i].v=LH.vector.cMTPv(c, step1.body[i].v)
+  tmp.time=step1.time+step2.time
+  for i=1,#tmp.body do
+    tmp.body[i].x= LH.vector.vPLSv(step1.body[i].x, step2.body[i].x)
+    tmp.body[i].v= LH.vector.vPLSv(step1.body[i].v, step2.body[i].v)
   end
   return tmp
 end
@@ -189,5 +184,35 @@ io.output("../data/output.csv")
   --io.write("\n")
 --[[end]]
 io.close()
+
+
+-------------------------------------------------------------------------------
+
+Step.__add=function(step1,step2)
+  local tmp=LH.table.clone(step1)
+  tmp.time=step1.time+step2.time
+  for i=1,#tmp.body do
+    tmp.body[i].x= LH.vector.vPLSv(step1.body[i].x, step2.body[i].x)
+    tmp.body[i].v= LH.vector.vPLSv(step1.body[i].v, step2.body[i].v)
+  end
+  return tmp
+end
+
+Step.__mul=function(arg1,arg2)
+  if(type(arg1)=='number' and type(arg2)=='table') then
+    c=arg1
+    step1=arg2
+  else if(type(arg1)=='table' and type(arg2)=='number') then
+    c=arg2
+    step1=arg1
+  end
+  local tmp=LH.table.clone(step1)
+  tmp.time=c*step1.time
+  for i=1,#tmp.body do        
+    tmp.body[i].x=LH.vector.cMTPv(c, step1.body[i].x)
+    tmp.body[i].v=LH.vector.cMTPv(c, step1.body[i].v)
+  end
+  return tmp
+end
 
 

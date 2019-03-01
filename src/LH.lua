@@ -3,30 +3,37 @@
 --                                                                    by LiHuan
 -------------------------------------------------------------------------------
 
--- print table
-pp=require("inspect")
+-- LH is the package written by myself
+local LH={}
+LH.table={}
+LH.vector={}
+LH.csv={}
 
-
+-------------------------------------------------------------------------------
 
 -- print table for debug
-function p(table)
-  local function diveinto(printout,level)
-    for k,v in pairs(printout) do
-      if (type(v)=="table") then
-        print(string.rep("   ",level-1).."["..k.."]"..":")
-        diveinto(v,level+1)
-      else
-        print(string.rep("   ",level-1).."["..k.."]".."= "..v)
+function LH.table.print(table)
+  if (type(table)~="table") then
+    print(table)
+  else 
+    local function diveinto(printout,level)
+      for k,v in pairs(printout) do
+        if (type(v)=="table") then
+          print(string.rep("   ",level-1).."["..k.."]"..":")
+          diveinto(v,level+1)
+        else
+          print(string.rep("   ",level-1).."["..k.."]".."= "..v)
+        end
       end
     end
+    diveinto(table,1)
   end
-  diveinto(table,1)
 end
 
 
 
 -- copy table
-function table.copy(table)
+function LH.table.clone(table)
   local function diveinto(origin,replica)
     for k,v in pairs(origin) do
       if (type(v)=="table") then
@@ -43,9 +50,44 @@ function table.copy(table)
 end
 
 -------------------------------------------------------------------------------
+-- metatable Vector
+
+Vector.__add=function(arg1,arg2)
+  local output={}
+  if(type(arg1)=='number' and type(arg2)=='table') then
+    for i=1,#arg2 do output[i]=arg1+arg2[i] end
+  else if(type(arg1)=='table' and type(arg2)=='number') then
+    for i=1,#arg1 do output[i]=arg1[i]+arg2 end
+  else if(type(arg1)=='table' and type(arg2)=='table') then
+    for i=1,#arg1 do output[i]=arg1[i]+arg2[i] end
+  end
+  return output
+end
+
+
+
+Vector.__sub=function(arg1,arg2)
+  local output={}
+  for i=1,#arg1 do output[i]=arg1[i]-arg2[i] end
+  return output
+end
+
+
+
+Vector.__mul=function(arg1,arg2)
+  local output={}
+  if(type(arg1)=='number' and type(arg2)=='table') then
+    for i=1,#arg2 do output[i]=arg1*arg2[i] end
+  else if(type(arg1)=='table' and type(arg2)=='number') then
+    for i=1,#arg1 do output[i]=arg1[i]*arg2 end
+  end
+  return output
+end
+
+-------------------------------------------------------------------------------
 
 -- constant plus vector
-function cPLSv(c,v)
+function LH.vector.cPLSv(c,v)
   local output={}
   for i=1, #v do
     output[i]=c+v[i]
@@ -56,7 +98,7 @@ end
 
 
 -- vector plus vector
-function vPLSv(v1,v2)
+function LH.vector.vPLSv(v1,v2)
   if (#v1 ~= #v2) then
     print("vPLSv: Length do not match!") 
     return
@@ -71,7 +113,7 @@ end
 
 
 -- vector minus vector
-function vMNSv(v1,v2)
+function LH.vector.vMNSv(v1,v2)
   if (#v1 ~= #v2) then
     print("vMNSv: Length do not match!") 
     return
@@ -86,7 +128,7 @@ end
 
 
 -- constant multiply vector
-function cMTPv(c,v)
+function LH.vector.cMTPv(c,v)
   local output={}
   for i=1, #v do
     output[i]=c*v[i]
@@ -97,7 +139,7 @@ end
 
 
 -- vector module
-function vMOD(v)
+function LH.vector.MOD(v)
   local sqrt=math.sqrt
   local tmp=0
   for i=1, #v do
@@ -108,10 +150,10 @@ end
 
 -------------------------------------------------------------------------------
 
-csv={}
-ftcsv=require('luamod/ftcsv')
-csv.read=ftcsv.parse
-csv.encode=ftcsv.encode
+--csv={}
+--ftcsv=require('luamod/ftcsv')
+--csv.read=ftcsv.parse
+--csv.encode=ftcsv.encode
 
 ---- read csv file to a table
 --function readCSV(CSVfileName)
@@ -159,3 +201,9 @@ csv.encode=ftcsv.encode
 --function writeCSV(table,CSVfileName)
 --end
 
+-------------------------------------------------------------------------------
+
+pp=require("inspect")
+p=LH.table.print
+
+return LH
