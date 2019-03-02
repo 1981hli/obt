@@ -84,6 +84,17 @@ Vector.__mul=function(arg1,arg2)
   return output
 end
 
+
+
+Vector.__index=function()
+  local sqrt=math.sqrt
+  local tmp=0
+  for i=1,#v do
+    tmp=tmp+v[i]^2
+  end
+  return sqrt(tmp)
+end
+
 -------------------------------------------------------------------------------
 
 -- constant plus vector
@@ -142,7 +153,7 @@ end
 function LH.vector.MOD(v)
   local sqrt=math.sqrt
   local tmp=0
-  for i=1, #v do
+  for i=1,#v do
     tmp=tmp+v[i]^2
   end
   return sqrt(tmp)
