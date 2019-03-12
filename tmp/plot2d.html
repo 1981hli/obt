@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body><div align="center" id="thechart"></div></body>
+<script>
+d3.csv("output.csv").then(function(steps){
+
+  var body1x1data=[]
+  for(var i=0;i<steps.length;i++){
+    body1x1data.push(steps[i].body1x1)
+  }
+  var body1x1={
+    y:                body1x1data,
+    mode:             'lines+markers',
+    line:             {color:'',width:1},
+    marker:           {color:'',size:2},
+    type:             'scatter'
+  }
+
+<!---------------------------------------------------------------------------->
+  
+  var body1x2data=[]
+  for(var i=0;i<steps.length;i++){
+    body1x2data.push(steps[i].body1x2)
+  }
+
+  var body1x2={
+    y:                body1x1data,
+    mode:             'lines+markers',
+    line:             {color:'',width:1},
+    marker:           {color:'',size:2},
+    type:             'scatter'
+  }
+
+<!---------------------------------------------------------------------------->
+  
+  var data=[body1x1,body1x2]
+  var layout={title:'',width:600,height:600}
+  Plotly.newPlot('thechart',data,layout)
+})
+</script>
+</html>

@@ -1,137 +1,24 @@
 <html>
-<head>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
-<body>
-<div align="center" id="thechart"></div>
-</body>
+<head><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head>
+<body><div align="center" id="thechart"></div></body>
 <script>
-Plotly.d3.csv(
-  'output.csv'
-  ,function(err,rows){
-  function readcsv(rows,key){return rows.map(function(row){return row[key];});};
-  var body1={
-    x:                readcsv(rows,'body1x1'),
-    y:                readcsv(rows,'body1x2'),
-    z:                readcsv(rows,'body1x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body2={
-    x:                readcsv(rows,'body2x1'),
-    y:                readcsv(rows,'body2x2'),
-    z:                readcsv(rows,'body2x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body3={
-    x:                readcsv(rows,'body3x1'),
-    y:                readcsv(rows,'body3x2'),
-    z:                readcsv(rows,'body3x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body4={
-    x:                readcsv(rows,'body4x1'),
-    y:                readcsv(rows,'body4x2'),
-    z:                readcsv(rows,'body4x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body5={
-    x:                readcsv(rows,'body5x1'),
-    y:                readcsv(rows,'body5x2'),
-    z:                readcsv(rows,'body5x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body6={
-    x:                readcsv(rows,'body6x1'),
-    y:                readcsv(rows,'body6x2'),
-    z:                readcsv(rows,'body6x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body7={
-    x:                readcsv(rows,'body7x1'),
-    y:                readcsv(rows,'body7x2'),
-    z:                readcsv(rows,'body7x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body8={
-    x:                readcsv(rows,'body8x1'),
-    y:                readcsv(rows,'body8x2'),
-    z:                readcsv(rows,'body8x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body9={
-    x:                readcsv(rows,'body9x1'),
-    y:                readcsv(rows,'body9x2'),
-    z:                readcsv(rows,'body9x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body10={
-    x:                readcsv(rows,'body10x1'),
-    y:                readcsv(rows,'body10x2'),
-    z:                readcsv(rows,'body10x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body11={
-    x:                readcsv(rows,'body11x1'),
-    y:                readcsv(rows,'body11x2'),
-    z:                readcsv(rows,'body11x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body12={
-    x:                readcsv(rows,'body12x1'),
-    y:                readcsv(rows,'body12x2'),
-    z:                readcsv(rows,'body12x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var body13={
-    x:                readcsv(rows,'body13x1'),
-    y:                readcsv(rows,'body13x2'),
-    z:                readcsv(rows,'body13x3'),
-    mode:             'lines+markers',
-    line:             {color:'',width:1},
-    marker:           {color:'',size:1.2},
-    type:             'scatter3d'
-  };
-  var data=[
-    body1,body2,body4,body11,body13
-  ];
-  var layout={title:'',width:900,height:900};
-  Plotly.newPlot('thechart',data,layout); 
-});
+Plotly.d3.csv('output.csv',function(err,rows){
+  function readcsv(rows,key){return rows.map(function(row){return row[key]})}
+  var body={}
+  for(var i=0;i<rows.length;i++){
+    body[i]={
+      x:           readcsv(rows,'body'+i+'x2'),
+      y:           readcsv(rows,'body'+i+'x1'),
+      z:           readcsv(rows,'body'+i+'x3'),
+      mode:        'lines+markers',
+      line:        {color:'',width:1},
+      marker:      {color:'',size:1.2},
+      type:        'scatter3d'
+    }
+  }
+  var data=[body[1],body[2],body[4],body[13]]
+  var layout={title:'',width:900,height:900}
+  Plotly.newPlot('thechart',data,layout) 
+})
 </script>
 </html>
