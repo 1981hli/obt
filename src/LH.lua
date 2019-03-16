@@ -1,19 +1,13 @@
--------------------------------------------------------------------------------
--- commonly used functions and classes
+-- module by LiHuan
 
-moon=require 'moon'
-p=moon.p
-pp=require 'inspect'
-ppp=require 'see'
-require 'pl'
-local ftcsv=require 'ftcsv'
 local LH={}
-smt=setmetatable
+local pl=require 'pl.import_into'()
+local ftcsv=require 'ftcsv'
 
 -------------------------------------------------------------------------------
 
 LH.new=function(class)
-  return setmetatable(tablex.deepcopy(class.proto),class)
+  return setmetatable(pl.tablex.deepcopy(class.proto),class)
 end
 
 -------------------------------------------------------------------------------
@@ -73,7 +67,7 @@ end
 
 
 LH.Vector.__add=function(arg1,arg2)
-  local output=smt({},LH.Vector)
+  local output=setmetatable({},LH.Vector)
   if(type(arg1)=='number' and type(arg2)=='table') then
     for i=1,#arg2 do output[i]=arg1+arg2[i] end
   elseif(type(arg1)=='table' and type(arg2)=='number') then
@@ -87,7 +81,7 @@ end
 
 
 LH.Vector.__sub=function(arg1,arg2)
-  local output=smt({},LH.Vector)
+  local output=setmetatable({},LH.Vector)
   for i=1,#arg1 do output[i]=arg1[i]-arg2[i] end
   return output
 end
@@ -95,7 +89,7 @@ end
 
 
 LH.Vector.__mul=function(arg1,arg2)
-  local output=smt({},LH.Vector)
+  local output=setmetatable({},LH.Vector)
   if(type(arg1)=='number' and type(arg2)=='table') then
     for i=1,#arg2 do output[i]=arg1*arg2[i] end
   elseif(type(arg1)=='table' and type(arg2)=='number') then
@@ -108,9 +102,7 @@ end
 
 LH.csv={}
 
-LH.csv.read=ftcsv.parse
-
-LH.csv.read2=function(CSVfileName)
+LH.csv.read=function(CSVfileName)
   -- cut a line of string to segments according to symbol(comma for instance)
   local function splitline(stringline,symbol)
     local linesplit={}

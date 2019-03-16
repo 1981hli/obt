@@ -1,7 +1,7 @@
--------------------------------------------------------------------------------
 -- Solar System Modeling
 
-LH=require 'LH'
+local LH=require 'LH'
+local pl=require 'pl.import_into'()
 local ftcsv=require 'ftcsv'
 
 -------------------------------------------------------------------------------
@@ -10,8 +10,8 @@ const={}
 
 const.BodyTotal=13
 const.BeginTime=2451545        -- Julian date at 2000.01.01
-const.dt=0.5                   -- day
-const.StepTotal=365/const.dt   -- 90560
+const.dt=1                     -- day
+const.StepTotal=3650/const.dt  -- 90560
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
@@ -26,14 +26,17 @@ Step.__index=Step
 Step.proto={}
 Step.proto.time=0
 Step.proto.body={}
-for i=1,const.BodyTotal do table.insert(Step.proto.body,
-  {name='', mass=0, x=smt({0,0,0},LH.Vector), v=smt({0,0,0},LH.Vector)})
+for i=1,const.BodyTotal do table.insert( Step.proto.body,
+                                         {name='',
+                                          mass=0,
+                                          x=setmetatable({0,0,0},LH.Vector),
+                                          v=setmetatable({0,0,0},LH.Vector)} )
 end
 
 
 
 Step.__add=function(step1,step2)
-  local tmp=tablex.deepcopy(step1)
+  local tmp=pl.tablex.deepcopy(step1)
   tmp.time=step1.time+step2.time
   for i=1,#tmp.body do
     tmp.body[i].x= step1.body[i].x+step2.body[i].x
@@ -52,7 +55,7 @@ Step.__mul=function(arg1,arg2)
     c=arg2
     step1=arg1
   end
-  local tmp=tablex.deepcopy(step1)
+  local tmp=pl.tablex.deepcopy(step1)
   tmp.time=c*step1.time
   for i=1,#tmp.body do        
     tmp.body[i].x=c*step1.body[i].x
@@ -93,15 +96,15 @@ gravity={}
 
 -- @return Vector
 gravity.by1=function(testmass,source)
-  local dx=smt(testmass.x,LH.Vector)-source.x
-  return -const.G*testmass.mass*source.mass/dx:MOD()^3*dx
+  local dx=setmetatable(testmass.x,LH.Vector)-source.x
+  return -const.G*testmass.mass*source.mass/(dx:MOD()^3)*dx
 end 
 
 
 
 -- @int testmassNum
 gravity.byall=function(testmassNum,step)
-  local force=smt({0,0,0},LH.Vector)
+  local force=setmetatable({0,0,0},LH.Vector)
   for i=1,#step.body do
     while true do
       -- change the line below at your will
@@ -121,7 +124,7 @@ rk={}
 
 -- calculate dstep from the differential equation
 rk.dstep=function(step,dt)
-  local tmp=tablex.deepcopy(step)
+  local tmp=pl.tablex.deepcopy(step)
   tmp.time=dt
   for i=1,#step.body do
     local force=gravity.byall(i,step)
@@ -133,10 +136,11 @@ end
 
 
 
+-- @para Step step
 rk.rk4=function(step,dt)
   k1=rk.dstep(step,dt)
-  k2=rk.dstep(step+1/2*k1,dt)
-  k3=rk.dstep(step+1/2*k2,dt)
+  k2=rk.dstep(step+0.5*k1,dt)
+  k3=rk.dstep(step+0.5*k2,dt)
   k4=rk.dstep(step+k3,dt)
   return step+1/6*(k1+2*k2+2*k3+k4)
 end

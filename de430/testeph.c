@@ -70,9 +70,9 @@ in standard Linux 32-bit environment */
 
 /**** YOU PROBABLY HAVE TO ALTERNATE FOLLOWING TWO DEFINITIONS: ************/
 
-#define TESTFILE "testpo.431"
+#define TESTFILE "testpo.430"
 
-#define EPHFILE  "lnxm13000p17000.431"
+#define EPHFILE  "JPLEPH"
 
 /***** THERE IS NO NEED TO MODIFY THE REST OF THIS SOURCE (I hope) *********/
 

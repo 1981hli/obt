@@ -7,13 +7,13 @@ Plotly.d3.csv('output.csv',function(err,rows){
   var body={}
   for(var i=0;i<rows.length;i++){
     body[i]={
-      x:           readcsv(rows,'body'+i+'x2'),
-      y:           readcsv(rows,'body'+i+'x1'),
-      z:           readcsv(rows,'body'+i+'x3'),
+      <!--x:           readcsv(rows,'body'+i+'x2'),-->
+      y:           readcsv(rows,'body'+i+'x3'),
+      <!--z:           readcsv(rows,'body'+i+'x3'),-->
       mode:        'lines+markers',
       line:        {color:'',width:1},
       marker:      {color:'',size:1.2},
-      type:        'scatter3d'
+      <!--type:        'scatter3d'-->
     }
   }
   var data=[body[1],body[2],body[4],body[13]]

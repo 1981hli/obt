@@ -19,8 +19,8 @@
 /*#define DENUM 406*/
 /*#define DENUM 421*/
 /*#define DENUM 422*/
-/*#define DENUM 430*/
-#define DENUM 431
+#define DENUM 430
+//#define DENUM 431
 
 
 #if   DENUM==200
@@ -41,7 +41,7 @@
 (eg. for DE430 and DE431) */
 
 #define NMAX 1000
-#define OLDMAX 400
+#define OLDMAX 1000
 
 
 /* we use long int instead of int for DOS-Linux compatibility */
