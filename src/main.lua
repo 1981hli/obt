@@ -4,11 +4,8 @@
 -------------------------------------------------------------------------------
 
 local pl=require 'pl.import_into'()
+local deepcopy=pl.tablex.deepcopy
 local ftcsv=require 'ftcsv'
-
-newObj=function(class)
-  return setmetatable(pl.tablex.deepcopy(class.proto),class)
-end
 
 -------------------------------------------------------------------------------
 
@@ -17,7 +14,7 @@ const={}
 const.BodyTotal=13
 const.BeginTime=2451545        -- Julian date at 2000.01.01
 const.dt=1                     -- day
-const.StepTotal=2000           -- 90560
+const.StepTotal=365
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
@@ -90,7 +87,7 @@ end
 
 
 Step.__add=function(step1,step2)
-  local tmp=pl.tablex.deepcopy(step1)
+  local tmp=deepcopy(step1)
   tmp.time=step1.time+step2.time
   for i=1,#tmp.body do
     tmp.body[i].x= step1.body[i].x+step2.body[i].x
@@ -109,7 +106,7 @@ Step.__mul=function(arg1,arg2)
     c=arg2
     step1=arg1
   end
-  local tmp=pl.tablex.deepcopy(step1)
+  local tmp=deepcopy(step1)
   tmp.time=c*step1.time
   for i=1,#tmp.body do        
     tmp.body[i].x=c*step1.body[i].x
@@ -123,7 +120,7 @@ end
 
 steps={}
 
-steps[1]=newObj(Step)
+steps[1]=setmetatable(deepcopy(Step.proto),Step)
 
 steps[1].time=const.BeginTime
 
@@ -178,7 +175,7 @@ rk={}
 
 -- calculate dstep from the differential equation
 rk.dstep=function(step,dt)
-  local tmp=pl.tablex.deepcopy(step)
+  local tmp=deepcopy(step)
   tmp.time=dt
   for i=1,#step.body do
     local force=gravity.byall(i,step)
