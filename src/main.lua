@@ -1,8 +1,14 @@
+-------------------------------------------------------------------------------
 -- Solar System Modeling
+--                                                                    by LiHuan
+-------------------------------------------------------------------------------
 
-local LH=require 'LH'
 local pl=require 'pl.import_into'()
 local ftcsv=require 'ftcsv'
+
+newObj=function(class)
+  return setmetatable(pl.tablex.deepcopy(class.proto),class)
+end
 
 -------------------------------------------------------------------------------
 
@@ -11,12 +17,60 @@ const={}
 const.BodyTotal=13
 const.BeginTime=2451545        -- Julian date at 2000.01.01
 const.dt=1                     -- day
-const.StepTotal=3650/const.dt  -- 90560
+const.StepTotal=2000           -- 90560
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
 -- G=6.67408e-11 (s-2.m3.kg-1)
 const.G=6.67408e-11*(1/const.Day)^-2*(1/const.AU)^3*(1/const.EarthMass)^-1
+
+-------------------------------------------------------------------------------
+
+Vector={}
+Vector.__index=Vector
+
+Vector.MOD=function(self)
+  local sqrt=math.sqrt
+  local tmp=0
+  for i=1,#self do
+    tmp=tmp+self[i]^2
+  end
+  return sqrt(tmp)
+end
+
+
+
+Vector.__add=function(arg1,arg2)
+  local output=setmetatable({},Vector)
+  if(type(arg1)=='number' and type(arg2)=='table') then
+    for i=1,#arg2 do output[i]=arg1+arg2[i] end
+  elseif(type(arg1)=='table' and type(arg2)=='number') then
+    for i=1,#arg1 do output[i]=arg1[i]+arg2 end
+  elseif(type(arg1)=='table' and type(arg2)=='table') then
+    for i=1,#arg1 do output[i]=arg1[i]+arg2[i] end
+  end
+  return output
+end
+
+
+
+Vector.__sub=function(arg1,arg2)
+  local output=setmetatable({},Vector)
+  for i=1,#arg1 do output[i]=arg1[i]-arg2[i] end
+  return output
+end
+
+
+
+Vector.__mul=function(arg1,arg2)
+  local output=setmetatable({},Vector)
+  if(type(arg1)=='number' and type(arg2)=='table') then
+    for i=1,#arg2 do output[i]=arg1*arg2[i] end
+  elseif(type(arg1)=='table' and type(arg2)=='number') then
+    for i=1,#arg1 do output[i]=arg1[i]*arg2 end
+  end
+  return output
+end
 
 -------------------------------------------------------------------------------
 
@@ -29,8 +83,8 @@ Step.proto.body={}
 for i=1,const.BodyTotal do table.insert( Step.proto.body,
                                          {name='',
                                           mass=0,
-                                          x=setmetatable({0,0,0},LH.Vector),
-                                          v=setmetatable({0,0,0},LH.Vector)} )
+                                          x=setmetatable({0,0,0},Vector),
+                                          v=setmetatable({0,0,0},Vector)} )
 end
 
 
@@ -69,7 +123,7 @@ end
 
 steps={}
 
-steps[1]=LH.new(Step)
+steps[1]=newObj(Step)
 
 steps[1].time=const.BeginTime
 
@@ -96,7 +150,7 @@ gravity={}
 
 -- @return Vector
 gravity.by1=function(testmass,source)
-  local dx=setmetatable(testmass.x,LH.Vector)-source.x
+  local dx=setmetatable(testmass.x,Vector)-source.x
   return -const.G*testmass.mass*source.mass/(dx:MOD()^3)*dx
 end 
 
@@ -104,7 +158,7 @@ end
 
 -- @int testmassNum
 gravity.byall=function(testmassNum,step)
-  local force=setmetatable({0,0,0},LH.Vector)
+  local force=setmetatable({0,0,0},Vector)
   for i=1,#step.body do
     while true do
       -- change the line below at your will
