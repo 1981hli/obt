@@ -2,19 +2,19 @@
 <head><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head>
 <body><div align="center" id="chart1"></div></body>
 <script>
-fignum=[1]
-Plotly.d3.csv('plot.csv',function(err,rows){
+fignum=[11,1,2,13,4]
+Plotly.d3.csv('output.csv',function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key]})}
   var figs=[]
   for(var i in fignum){
     figs.push({
-      x:           readcsv(rows,fignum[i]+'x'),
-      y:           readcsv(rows,fignum[i]+'y'),
-      z:           readcsv(rows,fignum[i]+'z'),
+      x:           readcsv(rows,'body'+fignum[i]+'x1'),
+      y:           readcsv(rows,'body'+fignum[i]+'x2'),
+      z:           readcsv(rows,'body'+fignum[i]+'x3'),
       mode:        'lines+markers',
       line:        {color:'',width:1},
       marker:      {color:'',size:1.2},
-      <!--type:        'scatter3d'-->
+      type:        'scatter3d'
     })
   }
   var layout={title:'',width:800,height:800}

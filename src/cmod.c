@@ -9,9 +9,9 @@
  
 static int my_add(lua_State *L)
 {
-  int x = lua_tonumber(L,1);
-  int y = lua_tonumber(L,2);
-  int sum = x + y;
+  double x = lua_tonumber(L,1);
+  double y = lua_tonumber(L,2);
+  double sum = x + y;
   lua_pushnumber(L, sum);
   return 1;
 }
@@ -25,12 +25,20 @@ static int showstr(lua_State *L)
   return 0;
 }
 
+
+
+static int gravityby1(lua_State *L)
+{
+  return 1;
+}
+
 //-----------------------------------------------------------------------------
 
-static struct luaL_reg mod1List[] =
+static struct luaL_reg listofmod1[] =
 {
   {"add", my_add},
   {"show", showstr},
+  {"gravityby1",gravityby1},
   {NULL, NULL}
 };
  
@@ -38,7 +46,7 @@ static struct luaL_reg mod1List[] =
 
 LUALIB_API int luaopen_cmod(lua_State *L)
 {
-    luaL_register(L,"mod1",mod1List);
+    luaL_register(L,"mod1",listofmod1);
     return 1;
 }
  

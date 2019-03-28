@@ -13,7 +13,7 @@
 
 //-----------------------------------------------------------------------------
 
-typedef long double Real;
+typedef double Real;
 
 
 
@@ -36,7 +36,7 @@ typedef struct
 
 
 
-Real constantG= 6.67e-11;
+Real constG= 6.67e-11;
 
 //-----------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ void gravityby1(Real *force/*output*/,Body testMass,Body source)
                   pow(testMass.x[2]-source.x[2],2)  );
   
   // term= G m1 m2 / r^3
-  term= constantG*testMass.mass*source.mass/pow(distance,3);
+  term= constG*testMass.mass*source.mass/pow(distance,3);
 
   force[0]= term*(source.x[0]-testMass.x[0]);
   force[1]= term*(source.x[1]-testMass.x[1]);
