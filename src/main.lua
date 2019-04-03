@@ -6,6 +6,7 @@
 local pl=require 'pl.import_into'()
 local deepcopy=pl.tablex.deepcopy
 local ftcsv=require 'ftcsv'
+require 'cmod'
 
 -------------------------------------------------------------------------------
 
@@ -39,13 +40,18 @@ end
 
 Vector.__add=function(arg1,arg2)
   local output=setmetatable({},Vector)
+
   if(type(arg1)=='number' and type(arg2)=='table') then
     for i=1,#arg2 do output[i]=arg1+arg2[i] end
+
   elseif(type(arg1)=='table' and type(arg2)=='number') then
     for i=1,#arg1 do output[i]=arg1[i]+arg2 end
+    
   elseif(type(arg1)=='table' and type(arg2)=='table') then
     for i=1,#arg1 do output[i]=arg1[i]+arg2[i] end
+
   end
+
   return output
 end
 
@@ -61,10 +67,13 @@ end
 
 Vector.__mul=function(arg1,arg2)
   local output=setmetatable({},Vector)
+
   if(type(arg1)=='number' and type(arg2)=='table') then
     for i=1,#arg2 do output[i]=arg1*arg2[i] end
+
   elseif(type(arg1)=='table' and type(arg2)=='number') then
     for i=1,#arg1 do output[i]=arg1[i]*arg2 end
+
   end
   return output
 end
@@ -89,10 +98,12 @@ end
 Step.__add=function(step1,step2)
   local tmp=deepcopy(step1)
   tmp.time=step1.time+step2.time
+
   for i=1,#tmp.body do
     tmp.body[i].x= step1.body[i].x+step2.body[i].x
     tmp.body[i].v= step1.body[i].v+step2.body[i].v
   end
+
   return tmp
 end
 
@@ -106,12 +117,14 @@ Step.__mul=function(arg1,arg2)
     c=arg2
     step1=arg1
   end
+
   local tmp=deepcopy(step1)
   tmp.time=c*step1.time
   for i=1,#tmp.body do        
     tmp.body[i].x=c*step1.body[i].x
     tmp.body[i].v=c*step1.body[i].v
   end
+
   return tmp
 end
 
@@ -146,10 +159,25 @@ end
 gravity={}
 
 -- @return Vector
-gravity.by1=function(testmass,source)
+gravity.by1_Lua=function(testmass,source)
   local dx=setmetatable(testmass.x,Vector)-source.x
   return -const.G*testmass.mass*source.mass/(dx:MOD()^3)*dx
 end 
+
+
+
+-- alternate C module
+gravity.by1_C=function(test,source)
+  local force=setmetatable({},Vector)
+  force[1],force[2],force[3]=cmod.gravityby1(const.G,
+                                             test.mass,test.x,
+                                             source.mass,source.x)
+  return force
+end
+
+
+
+gravity.by1=gravity.by1_C
 
 
 
