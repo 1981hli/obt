@@ -2,41 +2,7 @@
 #include <lualib.h>
 #include <lauxlib.h>
 
-//-----------------------------------------------------------------------------
-// gravityby1
-
-#include <stdio.h>
-#include <math.h>
-
-typedef double Real;
-
-typedef struct
-{
-  char  name[20];
-  Real  mass;
-  Real  radius;
-  Real  x[3];
-  Real  v[3];
-} Body;
-
-
-
-void gravityby1(Real G,Real force[],Body test,Body source)
-{
-  Real distance;
-  Real term;
-  int  i;
-
-  distance= sqrt( pow(test.x[0]-source.x[0],2)+ 
-                  pow(test.x[1]-source.x[1],2)+ 
-                  pow(test.x[2]-source.x[2],2)  );
-
-  // term= G m1 m2 / r^3
-  term= G*test.mass*source.mass/pow(distance,3);
-
-  for(i=0;i<3;i++)
-    force[i]= term*(source.x[i]-test.x[i]);
-}
+#include "gravityby1.c"
 
 //-----------------------------------------------------------------------------
 // gravityby1_LCC
@@ -83,9 +49,9 @@ static int gravityby1_LCC(lua_State *L)
 }
 
 //-----------------------------------------------------------------------------
-// cmod
+// LCC
 
-static const struct luaL_Reg cmod[]=
+static const struct luaL_Reg LCC[]=
 {
   {"gravityby1",gravityby1_LCC},
   {NULL,NULL}
@@ -93,9 +59,9 @@ static const struct luaL_Reg cmod[]=
 
 
 
-int luaopen_cmod(lua_State *L)
+int luaopen_LCC(lua_State *L)
 {
-  luaL_register(L,"cmod",cmod);
+  luaL_register(L,"LCC",LCC);
   return 1;
 }
 
