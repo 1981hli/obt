@@ -41,12 +41,13 @@ void gravityby1(Real G,Real force[],Body test,Body source)
 //-----------------------------------------------------------------------------
 // LCC_gravityby1
 
-void passVector(Real vector[],lua_State *L,int index)
+void passarray(Real array[],lua_State *L,int index)
 {
   int i,dim=3;
+
   for(i=1;i<=dim;i++){
     lua_rawgeti(L,index,i);
-    vector[i-1]=lua_tonumber(L,-1);
+    array[i-1]=lua_tonumber(L,-1);
     lua_pop(L,1);
   }
 }
@@ -58,6 +59,7 @@ static int LCC_gravityby1(lua_State *L)
   Real G;
   Real force[3]={0.,0.,0.};
   Body test,source;
+  int  i;
 
   // G=const.G
   G=lua_tonumber(L,1);
@@ -66,19 +68,19 @@ static int LCC_gravityby1(lua_State *L)
   test.mass=lua_tonumber(L,2);
 
   // test.x[]=test.x[]
-  passVector(test.x,L,3);
+  passarray(test.x,L,3);
 
   // source.mass=source.mass
   source.mass=lua_tonumber(L,4);
 
   // source.x[]=source.x[]
-  passVector(source.x,L,5);
+  passarray(source.x,L,5);
 
   gravityby1(G,force,test,source);
   
-  lua_pushnumber(L,force[0]);
-  lua_pushnumber(L,force[1]);
-  lua_pushnumber(L,force[2]);
+  for(i=0;i<3;i++)
+    lua_pushnumber(L,force[i]);
+
   return 3;
 }
 

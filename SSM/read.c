@@ -2,7 +2,7 @@
 
 void main()
 {
-  int jdate;
+  double  jdate;
   int     planet,center; 
   double  state[6];
 
