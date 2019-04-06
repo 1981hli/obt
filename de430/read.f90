@@ -7,7 +7,7 @@ program read
   !JuliaDate = 2440400.5
   BodyTotal =13
   Centre    =12      ! Solar System Barycenter
-  open(100,file="../data/initdata.csv")
+  open(100,file="../data/init.csv")
   write(100,*) 'x1',',','x2',',','x3',',','v1',',','v2',',','v3'
   do Planet=1,BodyTotal
     call pleph(JuliaDate,Planet,Centre,StateVector)
