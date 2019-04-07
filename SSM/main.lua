@@ -6,7 +6,7 @@
 local pl=require 'pl.import_into'()
 local deepcopy=pl.tablex.deepcopy
 local ftcsv=require 'ftcsv'
-require 'LCC'
+require 'LC_gravity'
 
 -------------------------------------------------------------------------------
 
@@ -169,9 +169,9 @@ end
 -- alternate C module
 gravity.by1_C=function(test,source)
   local force=setmetatable({},Vector)
-  force[1],force[2],force[3]=LCC.gravityby1(const.G,
-                                            test.mass,test.x,
-                                            source.mass,source.x)
+  force[1],force[2],force[3]=LC_gravity.gravityby1(const.G,
+                                                    test.mass,test.x,
+                                                    source.mass,source.x)
   return force
 end
 

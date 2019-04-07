@@ -1,4 +1,4 @@
-all: LCC.so LCF.so
+all: LC_gravity.so LC_de430.so
 	rm *.o
 
 clean:
@@ -6,16 +6,16 @@ clean:
 
 #------------------------------------------------------------------------------
 
-LCC.so: LCC.c
-	gcc LCC.c -shared -fPIC -ILua -o LCC.so
+LC_gravity.so: LC_gravity.c
+	gcc LC_gravity.c -shared -fPIC -ILua -o LC_gravity.so
 
 #------------------------------------------------------------------------------
 
-LCF.o: LCF.c
-	gcc -c LCF.c -shared -fPIC -ILua -o LCF.o
+LC_de430.o: LC_de430.c
+	gcc -c LC_de430.c -shared -fPIC -ILua -o LC_de430.o
 
 trytesteph.o: trytesteph.f
 	gfortran -c trytesteph.f -shared -fPIC -ILua -o trytesteph.o
 
-LCF.so: LCF.o trytesteph.o 
-	gfortran LCF.o trytesteph.o -shared -fPIC -ILua -o LCF.so
+LC_de430.so: LC_de430.o trytesteph.o 
+	gfortran LC_de430.o trytesteph.o -shared -fPIC -ILua -o LC_de430.so

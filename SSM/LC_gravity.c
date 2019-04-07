@@ -3,7 +3,7 @@
 #include "lauxlib.h"
 
 //-----------------------------------------------------------------------------
-// gravityby1
+// gravityby1_C
 
 #include <stdio.h>
 #include <math.h>
@@ -21,7 +21,7 @@ typedef struct
 
 
 
-void gravityby1(Real G,Real force[],Body test,Body source)
+void gravityby1_C(Real G,Real force[],Body test,Body source)
 {
   Real distance;
   Real term;
@@ -39,7 +39,7 @@ void gravityby1(Real G,Real force[],Body test,Body source)
 }
 
 //-----------------------------------------------------------------------------
-// LCC_gravityby1
+// gravityby1
 
 void passarray(Real array[],lua_State *L,int index)
 {
@@ -54,7 +54,7 @@ void passarray(Real array[],lua_State *L,int index)
 
 
 
-static int LCC_gravityby1(lua_State *L)
+static int gravityby1(lua_State *L)
 {
   Real G;
   Real force[3]={0.,0.,0.};
@@ -76,11 +76,25 @@ static int LCC_gravityby1(lua_State *L)
   // source.x[]=source.x[]
   passarray(source.x,L,5);
 
-  gravityby1(G,force,test,source);
+  gravityby1_C(G,force,test,source);
   
   for(i=0;i<3;i++)
     lua_pushnumber(L,force[i]);
 
   return 3;
+}
+
+//-----------------------------------------------------------------------------
+
+static const struct luaL_Reg Functions[]=
+{
+  {"gravityby1",gravityby1},
+  {NULL,NULL}
+};
+
+int luaopen_LC_gravity(lua_State *L)
+{
+  luaL_register(L,"LC_gravity",Functions);
+  return 1;
 }
 
