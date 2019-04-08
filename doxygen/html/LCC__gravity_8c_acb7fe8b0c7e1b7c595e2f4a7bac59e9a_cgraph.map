@@ -1,7 +1,0 @@
-<map id="LCC_gravityby1" name="LCC_gravityby1">
-<area shape="rect" id="node2" href="$lua_8h.html#ab93cb1edc97ca887c90dbcbd43e1df88" title="lua_tonumber" alt="" coords="356,5,468,32"/>
-<area shape="rect" id="node3" href="$LCC__gravity_8c.html#af6639a98b4a531a02aeaa459dc4337d6" title="passarray" alt="" coords="199,56,286,83"/>
-<area shape="rect" id="node5" href="$LCC__gravity_8c.html#ad59235be68e7bd8a39db77d558475095" title="gravityby1" alt="" coords="197,107,289,133"/>
-<area shape="rect" id="node6" href="$lua_8h.html#a77807056ba032d64b2def2b57dc53d53" title="lua_pushnumber" alt="" coords="177,157,308,184"/>
-<area shape="rect" id="node4" href="$lua_8h.html#a83de0bf688c2a389db2e444aa34e752a" title="lua_rawgeti" alt="" coords="363,56,461,83"/>
-</map>
