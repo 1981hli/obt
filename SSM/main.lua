@@ -1,12 +1,9 @@
--------------------------------------------------------------------------------
--- Solar System Modeling
---                                                                    by LiHuan
--------------------------------------------------------------------------------
 
 local pl=require 'pl.import_into'()
 local deepcopy=pl.tablex.deepcopy
 local ftcsv=require 'ftcsv'
 require 'LC_gravity'
+require 'LC_de430'
 
 -------------------------------------------------------------------------------
 
@@ -15,7 +12,7 @@ const={}
 const.BodyTotal=13
 const.BeginTime=2451545        -- Julian date at 2000.01.01
 const.dt=1                     -- day
-const.StepTotal=365
+const.StepTotal=10000
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
@@ -144,15 +141,25 @@ for i=1,const.BodyTotal do
   steps[1].body[i].radius=data[i]['radius(m)']/const.AU
 end
 
-data,head=ftcsv.parse('../data/init.csv',',')
-for i=1,const.BodyTotal do
-  steps[1].body[i].x[1] =data[i]['x1']
-  steps[1].body[i].x[2] =data[i]['x2']
-  steps[1].body[i].x[3] =data[i]['x3']
-  steps[1].body[i].v[1] =data[i]['v1']
-  steps[1].body[i].v[2] =data[i]['v2']
-  steps[1].body[i].v[3] =data[i]['v3']
+-- LC_de430.readstate(juliandate,planet,center)
+for i=1,13 do
+  steps[1].body[i].x[1],
+  steps[1].body[i].x[2],
+  steps[1].body[i].x[3],
+  steps[1].body[i].v[1],
+  steps[1].body[i].v[2],
+  steps[1].body[i].v[3]  =LC_de430.readstate(const.BeginTime,i,12)
 end
+
+--data,head=ftcsv.parse('../data/init.csv',',')
+--for i=1,const.BodyTotal do
+  --steps[1].body[i].x[1] =data[i]['x1']
+  --steps[1].body[i].x[2] =data[i]['x2']
+  --steps[1].body[i].x[3] =data[i]['x3']
+  --steps[1].body[i].v[1] =data[i]['v1']
+  --steps[1].body[i].v[2] =data[i]['v2']
+  --steps[1].body[i].v[3] =data[i]['v3']
+--end
 
 -------------------------------------------------------------------------------
 
@@ -177,7 +184,7 @@ end
 
 
 
-gravity.by1=gravity.by1_C
+gravity.by1=gravity.by1_Lua
 
 
 
