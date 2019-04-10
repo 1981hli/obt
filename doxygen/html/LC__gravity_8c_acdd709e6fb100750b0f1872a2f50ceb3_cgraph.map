@@ -1,7 +1,0 @@
-<map id="gravityby1" name="gravityby1">
-<area shape="rect" id="node2" href="$lua_8h.html#ab93cb1edc97ca887c90dbcbd43e1df88" title="lua_tonumber" alt="" coords="324,5,436,32"/>
-<area shape="rect" id="node3" href="$LC__gravity_8c.html#af6639a98b4a531a02aeaa459dc4337d6" title="passarray" alt="" coords="167,56,254,83"/>
-<area shape="rect" id="node5" href="$LC__gravity_8c.html#af749bd13200e0f3b5d5730c21654d03c" title="gravityby1_C" alt="" coords="157,107,265,133"/>
-<area shape="rect" id="node6" href="$lua_8h.html#a77807056ba032d64b2def2b57dc53d53" title="lua_pushnumber" alt="" coords="145,157,276,184"/>
-<area shape="rect" id="node4" href="$lua_8h.html#a83de0bf688c2a389db2e444aa34e752a" title="lua_rawgeti" alt="" coords="331,56,429,83"/>
-</map>

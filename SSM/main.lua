@@ -1,7 +1,7 @@
-
 local pl=require 'pl.import_into'()
 local deepcopy=pl.tablex.deepcopy
 local ftcsv=require 'ftcsv'
+local M=require 'moses'
 require 'LC_gravity'
 require 'LC_de430'
 
@@ -12,7 +12,7 @@ const={}
 const.BodyTotal=13
 const.BeginTime=2451545        -- Julian date at 2000.01.01
 const.dt=1                     -- day
-const.StepTotal=1000
+const.StepTotal=10
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
@@ -125,30 +125,46 @@ Step.__mul=function(arg1,arg2)
   return tmp
 end
 
--------------------------------------------------------------------------------
--- initialize the first step
 
-steps={}
 
-steps[1]=setmetatable(deepcopy(Step.proto),Step)
+Step.saveto=function(steps,file)
 
-steps[1].time=const.BeginTime
+  io.output(file)
 
-data,head=ftcsv.parse('../data/body.csv',',')
-for i=1,const.BodyTotal do
-  steps[1].body[i].name  =data[i]['name']
-  steps[1].body[i].mass  =data[i]['mass(kg)']/const.EarthMass
-  steps[1].body[i].radius=data[i]['radius(m)']/const.AU
-end
+  -- time,body1x1,body1x2,body1x3,body1v1,body1v2,body1v3,body2x1,body2x2,...
+  local head="time"
+  for i=1,const.BodyTotal do
+    head=head..",".."body"..i.."x1"..","
+                  .."body"..i.."x2"..","
+                  .."body"..i.."x3"..","
+                  .."body"..i.."v1"..","
+                  .."body"..i.."v2"..","
+                  .."body"..i.."v3"
+  end
+  head=head.."\n"
+  io.write(head)
 
--- LC_de430.readstate(juliandate,planet,center)
-for i=1,13 do
-  steps[1].body[i].x[1],
-  steps[1].body[i].x[2],
-  steps[1].body[i].x[3],
-  steps[1].body[i].v[1],
-  steps[1].body[i].v[2],
-  steps[1].body[i].v[3]  =LC_de430.readstate(const.BeginTime,i,12)
+  for j=1,const.StepTotal do
+    io.write(steps[j].time)
+    for i=1,const.BodyTotal do
+      io.write(",")
+      io.write(steps[j].body[i].x[1])
+      io.write(",")
+      io.write(steps[j].body[i].x[2])
+      io.write(",")
+      io.write(steps[j].body[i].x[3])
+      io.write(",")
+      io.write(steps[j].body[i].v[1])
+      io.write(",")
+      io.write(steps[j].body[i].v[2])
+      io.write(",")
+      io.write(steps[j].body[i].v[3])
+    end
+    io.write("\n")
+  end
+
+  io.close()
+
 end
 
 -------------------------------------------------------------------------------
@@ -221,12 +237,63 @@ rk.rk4=function(step,dt)
   return step+1/6*(k1+2*k2+2*k3+k4)
 end
 
+-------------------------------------------------------------------------------
+-- initialize the first step
 
+steps={}
+
+steps[1]=setmetatable(deepcopy(Step.proto),Step)
+
+steps[1].time=const.BeginTime
+
+data,head=ftcsv.parse('../data/body.csv',',')
+for i=1,const.BodyTotal do
+  steps[1].body[i].name  =data[i]['name']
+  steps[1].body[i].mass  =data[i]['mass(kg)']/const.EarthMass
+  steps[1].body[i].radius=data[i]['radius(m)']/const.AU
+end
+
+-- LC_de430.readstate(juliandate,planet,center)
+for i=1,13 do
+  steps[1].body[i].x[1],
+  steps[1].body[i].x[2],
+  steps[1].body[i].x[3],
+  steps[1].body[i].v[1],
+  steps[1].body[i].v[2],
+  steps[1].body[i].v[3]  =LC_de430.readstate(const.BeginTime,i,12)
+end
+
+-------------------------------------------------------------------------------
 
 -- use Runge-Kutta method to generate all steps
 for i=2,const.StepTotal do
   steps[i]=rk.rk4(steps[i-1],const.dt)
 end
+
+-------------------------------------------------------------------------------
+-- data from DE430
+
+stepsDE={}
+
+for j=1,const.StepTotal do
+  stepsDE[j]=setmetatable(deepcopy(Step.proto),Step)
+  stepsDE[j].time=const.BeginTime+(j-1)*const.dt
+
+  for i=1,const.BodyTotal do
+    stepsDE[j].body[i].x[1],
+    stepsDE[j].body[i].x[2],
+    stepsDE[j].body[i].x[3],
+    stepsDE[j].body[i].v[1],
+    stepsDE[j].body[i].v[2],
+    stepsDE[j].body[i].v[3]
+    =
+    LC_de430.readstate(stepsDE[j].time,i,12)
+  end
+end
+
+
+
+Step.saveto(stepsDE,'../data/outputDE.csv')
 
 -------------------------------------------------------------------------------
 
@@ -265,4 +332,67 @@ for j=1,const.StepTotal do
 end
 
 io.close()
+
+-------------------------------------------------------------------------------
+-- data from DE430
+
+stepsDE={}
+
+for j=1,const.StepTotal do
+  stepsDE[j]=setmetatable(deepcopy(Step.proto),Step)
+  stepsDE[j].time=const.BeginTime+(j-1)*const.dt
+
+  for i=1,const.BodyTotal do
+    stepsDE[j].body[i].x[1],
+    stepsDE[j].body[i].x[2],
+    stepsDE[j].body[i].x[3],
+    stepsDE[j].body[i].v[1],
+    stepsDE[j].body[i].v[2],
+    stepsDE[j].body[i].v[3]
+    =
+    LC_de430.readstate(stepsDE[j].time,i,12)
+  end
+end
+
+
+
+Step.saveto(stepsDE,'../data/outputDE.csv')
+
+-------------------------------------------------------------------------------
+
+--table.savetocsv=function(table,filename)
+  --io.output(filename)
+  --for i=1,#table do
+    --io.write(table.concat(table[i],','))
+    --io.write('\n')
+  --end
+  --io.close()
+--end
+
+
+
+
+--Body.saveto=function(bodylist,filename)
+
+  --CSVtable={}
+
+  ---- CSV head
+  --CSVtable[1]={}
+  --for _,j in pairs(bodylist) do 
+    --M.push(CSVtable[1], j..'x',j..'y',j..'z')
+  --end
+
+  --for i=1,const.StepTotal do
+    --CSVtable[i+1]={}
+    --for _,j in pairs(bodylist) do
+      --M.push(CSVtable[i+1],unpack(M.map(steps[i].body[j].x,tostring)))
+    --end
+  --end
+
+  --local tmp=ftcsv.encode(CSVtable,",")
+  --local file=assert(io.open(filename,'w'))
+  --file:write(ftcsv)
+  --file:close()
+
+--end
 

@@ -3,7 +3,7 @@
 <body><div align="center" id="chart1"></div></body>
 <script>
 fignum=[11,1,2,13,4]
-Plotly.d3.csv('output.csv',function(err,rows){
+Plotly.d3.csv('outputDE.csv',function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key]})}
   var figs=[]
   for(var i in fignum){
@@ -17,7 +17,7 @@ Plotly.d3.csv('output.csv',function(err,rows){
       type:        'scatter3d'
     })
   }
-  var layout={title:'',width:800,height:800}
+  var layout={title:'outputDE',width:800,height:800}
   Plotly.newPlot('chart1',figs,layout) 
 })
 </script>
