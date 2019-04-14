@@ -19,3 +19,12 @@ trytesteph.o: trytesteph.f
 
 LC_de430.so: LC_de430.o trytesteph.o 
 	gfortran LC_de430.o trytesteph.o -shared -fPIC -ILua -o LC_de430.so
+
+#------------------------------------------------------------------------------
+
+#trypgplot.o: trypgplot.c
+	#gcc -c trypgplot.c -IPGPLOT
+
+#trypgplot: trypgplot.o
+	#gfortran -o trypgplot trypgplot.o -LPGPLOT -lcpgplot -lpgplot
+
