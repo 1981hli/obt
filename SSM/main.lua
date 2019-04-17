@@ -16,7 +16,7 @@ const={}
 const.BodyTotal=13
 const.BeginTime=2451545        -- Julian date at 2000.01.01
 const.dt=1                     -- day
-const.StepTotal=3650
+const.StepTotal=1000
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
@@ -246,7 +246,7 @@ steps[1]=setmetatable(deepcopy(Step.proto),Step)
 
 steps[1].time=const.BeginTime
 
-bodydata,_=ftcsv.parse('body.csv',',')
+bodydata,_=ftcsv.parse('bodys.csv',',')
 for i=1,const.BodyTotal do
   steps[1].body[i].name  =bodydata[i]['name']
   steps[1].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
