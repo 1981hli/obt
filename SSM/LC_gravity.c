@@ -1,4 +1,3 @@
-
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
@@ -98,4 +97,3 @@ int luaopen_LC_gravity(lua_State *L)
   luaL_register(L,"LC_gravity",Functions);
   return 1;
 }
-

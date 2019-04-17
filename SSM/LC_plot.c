@@ -1,44 +1,86 @@
-#include "cpgplot.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+//-----------------------------------------------------------------------------
 
-int main()
+#include "plcdemos.h"
+#define NSIZE    101
+
+int plot2D_C(int points,Real x[],Real y[],
+             Real xMin,Real xMax,Real yMin,Real yMax)
+{
+  PLFLT x[NSIZE], y[NSIZE];
+  PLFLT xmin = 0., xmax = 1., ymin = 0., ymax = 100.;
+  int   i;
+
+  // Prepare data to be plotted.
+  for ( i = 0; i < NSIZE; i++ )
+  {
+      x[i] = (PLFLT) ( i ) / (PLFLT) ( NSIZE - 1 );
+      y[i] = ymax * x[i] * x[i];
+  }
+
+  // Parse and process command line arguments
+  plparseopts( &argc, argv, PL_PARSE_FULL );
+
+  // Initialize plplot
+  plinit();
+
+  // Create a labelled box to hold the plot.
+  plenv( xmin, xmax, ymin, ymax, 0, 0 );
+  pllab( "x", "y=100 x#u2#d", "Simple PLplot demo of a 2D line plot" );
+
+  // Plot the data that was prepared above.
+  plline( NSIZE, x, y );
+
+  // Close PLplot library
+  plend();
+
+  exit( 0 );
+}
+
+//-----------------------------------------------------------------------------
+
+void passarray(Real array[],int arraylength,lua_State *L,int index)
 {
   int i;
-  static float xs[] = {1.0, 2.0, 3.0, 4.0, 5.0 };
-  static float ys[] = {1.0, 4.0, 9.0, 16.0, 25.0 };
-  float xr[60], yr[60];
-  int n = sizeof(xr) / sizeof(xr[0]);
-  /*
-   * Call PGBEG to initiate PGPLOT and open the output device; PGBEG
-   * will prompt the user to supply the device name and type.
-   */
-  if(cpgbeg(0, "?", 1, 1) != 1)
-    return EXIT_FAILURE;
-  /*
-   * Call PGENV to specify the range of the axes and to draw a box, and
-   * PGLAB to label it. The x-axis runs from 0 to 10, and y from 0 to 20.
-   */
-  cpgenv(0.0, 10.0, 0.0, 20.0, 0, 1);
-  cpglab("(x)", "(y)", "PGPLOT Example 1: y = x\\u2\\d");
-  /*
-   * Mark five points (coordinates in arrays XS and YS), using symbol
-   * number 9.
-   */
-  cpgpt(5, xs, ys, 9);
-  /*
-   * Compute the function at 'n=60' points, and use PGLINE to draw it.
-   */
-  for(i=0; i<n; i++) {
-    xr[i] = 0.1*i;
-    yr[i] = xr[i]*xr[i];
+
+  for(i=1;i<=arraylength;i++){
+    lua_rawgeti(L,index,i);
+    array[i-1]=lua_tonumber(L,-1);
+    lua_pop(L,1);
   }
-  cpgline(n, xr, yr);
-  /*
-   * Finally, call PGEND to terminate things properly.
-   */
-  cpgend();
-  return EXIT_SUCCESS;
+}
+
+
+
+static int plot2D(lua_State *L)
+{
+  Real *x,*y,xMin,xMax,yMin,yMax;
+  int points;
+
+  points=lua_tonumber(L,1);
+  passarray(x,points,L,2);
+  passarray(y,points,L,3);
+  xMin=lua_tonumber(L,4);
+  xMax=lua_tonumber(L,5);
+  yMin=lua_tonumber(L,6);
+  yMax=lua_tonumber(L,7);
+  plot2D_C(points,x,y,xMin,xMax,yMin,yMax);
+  return 0;
+}
+
+//-----------------------------------------------------------------------------
+
+static const struct luaL_Reg Functions[]=
+{
+  {"plot2D",plot2D},
+  {NULL,NULL}
+};
+
+int luaopen_LC_plot(lua_State *L)
+{
+  luaL_register(L,"LC_plot",Functions);
+  return 1;
 }
