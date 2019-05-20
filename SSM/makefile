@@ -6,8 +6,8 @@ clean:
 
 #------------------------------------------------------------------------------
 
-LC_gravity.so: LC_gravity.c
-	gcc LC_gravity.c -shared -fPIC -ILua -o LC_gravity.so
+Vector.o:
+	gcc -c Vector.c -o Vector.o
 
 #------------------------------------------------------------------------------
 
@@ -19,4 +19,9 @@ trytesteph.o: trytesteph.f
 
 LC_de430.so: LC_de430.o trytesteph.o 
 	gfortran LC_de430.o trytesteph.o -shared -fPIC -ILua -o LC_de430.so
+
+#------------------------------------------------------------------------------
+
+LC_gravity.so: LC_gravity.c
+	gcc LC_gravity.c -shared -fPIC -ILua -o LC_gravity.so
 

@@ -63,8 +63,19 @@ double VDOTV(double *v1,double *v2)
 
 
 
-double MODV(double *v)
+double MOD(double *v)
 {
   int dim=3;
-  return sqrt(VDOTV(dim,v,v));
+  return sqrt(VDOTV(v,v));
 }
+
+
+
+void COPY(double *v1,double *v2)
+{
+  int dim=3;
+  int i;
+  for(i=0;i<dim;i++)
+    v2[i]=v1[i];
+}
+
