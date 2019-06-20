@@ -2,22 +2,22 @@
 <head><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head>
 <body><div align="center" id="chart1"></div></body>
 <script>
-fignum=[13]
-Plotly.d3.csv('dxyz.csv',function(err,rows){
+fignum=[11,3]
+Plotly.d3.csv('step.csv',function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key]})}
   var figs=[]
   for(var i in fignum){
     figs.push({
-      <!--x:           readcsv(rows,fignum[i]+'dx'),-->
-      y:           readcsv(rows,fignum[i]+'dy'),
-      <!--z:           readcsv(rows,fignum[i]+'dz'),-->
+      x:           readcsv(rows,fignum[i]+'x'),
+      y:           readcsv(rows,fignum[i]+'y'),
+      z:           readcsv(rows,fignum[i]+'z'),
       mode:        'lines+markers',
       line:        {color:'',width:1},
       marker:      {color:'',size:1.2},
-      <!--type:        'scatter3d'-->
+      type:        'scatter3d'
     })
   }
-  var layout={title:'dxyz.csv',width:800,height:800}
+  var layout={title:'3D Solar System',width:800,height:800}
   Plotly.newPlot('chart1',figs,layout) 
 })
 </script>

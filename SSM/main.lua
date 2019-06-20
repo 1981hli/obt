@@ -3,9 +3,11 @@
 -------------------------------------------------------------------------------
 
 local pl=require 'pl.import_into'()
+local pldo=require('pl.comprehension').new()
 local deepcopy=pl.tablex.deepcopy
-local ftcsv=require 'ftcsv'
-local M=require 'moses'
+local ftcsv=require 'lmod/ftcsv'
+local M=require 'lmod/moses'
+local gp=require 'lmod/gnuplot'
 require 'LC_gravity'
 require 'LC_de430'
 
@@ -13,10 +15,10 @@ require 'LC_de430'
 
 const={}
 
-const.BodyTotal=13
+const.BodyTotal=11
 const.BeginTime=2451545        -- Julian date at 2000.01.01
 const.dt=1                     -- day
-const.StepTotal=10000
+const.StepTotal=365
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
@@ -28,6 +30,8 @@ const.G=6.67408e-11*(1/const.Day)^-2*(1/const.AU)^3*(1/const.EarthMass)^-1
 Vector={}
 
 Vector.__index=Vector
+
+
 
 Vector.MOD=function(self)
   local sqrt=math.sqrt
@@ -77,6 +81,8 @@ end
 Step={}
 
 Step.__index=Step
+
+
 
 Step.proto={}
 Step.proto.time=0
@@ -134,9 +140,11 @@ end
 -- alternate C module
 gravity.by1_C=function(test,source)
   local force=setmetatable({},Vector)
-  force[1],force[2],force[3]=LC_gravity.gravityby1(const.G,
-                                                   test.mass,test.x,
-                                                   source.mass,source.x)
+  force[1],force[2],force[3]
+  =
+  LC_gravity.Call_gravity_Newton_by1(const.G,
+                                     test.mass,test.x,
+                                     source.mass,source.x)
   return force
 end
 
@@ -147,7 +155,7 @@ gravity.by1=gravity.by1_Lua
 
 
 -- @int testmassNum
-gravity.byall=function(testmassNum,step)
+gravity.byall_1=function(testmassNum,step)
   local force=setmetatable({0,0,0},Vector)
   for i=1,#step.body do
     while true do
@@ -160,6 +168,18 @@ gravity.byall=function(testmassNum,step)
   end
   return force
 end
+
+gravity.byall_2=function(testnum,step)
+  local force=setmetatable({0,0,0},Vector)
+  force[1],force[2],force[3]
+  =
+  LC_gravity.Call_gravity_Newton_byall(step,testnum,const.G)
+  return force
+end
+
+
+
+gravity.byall=gravity.byall_1
 
 -------------------------------------------------------------------------------
 -- Runge-Kutta method
@@ -204,7 +224,7 @@ end
 
 
 
-CSV.SaveSteps=function(steps,bodylist,filename)
+CSV.Savestep=function(step,bodylist,filename)
   local tmp={}
 
   -- the CSV head
@@ -219,17 +239,17 @@ CSV.SaveSteps=function(steps,bodylist,filename)
 
   for i=1,const.StepTotal do
     tmp[1+i]={}
-    M.push(tmp[1+i],steps[i].time)
+    M.push(tmp[1+i],step[i].time)
     for _,j in pairs(bodylist) do
-      M.push(tmp[1+i],steps[i].body[j].name,
-                      steps[i].body[j].mass,
-                      steps[i].body[j].radius,
-                      steps[i].body[j].x[1],
-                      steps[i].body[j].x[2],
-                      steps[i].body[j].x[3],
-                      steps[i].body[j].v[1],
-                      steps[i].body[j].v[2],
-                      steps[i].body[j].v[3]   )
+      M.push(tmp[1+i],step[i].body[j].name,
+                      step[i].body[j].mass,
+                      step[i].body[j].radius,
+                      step[i].body[j].x[1],
+                      step[i].body[j].x[2],
+                      step[i].body[j].x[3],
+                      step[i].body[j].v[1],
+                      step[i].body[j].v[2],
+                      step[i].body[j].v[3]   )
     end
   end
 
@@ -239,69 +259,103 @@ end
 -------------------------------------------------------------------------------
 -- generate the steps
 
-steps={}
+step={}
 
 -- initialize the first step
-steps[1]=setmetatable(deepcopy(Step.proto),Step)
+step[1]=setmetatable(deepcopy(Step.proto),Step)
 
-steps[1].time=const.BeginTime
+step[1].time=const.BeginTime
 
-bodydata,_=ftcsv.parse('bodys.csv',',')
+bodydata,_=ftcsv.parse('data/body.csv',',')
 for i=1,const.BodyTotal do
-  steps[1].body[i].name  =bodydata[i]['name']
-  steps[1].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
-  steps[1].body[i].radius=bodydata[i]['radius(m)']/const.AU
+  step[1].body[i].name  =bodydata[i]['name']
+  step[1].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
+  step[1].body[i].radius=bodydata[i]['radius(m)']/const.AU
 end
 
 -- LC_de430.readstate(juliandate,planet,center)
 for i=1,const.BodyTotal do
-  steps[1].body[i].x[1],
-  steps[1].body[i].x[2],
-  steps[1].body[i].x[3],
-  steps[1].body[i].v[1],
-  steps[1].body[i].v[2],
-  steps[1].body[i].v[3]
+  step[1].body[i].x[1],
+  step[1].body[i].x[2],
+  step[1].body[i].x[3],
+  step[1].body[i].v[1],
+  step[1].body[i].v[2],
+  step[1].body[i].v[3]
   =
-  LC_de430.readstate(const.BeginTime,i,12)
+  LC_de430.readstate(const.BeginTime,i,12) -- x[],v[] relative to the SSB
 end
 
 
 
 -- use Runge-Kutta method to generate all steps
 for i=2,const.StepTotal do
-  steps[i]=rk.rk4(steps[i-1],const.dt)
+  step[i]=rk.rk4(step[i-1],const.dt)
 end
 
-CSV.SaveSteps(steps,M.range(const.BodyTotal),'output.csv')
+
+
+gp{
+  width=800,height=600,xlabel='x',ylabel='y',zlabel='z',key='top left',
+  data={
+    gp.array{
+      {
+        pldo'step[i].body[11].x[1] for i=1,const.StepTotal'(),
+        pldo'step[i].body[11].x[2] for i=1,const.StepTotal'(),
+        pldo'step[i].body[11].x[3] for i=1,const.StepTotal'()
+      },
+      title='Sun',using={1,2,3},with='lines'
+    },
+    gp.array{
+      {
+        pldo'step[i].body[3].x[1] for i=1,const.StepTotal'(),
+        pldo'step[i].body[3].x[2] for i=1,const.StepTotal'(),
+        pldo'step[i].body[3].x[3] for i=1,const.StepTotal'()
+      },
+      title='Earth',using={1,2,3},with='dots'
+    },
+    gp.array{
+      {
+        pldo'step[i].body[1].x[1] for i=1,const.StepTotal'(),
+        pldo'step[i].body[1].x[2] for i=1,const.StepTotal'(),
+        pldo'step[i].body[1].x[3] for i=1,const.StepTotal'()
+      },
+      title='Mercury',using={1,2,3},with='lines'
+    }
+  }
+}:splot('data/plot.svg')
+
+
+
+CSV.Savestep(step,M.range(const.BodyTotal),'data/step.csv')
 
 -------------------------------------------------------------------------------
 -- data from DE430
 
-stepsDE={}
+stepDE={}
 
 for j=1,const.StepTotal do
-  stepsDE[j]=setmetatable(deepcopy(Step.proto),Step)
-  stepsDE[j].time=const.BeginTime+(j-1)*const.dt
+  stepDE[j]=setmetatable(deepcopy(Step.proto),Step)
+  stepDE[j].time=const.BeginTime+(j-1)*const.dt
 
   for i=1,const.BodyTotal do
-    stepsDE[j].body[i].name  =bodydata[i]['name']
-    stepsDE[j].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
-    stepsDE[j].body[i].radius=bodydata[i]['radius(m)']/const.AU
+    stepDE[j].body[i].name  =bodydata[i]['name']
+    stepDE[j].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
+    stepDE[j].body[i].radius=bodydata[i]['radius(m)']/const.AU
   end
 
   for i=1,const.BodyTotal do
-    stepsDE[j].body[i].x[1],
-    stepsDE[j].body[i].x[2],
-    stepsDE[j].body[i].x[3],
-    stepsDE[j].body[i].v[1],
-    stepsDE[j].body[i].v[2],
-    stepsDE[j].body[i].v[3]
+    stepDE[j].body[i].x[1],
+    stepDE[j].body[i].x[2],
+    stepDE[j].body[i].x[3],
+    stepDE[j].body[i].v[1],
+    stepDE[j].body[i].v[2],
+    stepDE[j].body[i].v[3]
     =
-    LC_de430.readstate(stepsDE[j].time,i,12)
+    LC_de430.readstate(stepDE[j].time,i,12)
   end
 end
 
-CSV.SaveSteps(stepsDE,M.range(const.BodyTotal),'outputDE.csv')
+CSV.Savestep(stepDE,M.range(const.BodyTotal),'data/stepDE.csv')
 
 -------------------------------------------------------------------------------
 -- dstep
@@ -311,7 +365,7 @@ dxyz=function(bodynum,filename)
   -- the head of CSV file
   tmp[1]={bodynum..'dx',bodynum..'dy',bodynum..'dz'}
   for i=1,const.StepTotal do
-    M.push(tmp,steps[i].body[bodynum].x-stepsDE[i].body[bodynum].x)
+    M.push(tmp,step[i].body[bodynum].x-stepDE[i].body[bodynum].x)
   end
 
   CSV.SaveTable(tmp,filename)
@@ -319,5 +373,31 @@ end
 
 
 
-dxyz(13,'dxyz.csv')
+dxyz(3,'data/dxyz.csv')
 
+-------------------------------------------------------------------------------
+-- try
+
+--for i=1,10 do
+  --local ff={}
+  --ff[1],ff[2],ff[3]
+  --=
+  --LC_gravity.Call_gravity_Newton_byall(step[i],1,const.G)
+
+  --local f1=gravity.byall(1,step[i])
+
+  ----print(f1[1],f1[2],f1[3])
+  --print(f1[1]-ff[1],f1[2]-ff[2],f1[3]-ff[3])
+  --print("\n")
+--end
+
+
+
+ftry={}
+ftry[1],ftry[2],ftry[3]
+=LC_gravity.Call_gravity_Newton_by1(const.G,
+                                    step[1].body[3].mass,step[1].body[3].x,
+                                    step[1].body[11].mass,step[1].body[11].x)
+print(ftry[1],ftry[2],ftry[3])
+
+LC_gravity.Call_gravity_Newton_byall(step[1],3,const.G)

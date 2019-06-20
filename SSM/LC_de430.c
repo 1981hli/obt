@@ -1,6 +1,7 @@
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
+#define DEBUG(format,...) printf(format,##__VA_ARGS__)
 
 //-----------------------------------------------------------------------------
 // readstate
@@ -25,7 +26,7 @@ static int readstate(lua_State *L)
 
 //-----------------------------------------------------------------------------
 
-static const struct luaL_Reg Functions[]=
+static const struct luaL_Reg functionlist[]=
 {
   {"readstate",readstate},
   {NULL,NULL}
@@ -33,7 +34,7 @@ static const struct luaL_Reg Functions[]=
 
 int luaopen_LC_de430(lua_State *L)
 {
-  luaL_register(L,"LC_de430",Functions);
+  luaL_register(L,"LC_de430",functionlist);
   return 1;
 }
 
