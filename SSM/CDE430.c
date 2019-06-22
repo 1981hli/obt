@@ -1,3 +1,7 @@
+//-----------------------------------------------------------------------------
+// C module to manipulate JPL DE file
+//-----------------------------------------------------------------------------
+
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
@@ -32,9 +36,9 @@ static const struct luaL_Reg functionlist[]=
   {NULL,NULL}
 };
 
-int luaopen_LC_de430(lua_State *L)
+int luaopen_CDE430(lua_State *L)
 {
-  luaL_register(L,"LC_de430",functionlist);
+  luaL_register(L,"CDE430",functionlist);
   return 1;
 }
 

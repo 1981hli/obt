@@ -1,3 +1,7 @@
+//-----------------------------------------------------------------------------
+// C module to calculate various gravities
+//-----------------------------------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -100,16 +104,15 @@ void gravity_Newton_by1(Real G,Real force[],Body test,Body source)
 
 
 
-void gravity_Newton_byall(Step* step,int test,Real f[],Real G)
+void gravity_Newton_byall(Step *step,int test,Real f[],Real G)
 {
   int dim=3;
   for(int j=0;j<dim;j++) f[j]=0.;
   for(int j=0;j<TotalBody;j++){
-    if(j==test||j==12||j==13) continue;
+    if(j==test) continue;
     Real force[dim];
     for(int j2=0;j2<dim;j2++) force[j2]=0.;
     gravity_Newton_by1(G,force,step->body[test],step->body[j]);
-    DEBUG("%d=\t%e\t%e\t%e\n",j+1,force[1],force[2],force[3]);
     VADDV(f,force,f);
   }
 }
@@ -134,11 +137,10 @@ static int try(lua_State *L)
 // return force[1],force[2],force[3]
 static int Call_gravity_Newton_by1(lua_State *L)
 {
-  Real G;
   Real force[3]={0.,0.,0.};
   Body test,source;
   // G=const.G
-  G=lua_tonumber(L,1);
+  Real G=lua_tonumber(L,1);
   // test.mass=test.mass
   test.mass=lua_tonumber(L,2);
   // test.x[]=test.x[]
@@ -160,7 +162,7 @@ static int Call_gravity_Newton_byall(lua_State *L)
   passStep(L,1,&step);
 
   // pass test
-  int test=lua_tonumber(L,2);
+  int test=lua_tonumber(L,2)-1; // -1 means it is start from 0 in C
 
   // pass const.G
   Real G=lua_tonumber(L,3);
@@ -272,8 +274,8 @@ static const struct luaL_Reg functionlist[]=
   {NULL,NULL}
 };
 
-int luaopen_LC_gravity(lua_State *L)
+int luaopen_Cgravity(lua_State *L)
 {
-  luaL_register(L,"LC_gravity",functionlist);
+  luaL_register(L,"Cgravity",functionlist);
   return 1;
 }
