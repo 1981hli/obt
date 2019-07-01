@@ -1,13 +1,12 @@
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // C module to manipulate JPL DE file
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
+#include "common.h"
 #define DEBUG(format,...) printf(format,##__VA_ARGS__)
+extern void pleph_(); // fortran function
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 // readstate
 
 static int readstate(lua_State *L)
@@ -28,7 +27,7 @@ static int readstate(lua_State *L)
   return 6;
 }
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 static const struct luaL_Reg functionlist[]=
 {
@@ -36,7 +35,7 @@ static const struct luaL_Reg functionlist[]=
   {NULL,NULL}
 };
 
-int luaopen_CDE430(lua_State *L)
+int luaopen_mod_CDE430(lua_State *L)
 {
   luaL_register(L,"CDE430",functionlist);
   return 1;

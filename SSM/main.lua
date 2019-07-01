@@ -1,32 +1,55 @@
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- Solar System Modeling
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-local pl={}
-pl.deepcopy=require('mod.pl.tablex').deepcopy
-pl.run=     require('mod.pl.comprehension').new() -- run a string as code
-local ftcsv=require('mod.ftcsv')
-local M=    require('mod.moses')
-local gp=   require('mod.gnuplot')
-require('Cgravity')
-require('CDE430')
-deepcopy=pl.deepcopy
+local ftcsv=           require 'Lua.mod.ftcsv'
+local gp=              require 'Lua.mod.gnuplot'
+local M=               require 'Lua.mod.moses'
+local pltablex=        require 'Lua.mod.pl.tablex'
+local plcomprehension= require 'Lua.mod.pl.comprehension'
 
--------------------------------------------------------------------------------
+require 'mod.Cgravity'
+require 'mod.CDE430'
+
+local deepcopy=pltablex.deepcopy
+local run=plcomprehension.new()
+
+
+
+printtable=function(thetable)
+  if(type(thetable)~="table") then
+    print(thetable)
+  else 
+    local function diveinto(printout,level)
+      for k,v in pairs(printout) do
+        if (type(v)=="table") then
+          print(string.rep("   ",level-1).."["..k.."]"..":")
+          diveinto(v,level+1)
+        else
+          print(string.rep("   ",level-1).."["..k.."]".."= "..v)
+        end
+      end
+    end
+    diveinto(thetable,1)
+  end
+end
+
+--------------------------------------------------------------------------------
 
 const={}
 
-const.BodyTotal=11
+const.TotalBody=11
 const.BeginTime=2440400.5      -- 1969.06.28
 const.dt=1                     -- day
-const.StepTotal=2000
+const.TotalStep=365
 const.Day=24*60*60             -- s
 const.AU=149597870700          -- m
 const.EarthMass=5.97237e24     -- kg
+const.c=299792458              -- m
 -- G=6.67408e-11 (s-2.m3.kg-1)
 const.G=6.67408e-11*(1/const.Day)^-2*(1/const.AU)^3*(1/const.EarthMass)^-1
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 Vector={}
 
@@ -77,7 +100,7 @@ Vector.__mul=function(arg1,arg2)
   return output
 end
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 Step={}
 
@@ -88,7 +111,7 @@ Step.__index=Step
 Step.proto={}
 Step.proto.time=0
 Step.proto.body={}
-for i=1,const.BodyTotal do 
+for i=1,const.TotalBody do 
   table.insert( Step.proto.body, { name='',
                                    mass=0,
                                    x=setmetatable({0,0,0},Vector),
@@ -126,7 +149,7 @@ Step.__mul=function(arg1,arg2)
   return tmp
 end
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 gravity={}
 
@@ -181,9 +204,17 @@ end
 
 
 
+gravity.byall_PPN=function(testnum,step)
+  local force=setmetatable({0,0,0},Vector)
+  force[1],force[2],force[3]
+  =
+  Cgravity.Call_gravity_PPN(step,testnum,const.G,const.c)
+  return force
+end
+
 gravity.byall=gravity.byall_1
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- Runge-Kutta method
 
 rk={}
@@ -210,7 +241,7 @@ rk.rk4=function(step,dt)
   return step+1/6*(k1+2*k2+2*k3+k4)
 end
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- manipulate CSV files
 
 CSV={}
@@ -239,7 +270,7 @@ CSV.Savestep=function(step,bodylist,filename)
                   i..'vx',i..'vy',i..'vz')
   end
 
-  for i=1,const.StepTotal do
+  for i=1,const.TotalStep do
     tmp[1+i]={}
     M.push(tmp[1+i],step[i].time)
     for _,j in pairs(bodylist) do
@@ -258,7 +289,7 @@ CSV.Savestep=function(step,bodylist,filename)
   CSV.SaveTable(tmp,filename)
 end
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- generate the steps
 
 step={}
@@ -269,14 +300,14 @@ step[1]=setmetatable(deepcopy(Step.proto),Step)
 step[1].time=const.BeginTime
 
 bodydata,_=ftcsv.parse('data/body.csv',',')
-for i=1,const.BodyTotal do
+for i=1,const.TotalBody do
   step[1].body[i].name  =bodydata[i]['name']
   step[1].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
   step[1].body[i].radius=bodydata[i]['radius(m)']/const.AU
 end
 
 -- CDE430.readstate(juliandate,planet,center)
-for i=1,const.BodyTotal do
+for i=1,const.TotalBody do
   step[1].body[i].x[1],
   step[1].body[i].x[2],
   step[1].body[i].x[3],
@@ -290,51 +321,31 @@ end
 
 
 -- use Runge-Kutta method to generate all steps
-for i=2,const.StepTotal do
+for i=2,const.TotalStep do
   step[i]=rk.rk4(step[i-1],const.dt)
 end
 
 
 
--- call gnuplot to plot step[]
-do
-  local x11=pl.run'step[i].body[11].x[1] for i=1,const.StepTotal'()
-  local y11=pl.run'step[i].body[11].x[2] for i=1,const.StepTotal'()
-  local z11=pl.run'step[i].body[11].x[3] for i=1,const.StepTotal'()
+CSV.Savestep(step,M.range(const.TotalBody),'data/step.csv')
 
-  local x3=pl.run'step[i].body[3].x[1] for i=1,const.StepTotal'()
-  local y3=pl.run'step[i].body[3].x[2] for i=1,const.StepTotal'()
-  local z3=pl.run'step[i].body[3].x[3] for i=1,const.StepTotal'()
-
-  gp{
-    width=800,height=600,xlabel='x',ylabel='y',zlabel='z',key='top left',
-    data={
-      gp.array{{x11,y11,z11},title='Sun',using={1,2,3},with='linespoints'},
-      gp.array{{x3,y3,z3},title='Earth',using={1,2,3},with='dots'}
-    }
-  }:splot('data/step.svg')
-end
-
-
-
-CSV.Savestep(step,M.range(const.BodyTotal),'data/step.csv')
-
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 -- data from DE430
 
 stepDE={}
 
-for j=1,const.StepTotal do
+for j=1,const.TotalStep do
   stepDE[j]=setmetatable(deepcopy(Step.proto),Step)
+
   stepDE[j].time=const.BeginTime+(j-1)*const.dt
 
-  for i=1,const.BodyTotal do
+  for i=1,const.TotalBody do
     stepDE[j].body[i].name  =bodydata[i]['name']
     stepDE[j].body[i].mass  =bodydata[i]['mass(kg)']/const.EarthMass
     stepDE[j].body[i].radius=bodydata[i]['radius(m)']/const.AU
   end
 
-  for i=1,const.BodyTotal do
+  for i=1,const.TotalBody do
     stepDE[j].body[i].x[1],
     stepDE[j].body[i].x[2],
     stepDE[j].body[i].x[3],
@@ -346,66 +357,88 @@ for j=1,const.StepTotal do
   end
 end
 
-CSV.Savestep(stepDE,M.range(const.BodyTotal),'data/stepDE.csv')
+CSV.Savestep(stepDE,M.range(const.TotalBody),'data/stepDE.csv')
 
--------------------------------------------------------------------------------
--- dstep
+--------------------------------------------------------------------------------
+-- dxyz[]=step[]-stepDE[] 
 
-dxyz=function(bodynum,filename)
-  local tmp={}
-  -- the head of CSV file
-  tmp[1]={bodynum..'dx',bodynum..'dy',bodynum..'dz'}
-  for i=1,const.StepTotal do
-    M.push(tmp,step[i].body[bodynum].x-stepDE[i].body[bodynum].x)
+do
+  local dxyz=function(bodynum,filename)
+    local tmp={}
+    -- the head of CSV file
+    tmp[1]={bodynum..'dx',bodynum..'dy',bodynum..'dz'}
+    for i=1,const.TotalStep do
+      M.push(tmp,step[i].body[bodynum].x-stepDE[i].body[bodynum].x)
+    end
+
+    CSV.SaveTable(tmp,filename)
   end
 
-  CSV.SaveTable(tmp,filename)
-end
-
-dxyz(3,'data/dxyz.csv')
+  dxyz(3,'data/dxyz.csv')
 
 
 
--- plot dx
-do
-  local x1=M.range(const.StepTotal)
-pl.run[[step[i].body[3].x[1]-stepDE[i].body[3].x[1]]]
-  dx_SSM_DE=function(i) return step[i].body[3].x[1]-stepDE[i].body[3].x[1] end
-  local gp_y=M.map(M.range(const.StepTotal),dx_SSM_DE)
+  -- plot dxyz[]=step[]-stepDE[]
+  local x1=M.range(const.TotalStep)
+  local y1=run[[step[i].body[3].x[1]-stepDE[i].body[3].x[1]
+                for i=1,const.TotalStep]]()
 
   gp{
-    width=800,height=600,xlabel='t',ylabel='dx',key='top left',
+    width=800,height=600,key='top left',
+    xlabel='t / day',ylabel='dx / AU',
     data={
-      gp.array{{gp_x,gp_y},title='dx_SSM_DE',using={1,2},with='lines'}
+      gp.array{{x1,y1},title='dx_{SSM-DE}',using={1,2},with='lines'}
     }
   }:plot('data/dstep.svg')
 end
 
--------------------------------------------------------------------------------
--- try
-
---for i=1,10 do
-  --local ff={}
-  --ff[1],ff[2],ff[3]
-  --=
-  --Cgravity.Call_gravity_Newton_byall(step[i],1,const.G)
-
-  --local f1=gravity.byall(1,step[i])
-
-  ----print(f1[1],f1[2],f1[3])
-  --print(f1[1]-ff[1],f1[2]-ff[2],f1[3]-ff[3])
-  --print("\n")
---end
 
 
+-- plot ...
+do
+  local t
+  local x3,y3,z3,x3DE,y3DE,z3DE
+  local x11,y11,z11
 
---ftry={}
---ftry[1],ftry[2],ftry[3]
---=Cgravity.Call_gravity_Newton_by1(const.G,
-                                  --step[1].body[3].mass,step[1].body[3].x,
-                                  --step[1].body[11].mass,step[1].body[11].x)
---print(ftry[1],ftry[2],ftry[3])
+  local generatePoints=function(bodynum)
+    return
+    run('step[i].body['..bodynum..'].x[1] for i=1,const.TotalStep')(),
+    run('step[i].body['..bodynum..'].x[2] for i=1,const.TotalStep')(),
+    run('step[i].body['..bodynum..'].x[3] for i=1,const.TotalStep')()
+  end
 
---Cgravity.Call_gravity_Newton_byall(step[1],3,const.G)
---
-M.each(gravity.byall(3,step[9]),print)
+  local generatePointsDE=function(bodynum)
+    return
+    run('stepDE[i].body['..bodynum..'].x[1] for i=1,const.TotalStep')(),
+    run('stepDE[i].body['..bodynum..'].x[2] for i=1,const.TotalStep')(),
+    run('stepDE[i].body['..bodynum..'].x[3] for i=1,const.TotalStep')()
+  end
+
+
+
+  t=M.range(const.TotalStep)
+  x3,y3,z3=generatePoints(3)
+  x11,y11,z11=generatePoints(11)
+  x3DE,y3DE,z3DE=generatePointsDE(3)
+
+  gp{
+    width=1600,height=1200,key='top left',
+    xlabel='x / AU',ylabel='y / AU',zlabel='z / AU',
+    data={
+      gp.array{{x11,y11,z11},title='Sun',using={1,2,3},with='linespoints'},
+      gp.array{{x3,y3,z3},title='Earth',  using={1,2,3},with='dots'}
+    }
+  }:splot('data/step.svg')
+
+  gp{
+    width=1600,height=1200,key='top left',
+    xlabel='t / day',ylabel='x,y,z / AU',
+    data={
+      --gp.array{{t,x3},title='Earth.x',using={1,2},with='lines'},
+      --gp.array{{t,x3DE},title='EarthDE.x',using={1,2},with='lines'},
+      gp.array{{t,setmetatable(x3,Vector)-x3DE},title='Delta_x',using={1,2},with='lines'}
+    }
+  }:plot('data/step_x.svg')
+end
+
+
