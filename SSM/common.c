@@ -5,6 +5,9 @@
 #include "common.h"
 #define DIM 3
 
+//------------------------------------------------------------------------------
+// Vector manipulation
+
 void VADDV(double *v1,double *v2,double *v3)
 {
   for(int i=0;i<DIM;i++)
@@ -83,6 +86,7 @@ void COPY(double *v1,double *v2)
 }
 
 //------------------------------------------------------------------------------
+// pass data to lua
 
 void passarray(lua_State *L,int index,Real array[])
 {
@@ -137,6 +141,4 @@ void passStep(lua_State *L,int index,Step *step)
 
   lua_pop(L,1); // pop t.body[]
 }
-
-//------------------------------------------------------------------------------
 
