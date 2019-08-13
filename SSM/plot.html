@@ -3,7 +3,7 @@
 <body><div align="center" id="chart1"></div></body>
 <script>
 fignum=[11,3]
-Plotly.d3.csv('out_step.csv',function(err,rows){
+Plotly.d3.csv('out/ssm.csv',function(err,rows){
   function readcsv(rows,key){return rows.map(function(row){return row[key]})}
   var figs=[]
   for(var i in fignum){

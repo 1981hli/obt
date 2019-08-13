@@ -1,41 +1,13 @@
-Compiler_C=gcc
-Compiler_F=gfortran
 Flag=-shared -fPIC
-Flag_Lua=-shared -fPIC -lm -ILua
-Dir_mod_C=mod
 
-all: Cgravity.so CDE430.so
+all: jpleph.so
 	rm *.o
-
 clean:
-	rm *.o *.so $(Dir_mod_C)/*.so
+	rm *.o *.so
 
-cleanout:
-	rm data/out_*
-
-#-------------------------------------------------------------------------------
-
-CDE430.so: CDE430.o trytesteph.o 
-	$(Compiler_F) -o $(Dir_mod_C)/$@ $^ $(Flag_Lua) 
-
-CDE430.o: CDE430.c
-	$(Compiler_C) -o $@ -c $^ $(Flag_Lua) 
-
-#-------------------------------------------------------------------------------
-
-readJPL.so: readJPL.o trytesteph.o
-	$(Compiler_F) -o $@ $^ $(Flag)
-
-readJPL.o: readJPL.c
-	$(Compiler_C) -o $@ -c $^ $(Flag)
-
-#-------------------------------------------------------------------------------
-
+jpleph.so: jpleph.o trytesteph.o
+	gfortran -o $@ $^ $(Flag)
+jpleph.o: jpleph.c
+	gcc -o $@ -c $^ $(Flag)
 trytesteph.o: trytesteph.f
-	$(Compiler_F) -o $@ -c $^ $(Flag) 
-
-#-------------------------------------------------------------------------------
-
-Cgravity.so: Cgravity.c common.c
-	$(Compiler_C) -o $(Dir_mod_C)/$@ $^ $(Flag_Lua) 
-
+	gfortran -o $@ -c $^ $(Flag) 
