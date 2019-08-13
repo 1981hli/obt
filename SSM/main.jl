@@ -17,7 +17,7 @@ const s_Day=1/Day_s
 const m_AU=1/AU_m
 const kg_Earthmass=1/Earthmass_kg
 const TotalBody=11
-const TotalStep=365
+const TotalStep=365*5
 const TimeInterval=1.
 const BeginTime=2440400.5 # 1969.06.28
 const c=299792458*m_AU*s_Day^-1
@@ -76,18 +76,14 @@ end
 
 #-------------------------------------------------------------------------------
 
-function gravity_Newton(step::Step,testnum::Int)
+# gravity of body[num] by all the other planets in solar system
+function gravity_Newton(step::Step,num::Int)
   function gravity_Newton1(test::Body,source::Body)
     dx=source.x-test.x
-    G*test.mass*source.mass/sqrt(sum(dx.^2))^3*dx # return the gravity
+    G*test.mass*source.mass/norm(dx)^3*dx # return the gravity
   end
 
-  gravity=[0.,0.,0.]
-  for i in 1:TotalBody
-    if i==testnum continue end
-    gravity=gravity+gravity_Newton1(step.body[testnum],step.body[i])
-  end
-  gravity
+  sum(gravity_Newton1(step.body[num],step.body[i]) for i=1:TotalBody if i!=num)
 end
 
 
@@ -130,7 +126,7 @@ end
 
 
 
-gravity=gravity_Newton
+gravity=gravity_PPN
 
 #-------------------------------------------------------------------------------
 
@@ -217,18 +213,16 @@ end
 #-------------------------------------------------------------------------------
 # plot
 
-# let
-  # t=1:TotalStep
-  # x=[step[i].body[3].x[1] for i=t]
-  # y=[step[i].body[3].x[2] for i=t]
-  # z=[step[i].body[3].x[3] for i=t]
-  # xDE=[stepDE[i].body[3].x[1] for i=t]
-  # yDE=[stepDE[i].body[3].x[2] for i=t]
-  # zDE=[stepDE[i].body[3].x[3] for i=t]
+let
+  t=1:TotalStep
+  x=[step[i].body[3].x[1] for i=t]
+  y=[step[i].body[3].x[2] for i=t]
+  z=[step[i].body[3].x[3] for i=t]
+  xDE=[stepDE[i].body[3].x[1] for i=t]
+  yDE=[stepDE[i].body[3].x[2] for i=t]
+  zDE=[stepDE[i].body[3].x[3] for i=t]
 
-  # xlabel("step / Day")
-  # ylabel("x,y,z / AU")
-  # plot(t,xDE)
-  # savefig("out/txyz.svg")
-# end
+  plot(t,x-xDE)
+  savefig("out/txyz.svg")
+end
 
