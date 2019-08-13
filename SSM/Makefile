@@ -4,6 +4,8 @@ all: jpleph.so
 	rm *.o
 clean:
 	rm *.o *.so
+cleanout:
+	rm out_*
 
 jpleph.so: jpleph.o trytesteph.o
 	gfortran -o $@ $^ $(Flag)

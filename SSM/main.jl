@@ -223,6 +223,6 @@ let
   zDE=[stepDE[i].body[3].x[3] for i=t]
 
   plot(t,x-xDE)
-  savefig("out/txyz.svg")
+  savefig("out_txyz.svg")
 end
 
