@@ -55,7 +55,7 @@ const.kg_Earthmass=1/const.Earthmass_kg
 
 -- system of units: Day,AU,Earthmass
 const.TotalBody=11
-const.TotalStep=365*5
+const.TotalStep=2
 const.dt=1
 const.BeginTime=2440400.5 -- 1969.06.28
 const.c=299792458*const.m_AU*(const.s_Day)^-1
@@ -169,14 +169,14 @@ end
 
 gravity={}
 
-gravity.by1_Lua=function(testmass,source)
-  local dx=setmetatable(testmass.x,Vector)-source.x
-  return -const.G*testmass.mass*source.mass/(dx:MOD()^3)*dx -- return Vector
-end 
+--gravity.by1_Lua=function(testmass,source)
+  --local dx=setmetatable(testmass.x,Vector)-source.x
+  --return -const.G*testmass.mass*source.mass/(dx:MOD()^3)*dx -- return Vector
+--end 
 
 
 
-gravity.by1_C=function(test,source)
+gravity.by1_Newton=function(test,source)
   local force=setmetatable({},Vector)
   force[1],force[2],force[3]
   =
@@ -188,29 +188,29 @@ end
 
 
 
-gravity.by1=gravity.by1_Lua
+gravity.by1=gravity.by1_Newton
 
 
 
 -- call gravity.by1() from above
-gravity.byall_1=function(testmassNum,step)
-  local force=setmetatable({0,0,0},Vector)
-  for i=1,#step.body do
-    while true do
-      -- change the line below at your will
-      if (i==testmassNum) then break end
-      local force1=gravity.by1(step.body[testmassNum],step.body[i])
-      force=force+force1
-      break
-    end
-  end
-  return force
-end
+--gravity.byall_1=function(testmassNum,step)
+  --local force=setmetatable({0,0,0},Vector)
+  --for i=1,#step.body do
+    --while true do
+      ---- change the line below at your will
+      --if (i==testmassNum) then break end
+      --local force1=gravity.by1(step.body[testmassNum],step.body[i])
+      --force=force+force1
+      --break
+    --end
+  --end
+  --return force
+--end
 
 
 
 -- call gravity_Newton_byall() from C code
-gravity.byall_2=function(testnum,step)
+gravity.byall_Newton=function(testnum,step)
   local force=setmetatable({0,0,0},Vector)
   force[1],force[2],force[3]
   =
@@ -227,6 +227,8 @@ gravity.byall_PPN=function(testnum,step)
   Cgravity.Call_gravity_PPN(step,testnum,const.G,const.c)
   return force
 end
+
+
 
 gravity.byall=gravity.byall_PPN
 
@@ -419,11 +421,11 @@ do
     xlabel='t / step',ylabel='x,y,z / AU',
     data={
       gp.array{txyz[3],title='Earth_x',using={1,2},with='lines'},
-      gp.array{txyz[3],title='Earth_y',using={1,3},with='lines'},
-      gp.array{txyz[3],title='Earth_z',using={1,4},with='lines'},
+      --gp.array{txyz[3],title='Earth_y',using={1,3},with='lines'},
+      --gp.array{txyz[3],title='Earth_z',using={1,4},with='lines'},
       gp.array{txyzDE[3],title='Earth_{x,DE}',using={1,2},with='lines'},
-      gp.array{txyzDE[3],title='Earth_{y,DE}',using={1,3},with='lines'},
-      gp.array{txyzDE[3],title='Earth_{z,DE}',using={1,4},with='lines'}
+      --gp.array{txyzDE[3],title='Earth_{y,DE}',using={1,3},with='lines'},
+      --gp.array{txyzDE[3],title='Earth_{z,DE}',using={1,4},with='lines'}
     }
   }:plot('data/out_txyz.svg')
 
@@ -460,8 +462,8 @@ do
   force={}
 
   for i=1,const.TotalStep do
-    forcePPN[i]=gravity.byall(3,step[i]) -- gravity on Earth in stepDE[]
-    force[i]=gravity.byall_2(3,step[i])
+    forcePPN[i]=gravity.byall(3,step[i]) -- PPN gravity on Earth
+    force[i]=gravity.byall_Newton(3,step[i])  -- Newtonian gravity on Earth
   end
 
   force_x=run('force[i][1] for i=1,const.TotalStep')()
@@ -488,22 +490,5 @@ end
 
 --------------------------------------------------------------------------------
 
---do 
-  --local tmp={}
-  --for i=1,const.TotalStep do
-    --M.push(tmp,(gravity.byall_PPN(3,stepDE[i])-gravity.byall_2(3,stepDE[i]))[1])
-  --end
-
-  --local t=M.range(const.TotalStep)
-
-  --gp{
-    --width=1600,height=1200,key='top left',
-    --xlabel='t / day',ylabel='force',
-    --data={
-      --gp.array{{t,tmp},title='EarthDE.x',using={1,2},with='lines'}
-    --}
-  --}:plot('data/out_force.png')
---end
-
-
-
+pt(gravity.byall_PPN(3,step[1]))
+pt(gravity.byall_Newton(3,step[1]))

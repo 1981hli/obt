@@ -210,7 +210,7 @@ void gravity_PPN(Step *step,int A,Real a[],Real G,Real c)
 
 
 
-void gravity_PPN_byterms(Step *step,int A,Real a[],Real G,Real c)
+void gravity_PPN_byterms(Step *step,int A,Real a[],Real G,Real c,Real aa1[],Real aa2[],Real aa3[])
 {
   int dim=3;
   Real c2=pow(c,2);
@@ -287,6 +287,7 @@ void gravity_PPN_byterms(Step *step,int A,Real a[],Real G,Real c)
 
     VADDV(a1,T1,a1);
   }
+  aa1=a1;
 
 
 
@@ -324,6 +325,7 @@ void gravity_PPN_byterms(Step *step,int A,Real a[],Real G,Real c)
 
     VADDV(a2,T2,a2);
   }
+  aa2=a2;
 
 
 
@@ -346,14 +348,13 @@ void gravity_PPN_byterms(Step *step,int A,Real a[],Real G,Real c)
 
     VADDV(a3,T3,a3);
   }
+  aa3=a3;
 
 
 
   Real tmpT[dim];
   VADDV(a1,a2,tmpT);
   VADDV(tmpT,a3,a);
-
-  a=a3;
 }
 
 
@@ -374,7 +375,9 @@ static int Call_gravity_PPN(lua_State *L)
 
   int dim=3;
   Real a[dim]; // gravity_PPN() return the acceleration
-  gravity_PPN_byterms(&step,testnum,a,G,c);
+  Real aa1[dim],aa2[dim],aa3[dim];
+  gravity_PPN_byterms(&step,testnum,a,G,c,aa1,aa2,aa3);
+  printf("%e, %e, %e\n",aa1[1],aa1[2],aa1[3]);
 
   for(int i=0;i<3;i++) lua_pushnumber(L,step.body[i].mass*a[i]);
   return 3;
