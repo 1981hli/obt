@@ -17,7 +17,7 @@ const s_Day=1/Day_s
 const m_AU=1/AU_m
 const kg_Earthmass=1/Earthmass_kg
 const TotalBody=11
-const TotalStep=365*5
+const TotalStep=365
 const TimeInterval=1.
 const BeginTime=2440400.5 # 1969.06.28
 const c=299792458*m_AU*s_Day^-1
@@ -40,38 +40,6 @@ end
 mutable struct Step
   time    ::Float64
   body    ::Array{Body,1}
-end
-
-
-
-
-
-# Step + Step
-import Base.+
-function +(step1::Step,step2::Step)
-  output=deepcopy(step1)
-  output.time =step1.time+step2.time
-  for i in 1:TotalBody
-    output.body[i].x=step1.body[i].x+step2.body[i].x
-    output.body[i].v=step1.body[i].v+step2.body[i].v
-  end
-  output
-end
-
-
-
-
-
-# Constant * Step
-import Base.*
-function *(c::Real,step::Step)
-  output=deepcopy(step)
-  output.time=c*step.time
-  for i in 1:TotalBody
-    output.body[i].x=c*output.body[i].x
-    output.body[i].v=c*output.body[i].v
-  end
-  output
 end
 
 #-------------------------------------------------------------------------------
@@ -129,6 +97,37 @@ end
 gravity=gravity_PPN
 
 #-------------------------------------------------------------------------------
+
+# Step + Step
+import Base.+
+function +(step1::Step,step2::Step)
+  output=deepcopy(step1)
+  output.time =step1.time+step2.time
+  for i in 1:TotalBody
+    output.body[i].x=step1.body[i].x+step2.body[i].x
+    output.body[i].v=step1.body[i].v+step2.body[i].v
+  end
+  output
+end
+
+
+
+
+
+# constant * Step
+import Base.*
+function *(c::Real,step::Step)
+  output=deepcopy(step)
+  output.time=c*step.time
+  for i in 1:TotalBody
+    output.body[i].x=c*output.body[i].x
+    output.body[i].v=c*output.body[i].v
+  end
+  output
+end
+
+  
+
 
 function rk_rk4(thestep::Step,dt::Float64)
   function rk_dstep(thestep::Step,dt::Float64)
